@@ -2,199 +2,193 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="renderer" content="webkit">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
 
-    <title>窗帘布艺管理系统</title>
+	<title>窗帘布艺管理系统</title>
 
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css?v=4.1.0" rel="stylesheet">
-    
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+	<link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+	<link href="css/animate.css" rel="stylesheet">
+	<link href="css/style.css?v=4.1.0" rel="stylesheet">
+
 </head>
 
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
-    <div id="wrapper">
-        <!--左侧导航开始-->
-        <nav class="navbar-default navbar-static-side" role="navigation">
-            <div class="nav-close"><i class="fa fa-times-circle"></i>
-            </div>
-            <div class="sidebar-collapse">
-                <ul class="nav" id="side-menu">
-                    <li class="nav-header">
-                        <div class="dropdown profile-element">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="clear">
+	<div id="wrapper">
+		<!--左侧导航开始-->
+		<nav class="navbar-default navbar-static-side" role="navigation">
+			<div class="nav-close"><i class="fa fa-times-circle"></i>
+			</div>
+			<div class="sidebar-collapse">
+				<ul class="nav" id="side-menu">
+					<li class="nav-header">
+						<div class="dropdown profile-element">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<span class="clear">
                                     <span class="block m-t-xs" style="font-size:18px;">
                                         <i class="fa fa-area-chart"></i>
                                         <strong class="font-bold">窗帘布艺管理系统</strong>
                                     </span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="logo-element">窗帘布艺管理系统
-                        </div>
-                    </li>
-                    <li>
-                        <a class="J_menuItem" href="index_v1.html">
-                            <i class="fa fa-home"></i>
-                            <span class="nav-label">主页</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa fa-bar-chart-o"></i>
-                            <span class="nav-label">基本资料</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="J_menuItem" href="graph_echarts.html">客户资料</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_flot.html">窗帘资料</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_morris.html">供应商资料</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_rickshaw.html">仓库资料</a>
-                            </li>
-                        </ul>
-                    </li>
+								</span>
+							</a>
+						</div>
+						<div class="logo-element">窗帘布艺管理系统
+						</div>
+					</li>
+					<li>
+						<a class="J_menuItem" href="welcome.html">
+							<i class="fa fa-home"></i>
+							<span class="nav-label">主页</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<i class="fa fa fa-bar-chart-o"></i>
+							<span class="nav-label">基本资料</span>
+							<span class="fa arrow"></span>
+						</a>
+						<ul class="nav nav-second-level">
+							<li><a class="J_menuItem" href="basic_info_client.html">客户资料</a>
+							</li>
+							<li><a class="J_menuItem" href="basic_info_curtain.html">窗帘资料</a>
+							</li>
+							<li><a class="J_menuItem" href="basic_info_provider.html">供应商资料</a>
+							</li>
+							<li><a class="J_menuItem" href="basic_info_warehouse.html">仓库资料</a>
+							</li>
+						</ul>
+					</li>
 
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-edit"></i>
-                            <span class="nav-label">材料管理</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="form_basic.html">材料资料</a>
-                            </li>
-                            <li><a class="J_menuItem" href="form_validate.html">采购登记</a>
-                            </li>
-                            <li><a class="J_menuItem" href="form_advanced.html">采购退货</a>
-                            </li>
-                            <li><a class="J_menuItem" href="form_wizard.html">库存明细</a>
-                            </li>
-                            <li><a class="J_menuItem" href="layerdate.html">库存盈余汇总提醒</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-desktop"></i>
-                            <span class="nav-label">订单管理</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="contacts.html">定做登记</a>
-                            </li>
-                            <li><a class="J_menuItem" href="profile.html">签收登记</a>
-                            </li>
-                            <li><a class="J_menuItem" href="teams_board.html">订单结算</a>
-                            </li>
-                            <li><a class="J_menuItem" href="social_feed.html">订单提醒</a>
-                            </li>
-                            <li><a class="J_menuItem" href="clients.html">订单毛利</a>
-                            </li>
-                        </ul>
-                    </li>
+					<li>
+						<a href="#">
+							<i class="fa fa-edit"></i>
+							<span class="nav-label">材料管理</span>
+							<span class="fa arrow"></span>
+						</a>
+						<ul class="nav nav-second-level">
+							<li><a class="J_menuItem" href="store_keeping_info.html">材料资料</a>
+							</li>
+							<li><a class="J_menuItem" href="store_keeping_procurement.html">采购登记</a>
+							</li>
+							<li><a class="J_menuItem" href="store_keeping_sales_return.html">采购退货</a>
+							</li>
+							<li><a class="J_menuItem" href="store_keeping_stock.html">库存明细</a>
+							</li>
+							<li><a class="J_menuItem" href="store_keeping_gather.html">库存盈余汇总提醒</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">
+							<i class="fa fa-desktop"></i>
+							<span class="nav-label">订单管理</span>
+							<span class="fa arrow"></span>
+						</a>
+						<ul class="nav nav-second-level">
+							<li><a class="J_menuItem" href="order_manager_reserve.html">定做登记</a>
+							</li>
+							<li><a class="J_menuItem" href="order_manager_sign.html">签收登记</a>
+							</li>
+							<li><a class="J_menuItem" href="order_manager_settlement.html">订单结算</a>
+							</li>
+							<li><a class="J_menuItem" href="order_manager_remind.html">订单提醒</a>
+							</li>
+							<li><a class="J_menuItem" href="order_manager_gross_profit.html">订单毛利</a>
+							</li>
+						</ul>
+					</li>
 
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-table"></i>
-                            <span class="nav-label">业务管理</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="typography.html">业务登记</a>
-                            </li>
-                            <li><a class="J_menuItem" href="buttons.html">派工登记</a>
-                            </li>
-                            <li><a class="J_menuItem" href="tabs_panels.html">费用结算</a>
-                            </li>
-                            <li><a class="J_menuItem" href="notifications.html">预约提醒</a>
-                            </li>
-                            <li><a class="J_menuItem" href="badges_labels.html">售后服务</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-search"></i>
-                            <span class="nav-label">查询统计</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="table_basic.html">订单查询</a>
-                            </li>
-                            <li><a class="J_menuItem" href="table_data_tables.html">业务查询</a>
-                            </li>
-                            <li><a class="J_menuItem" href="table_jqgrid.html">派工查询</a>
-                            </li>
-                            <li><a class="J_menuItem" href="table_foo_table.html">结算查询</a>
-                            </li>
-                            <li><a class="J_menuItem" href="table_bootstrap.html">采购登记查询</a>
-                            </li>
-                            <li><a class="J_menuItem" href="table_bootstrap.html">采购退货查询</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-picture-o"></i>
-                            <span class="nav-label">财务管理</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li><a class="J_menuItem" href="basic_gallery.html">订单预存款</a>
-                            </li>
-                            <li><a class="J_menuItem" href="carousel.html">销售收入汇总</a>
-                            </li>
-                            <li><a class="J_menuItem" href="blueimp.html">应收款</a>
-                            </li>
-                            <li><a class="J_menuItem" href="blueimp.html">应付款</a>
-                            </li>
-                            <li><a class="J_menuItem" href="blueimp.html">供应商欠款</a>
-                            </li>
-                            <li><a class="J_menuItem" href="blueimp.html">采购退货查询</a>
-                            </li>
-                            <li>
-                                <a href="#">工资管理<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="form_webuploader.html">员工资料</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="form_file_upload.html">员工工资</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <!--左侧导航结束-->
-        <div id="page-wrapper" class="gray-bg dashbard-1">
-            <div class="row J_mainContent" id="content-main">
-                <iframe id="J_iframe" width="100%" height="100%" src="dev.table.html" frameborder="0" seamless></iframe>
-            </div>
-        </div>
-    </div>
+					<li>
+						<a href="#">
+							<i class="fa fa-table"></i>
+							<span class="nav-label">业务管理</span>
+							<span class="fa arrow"></span>
+						</a>
+						<ul class="nav nav-second-level">
+							<li><a class="J_menuItem" href="business_management_business_register.html">业务登记</a>
+							</li>
+							<li><a class="J_menuItem" href="business_management_tasking_register.html">派工登记</a>
+							</li>
+							<li><a class="J_menuItem" href="business_management_settle.html">费用结算</a>
+							</li>
+							<li><a class="J_menuItem" href="business_management_order.html">预约提醒</a>
+							</li>
+							<li><a class="J_menuItem" href="business_management_after_sale.html">售后服务</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">
+							<i class="fa fa-search"></i>
+							<span class="nav-label">查询统计</span>
+							<span class="fa arrow"></span>
+						</a>
+						<ul class="nav nav-second-level">
+							<li><a class="J_menuItem" href="query_order.html">订单查询</a>
+							</li>
+							<li><a class="J_menuItem" href="query_business.html">业务查询</a>
+							</li>
+							<li><a class="J_menuItem" href="query_tasking.html">派工查询</a>
+							</li>
+							<li><a class="J_menuItem" href="query_settle.html">结算查询</a>
+							</li>
+							<li><a class="J_menuItem" href="query_procurement.html">采购登记查询</a>
+							</li>
+							<li><a class="J_menuItem" href="query_sales_return.html">采购退货查询</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">
+							<i class="fa fa-picture-o"></i>
+							<span class="nav-label">财务管理</span>
+							<span class="fa arrow"></span>
+						</a>
+						<ul class="nav nav-second-level">
+							<li><a class="J_menuItem" href="financial_management_.html">订单预存款</a>
+							</li>
+							<li><a class="J_menuItem" href="carousel.html">销售收入汇总</a>
+							</li>
+							<li><a class="J_menuItem" href="blueimp.html">应收款</a>
+							</li>
+							<li><a class="J_menuItem" href="blueimp.html">应付款</a>
+							</li>
+							<li><a class="J_menuItem" href="blueimp.html">供应商欠款</a>
+							</li>
+							<li>
+								<a href="#">工资管理<span class="fa arrow"></span></a>
+								<ul class="nav nav-third-level">
+									<li><a class="J_menuItem" href="form_webuploader.html">员工资料</a>
+									</li>
+									<li><a class="J_menuItem" href="form_file_upload.html">员工工资</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<!--左侧导航结束-->
+		<div id="page-wrapper" class="gray-bg dashbard-1">
+			<div class="row J_mainContent" id="content-main">
+				<iframe id="J_iframe" width="100%" height="100%" src="dev.table.html" frameborder="0" seamless></iframe>
+			</div>
+		</div>
+	</div>
 
-    <!-- 全局js -->
-    <script src="js/jquery.min.js?v=2.1.4"></script>
-    <script src="js/bootstrap.min.js?v=3.3.6"></script>
-    <script src="js/jquery.metisMenu.js"></script>
-    <script src="js/jquery.slimscroll.min.js"></script>
-    <!--<script src="js/plugins/layer/layer.min.js"></script>-->
+	<!-- 全局js -->
+	<script src="js/jquery.min.js?v=2.1.4"></script>
+	<script src="js/bootstrap.min.js?v=3.3.6"></script>
+	<script src="js/jquery.metisMenu.js"></script>
+	<script src="js/jquery.slimscroll.min.js"></script>
+	<!--<script src="js/plugins/layer/layer.min.js"></script>-->
 
-    <!-- 自定义js -->
-    <script type="text/javascript">
+	<!-- 自定义js -->
+	<script type="text/javascript">
 
         $(document).ready(function () {
 
