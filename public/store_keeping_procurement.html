@@ -4,386 +4,340 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>采购登记</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>采购登记</title>
 
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+	<link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
 
-    <!-- Data Tables -->
-    <link href="css/datatables.bootstrap.css" rel="stylesheet">
+	<!-- Data Tables -->
+	<link href="css/datatables.bootstrap.css" rel="stylesheet">
 
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css?v=4.1.0" rel="stylesheet">
+	<link href="css/animate.css" rel="stylesheet">
+	<link href="css/style.css?v=4.1.0" rel="stylesheet">
 
 </head>
 
 <body class="gray-bg">
-    <div id="test">
-    </div>
-    <div class="wrapper wrapper-content animated fadeInRight">
+	<div id="test">
+	</div>
+	<div class="wrapper wrapper-content animated fadeInRight">
 
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>采购登记</h5>
-                        
-                    </div>
-                    <div class="ibox-content">
-                        <div class="">
-                            <a id="new_row_bn" href="javascript:void(0);" class="btn btn-primary ">添加记录</a>
-                        </div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title">
+						<h5>采购登记</h5>
 
-                        <table class="table table-striped table-bordered table-hover " id="editable">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>材料编号</th>
-                                    <th>材料类别</th>
-                                    <th>材料名称</th>
-                                    <th>规格型号</th>
-                                    <th>单位</th>
-                                    <th>单价</th>
-                                    <th>产地</th>
-                                    <th>成份</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+					</div>
+					<div class="ibox-content">
+						<div class="">
+							<a id="new_row_bn" href="javascript:void(0);" class="btn btn-primary ">添加记录</a>
+						</div>
 
-                                <tr class="gradeC">
-                                    <td>1</td>
-                                    <td>PSP browser</td>
-                                    <td>PSP</td>
-                                    <td>PSP</td>
-                                    <td>PSP</td>
-                                    <td>PSP</td>
-                                    <td>PSP</td>
-                                    <td class="center">-</td>
-                                    <td class="center">C</td>
-                                    <td>
-                                        <a class="edit" href="javascript:;"> Edit </a>
-                                    </td>
-                                    <td>
-                                        <a class="delete" href="javascript:;"> Delete </a>
-                                    </td>
-                                </tr>
-                                <tr class="gradeU">
-                                    <td>Other browsers</td>
-                                    <td>others</td>
-                                    <td>others</td>
-                                    <td>others</td>
-                                    <td>others</td>
-                                    <td>others</td>
-                                    <td>-</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td>
-                                        <a class="edit" href="javascript:;"> Edit </a>
-                                    </td>
-                                    <td>
-                                        <a class="delete" href="javascript:;"> Delete </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+						<table class="table table-striped table-bordered table-hover " id="editable">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>采购单号</th>
+									<th>采购日期</th>
+									<th>操作员</th>
+									<th>仓库名称</th>
+									<th>供应商</th>
+									<th>总金额</th>
+									<th>实付金额</th>
+									<th>欠付金额</th>
+									<th>采购明细</th>
+									<th>Edit</th>
+									<th>Delete</th>
+								</tr>
+							</thead>
+							<tbody>
 
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>采购登记</h5>
-                        
-                    </div>
-                    <div class="ibox-content">
-                        <div class="">
-                            <a id="new_row_bn1" href="javascript:void(0);" class="btn btn-primary ">添加记录</a>
-                        </div>
+								<tr class="gradeC">
+									<td>1</td>
+									<td>PSP browser</td>
+									<td>PSP</td>
+									<td>PSP</td>
+									<td>PSP</td>
+									<td>PSP</td>
+									<td>PSP</td>
+									<td class="center">-</td>
+									<td class="center">C</td>
+									<td>
+										<a class="details" href="javascript:;"> 采购明细 </a>
+									</td>
+									<td>
+										<a class="edit" href="javascript:;"> Edit </a>
+									</td>
+									<td>
+										<a class="delete" href="javascript:;"> Delete </a>
+									</td>
+								</tr>
+								<tr class="gradeU">
+									<td>Other browsers</td>
+									<td>others</td>
+									<td>others</td>
+									<td>others</td>
+									<td>others</td>
+									<td>others</td>
+									<td>-</td>
+									<td class="center">-</td>
+									<td class="center">U</td>
+									<td>
+										<a class="details" href="javascript:;"> 采购明细 </a>
+									</td>
+									<td>
+										<a class="edit" href="javascript:;"> Edit </a>
+									</td>
+									<td>
+										<a class="delete" href="javascript:;"> Delete </a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 
-                        <table class="table table-striped table-bordered table-hover " id="editable1">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>材料编号</th>
-                                    <th>材料类别</th>
-                                    <th>材料名称</th>
-                                    <th>规格型号</th>
-                                    <th>单位</th>
-                                    <th>单价</th>
-                                    <th>产地</th>
-                                    <th>成份</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+	</div>
 
-                                <tr class="gradeC">
-                                    <td>1</td>
-                                    <td>PSP browser</td>
-                                    <td>PSP</td>
-                                    <td>PSP</td>
-                                    <td>PSP</td>
-                                    <td>PSP</td>
-                                    <td>PSP</td>
-                                    <td class="center">-</td>
-                                    <td class="center">C</td>
-                                    <td>
-                                        <a class="edit" href="javascript:;"> Edit </a>
-                                    </td>
-                                    <td>
-                                        <a class="delete" href="javascript:;"> Delete </a>
-                                    </td>
-                                </tr>
-                                <tr class="gradeU">
-                                    <td>Other browsers</td>
-                                    <td>others</td>
-                                    <td>others</td>
-                                    <td>others</td>
-                                    <td>others</td>
-                                    <td>others</td>
-                                    <td>-</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td>
-                                        <a class="edit" href="javascript:;"> Edit </a>
-                                    </td>
-                                    <td>
-                                        <a class="delete" href="javascript:;"> Delete </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<!-- 全局js -->
+	<script src="js/jquery.min.js?v=2.1.4"></script>
+	<script src="js/bootstrap.min.js?v=3.3.6"></script>
 
-    <!-- 全局js -->
-    <script src="js/jquery.min.js?v=2.1.4"></script>
-    <script src="js/bootstrap.min.js?v=3.3.6"></script>
+	<!--<script src="js/plugins/jeditable/jquery.jeditable.js"></script>-->
 
-    <!--<script src="js/plugins/jeditable/jquery.jeditable.js"></script>-->
+	<!-- Data Tables -->
+	<script src="js/datatables.min.js"></script>
+	<script src="js/datatables.bootstrap.js"></script>
 
-    <!-- Data Tables -->
-    <script src="js/datatables.min.js"></script>
-    <script src="js/datatables.bootstrap.js"></script>
+	<!--layui & layer-->
+	<script src="js/layer/layer.js"></script>
+	<script src="js/layui/layui.js"></script>
 
-    <!-- 自定义js -->
-    <!--/*<script src="js/content.js?v=1.0.0"></script>*/-->
+	<!-- 自定义js -->
+	<!--/*<script src="js/content.js?v=1.0.0"></script>*/-->
 
 
-    <!-- Page-Level Scripts -->
-    <script>
-        $(document).ready(function () {
+	<!-- Page-Level Scripts -->
+	<script>
+	layui.use('laydate');
+		$(document).ready(function () {
 
-        var TableDatatablesEditable = function () {
+			var TableDatatablesEditable = function () {
 
-        var handleTable = function () {
+				var handleTable = function () {
 
-            function restoreRow(oTable, nRow) {
-                var aData = oTable.fnGetData(nRow);
-                var jqTds = $('>td', nRow);
+					function restoreRow(oTable, nRow) {
+						var aData = oTable.fnGetData(nRow);
+						var jqTds = $('>td', nRow);
 
-                for (var i = 0, iLen = jqTds.length; i < iLen; i++) {
-                    oTable.fnUpdate(aData[i], nRow, i, false);
-                }
+						for (var i = 0, iLen = jqTds.length; i < iLen; i++) {
+							oTable.fnUpdate(aData[i], nRow, i, false);
+						}
 
-                oTable.fnDraw();
-            }
+						oTable.fnDraw();
+					}
 
-            function editRow(oTable, nRow) {
-                var aData = oTable.fnGetData(nRow);
-                var jqTds = $('>td', nRow);
-                // jqTds[0].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[0] + '">';
-                // jqTds[1].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[1] + '">';
-                jqTds[2].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[2] + '">';
-                jqTds[3].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[3] + '">';
-                jqTds[4].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[4] + '">';
-                jqTds[5].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[5] + '">';
-                jqTds[6].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[6] + '">';
-                jqTds[7].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[7] + '">';
-                jqTds[8].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[8] + '">';
-                jqTds[9].innerHTML = '<a class="edit" href="">Save</a>';
-                jqTds[10].innerHTML = '<a class="cancel" href="">Cancel</a>';
-            }
+					function editRow(oTable, nRow) {
+						var aData = oTable.fnGetData(nRow);
+						var jqTds = $('>td', nRow);
+						// jqTds[0].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[0] + '">';
+						// jqTds[1].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[1] + '">';
+						jqTds[2].innerHTML = '<input type="text" class="form-control input-small" onclick="layui.laydate({elem: this})" value="' + aData[2] + '">';
+						jqTds[3].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[3] + '">';
+						jqTds[4].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[4] + '">';
+						jqTds[5].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[5] + '">';
+						jqTds[6].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[6] + '">';
+						jqTds[7].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[7] + '">';
+						jqTds[10].innerHTML = '<a class="edit" href="">Save</a>';
+						jqTds[11].innerHTML = '<a class="cancel" href="">Cancel</a>';
+					}
 
-            function saveRow(oTable, nRow) {
-                var jqInputs = $('input', nRow);
-                // oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
-                // oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
-                oTable.fnUpdate(jqInputs[0].value, nRow, 2, false);
-                oTable.fnUpdate(jqInputs[1].value, nRow, 3, false);
-                oTable.fnUpdate(jqInputs[2].value, nRow, 4, false);
-                oTable.fnUpdate(jqInputs[3].value, nRow, 5, false);
-                oTable.fnUpdate(jqInputs[4].value, nRow, 6, false);
-                oTable.fnUpdate(jqInputs[5].value, nRow, 7, false);
-                oTable.fnUpdate(jqInputs[6].value, nRow, 8, false);
-                oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 9, false);
-                oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 10, false);
-                oTable.fnDraw();
-            }
+					function saveRow(oTable, nRow) {
+						var jqInputs = $('input', nRow);
+						// oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
+						// oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
+						oTable.fnUpdate(jqInputs[0].value, nRow, 2, false);
+						oTable.fnUpdate(jqInputs[1].value, nRow, 3, false);
+						oTable.fnUpdate(jqInputs[2].value, nRow, 4, false);
+						oTable.fnUpdate(jqInputs[3].value, nRow, 5, false);
+						oTable.fnUpdate(jqInputs[4].value, nRow, 6, false);
+						oTable.fnUpdate(jqInputs[5].value, nRow, 7, false);
+						oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 10, false);
+						oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 11, false);
+						oTable.fnDraw();
+					}
 
-            // function cancelEditRow(oTable, nRow) {
-            //     var jqInputs = $('input', nRow);
-                // oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
-                // oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
-            //     oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
-            //     oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
-            //     oTable.fnUpdate(jqInputs[4].value, nRow, 4, false);
-            //     oTable.fnUpdate(jqInputs[5].value, nRow, 5, false);
-            //     oTable.fnUpdate(jqInputs[6].value, nRow, 6, false);
-            //     oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 7, false);
-            //     oTable.fnDraw();
-            // }
+					// function cancelEditRow(oTable, nRow) {
+					//     var jqInputs = $('input', nRow);
+					// oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
+					// oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
+					//     oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
+					//     oTable.fnUpdate(jqInputs[3].v al ue, nRow, 3, false);
+					//     oTable.fnUpdate(jqInputs[4].value, nRow, 4 , false) ;
+					//     oTable.fnUpdate(jqInputs[5].value, nRow, 5, false);
+					//     oT able.fnUpdate(jqInputs[6].value, nRow, 6, false);
+					// oTabdate('<a class="edit" href="">Edit</a>', nRow, 7, false);
+					//     oTable.fnDraw();
+					// }
 
-            var table = $('#editable');
+					var table = $('#editable');
 
-            var oTable = table.dataTable({
+					var oTable = table.dataTable({
 
-                "lengthMenu": [
-                    [10, 25, 50, -1],
-                    [10, 25, 50, "All"] // change per page values here
-                ],
+						"lengthMenu": [
+							[10, 25, 50, -1],
+							[10, 25, 50, "All"] // change per page values here
+						],
 
-                // Or you can use remote translation file
-                // "language": {
-                //   url: '//cdn.datatables.net/plug-ins/3cfcc339e89/i18n/Portuguese.json'
-                // },
+						// Or you can use remote translation file
+						// "language": {
+						//   url: '//cdn.datatables.net/plug-ins/3cfcc339e89/i18n/Portuguese.json'
+						// },
 
-                // set the initial value
-                "pageLength": 10,
-                
-                "language": {
+						// set the initial value
+						"pageLength": 10,
 
-                    "emptyTable": "No data available in table",
-                    "info": "Showing _START_ to _END_ of _TOTAL_ entries",
-                    "infoEmpty": "No entries found",
-                    "infoFiltered": "(filtered1 from _MAX_ total entries)",
-                    "lengthMenu": "每页 _MENU_ 条记录",
-                    "search": "搜索 ",
-                    "zeroRecords": "No matching records found"
-                },
-                "columnDefs": [{ // set default column settings
-                    'orderable': true,
-                    'targets': [0]
-                }, {
-                    "searchable": true,
-                    "targets": [0]
-                }],
-                "order": [
-                    [0, "asc"]
-                ], // set first column as a default sort by asc
+						"language": {
+
+							"emptyTable": "No data available in table",
+							"info": "Showing _START_ to _END_ of _TOTAL_ entries",
+							"infoEmpty": "No entries found",
+							"infoFiltered": "(filtered1 from _MAX_ total entries)",
+							"lengthMenu": "每页 _MENU_ 条记录",
+							"search": "搜索 ",
+							"zeroRecords": "No matching records found"
+						},
+						"columnDefs": [{ // set default column settings
+							'orderable': true,
+							'targets': [0]
+						}, {
+							"searchable": true,
+							"targets": [0]
+						}],
+						"order": [
+							[0, "asc"]
+						], // set first column as a default sort by asc
 
 
-            });
+					});
 
-            var tableWrapper = $("#editable_wrapper");
+					var tableWrapper = $("#editable_wrapper");
 
-            var nEditing = null;
-            var nNew = false;
+					var nEditing = null;
+					var nNew = false;
 
-            $('#new_row_bn').click(function (e) {
-                e.preventDefault();
+					$('#new_row_bn').click(function (e) {
+						e.preventDefault();
 
-                if (nNew && nEditing) {
-                    if (confirm("Previose row not saved. Do you want to save it ?")) {
-                        saveRow(oTable, nEditing); // save
-                        $(nEditing).find("td:first").html("Untitled");
-                        nEditing = null;
-                        nNew = false;
+						if (nNew && nEditing) {
+							if (confirm("Previose row not saved. Do you want to save it ?")) {
+								saveRow(oTable, nEditing); // save
+								$(nEditing).find("td:first").html("Untitled");
+								nEditing = null;
+								nNew = false;
 
-                    } else {
-                        oTable.fnDeleteRow(nEditing); // cancel
-                        nEditing = null;
-                        nNew = false;
-                        
-                        return;
-                    }
-                }
+							} else {
+								oTable.fnDeleteRow(nEditing); // cancel
+								nEditing = null;
+								nNew = false;
 
-                var aiNew = oTable.fnAddData(['', '', '', '', '', '', '', '', '', '', '']);
-                var nRow = oTable.fnGetNodes(aiNew[0]);
-                editRow(oTable, nRow);
-                nEditing = nRow;
-                nNew = true;
-            });
+								return;
+							}
+						}
 
-            table.on('click', '.delete', function (e) {
-                e.preventDefault();
+						var aiNew = oTable.fnAddData(['', '', '', '', '', '', '', '', '', '', '']);
+						var nRow = oTable.fnGetNodes(aiNew[0]);
+						editRow(oTable, nRow);
+						nEditing = nRow;
+						nNew = true;
+					});
 
-                if (confirm("Are you sure to delete this row ?") == false) {
-                    return;
-                }
+					table.on('click', '.delete', function (e) {
+						e.preventDefault();
 
-                var nRow = $(this).parents('tr')[0];
-                oTable.fnDeleteRow(nRow);
-                alert("Deleted! Do not forget to do some ajax to sync with backend :)");
-            });
+						if (confirm("Are you sure to delete this row ?") == false) {
+							return;
+						}
 
-            table.on('click', '.cancel', function (e) {
-                e.preventDefault();
-                if (nNew) {
-                    oTable.fnDeleteRow(nEditing);
-                    nEditing = null;
-                    nNew = false;
-                } else {
-                    restoreRow(oTable, nEditing);
-                    nEditing = null;
-                }
-            });
+						var nRow = $(this).parents('tr')[0];
+						oTable.fnDeleteRow(nRow);
+						alert("Deleted! Do not forget to do some ajax to sync with backend :)");
+					});
 
-            table.on('click', '.edit', function (e) {
-                e.preventDefault();
-                nNew = false;
-                
-                /* Get the row as a parent of the link that was clicked on */
-                var nRow = $(this).parents('tr')[0];
+					table.on('click', '.cancel', function (e) {
+						e.preventDefault();
+						if (nNew) {
+							oTable.fnDeleteRow(nEditing);
+							nEditing = null;
+							nNew = false;
+						} else {
+							restoreRow(oTable, nEditing);
+							nEditing = null;
+						}
+					});
 
-                if (nEditing !== null && nEditing != nRow) {
-                    /* Currently editing - but not this row - restore the old before continuing to edit mode */
-                    restoreRow(oTable, nEditing);
-                    editRow(oTable, nRow);
-                    nEditing = nRow;
-                } else if (nEditing == nRow && this.innerHTML == "Save") {
-                    /* Editing this row and want to save it */
-                    saveRow(oTable, nEditing);
-                    nEditing = null;
-                    alert("Updated! Do not forget to do some ajax to sync with backend :)");
-                } else {
-                    /* No edit in progress - let's start one */
-                    editRow(oTable, nRow);
-                    nEditing = nRow;
-                }
-            });
-        }
+					table.on('click', '.edit', function (e) {
+						e.preventDefault();
+						nNew = false;
 
-        return {
+						/* Get the row as a parent of the link that was clicked on */
+						var nRow = $(this).parents('tr')[0];
 
-            //main function to initiate the module
-            init: function () {
-                handleTable();
-            }
+						if (nEditing !== null && nEditing != nRow) {
+							/* Currently editing - but not this row - restore the old before continuing to edit mode */
+							restoreRow(oTable, nEditing);
+							editRow(oTable, nRow);
+							nEditing = nRow;
+						} else if (nEditing == nRow && this.innerHTML == "Save") {
+							/* Editing this row and want to save it */
+							saveRow(oTable, nEditing);
+							nEditing = null;
+							alert("Updated! Do not forget to do some ajax to sync with backend :)");
+						} else {
+							/* No edit in progress - let's start one */
+							editRow(oTable, nRow);
+							nEditing = nRow;
+						}
+					});
 
-        };
+					table.on('click', '.details', function (e) {
+						e.preventDefault();
 
-    }();
+						var nRow = $(this).parents('tr')[0];
+						var id = nRow.children[0].innerHTML;
+						layer.open({
+							type: 2,
+							title: '采购明细',
+							area: ['95%', '95%'],
+							content: 'store_keeping_info.html'
+						})
+					});
+				}
 
-    jQuery(document).ready(function() {
-        TableDatatablesEditable.init();
-    });
+				return {
 
-    });
-    </script>
+					//main function to initiate the module
+					init: function () {
+						handleTable();
+					}
+
+				};
+
+			} ();
+
+			jQuery(document).ready(function () {
+				TableDatatablesEditable.init();
+
+			});
+
+		});
+	</script>
 
 
 
