@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--sessionFactory-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/windowcurtainms?useUnicode=true&amp;characterEncoding=UTF-8</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <!--<prop key="hibernate.current_session_context_class">thread</prop>-->
+                <prop key="hibernate.connection.username">root</prop>
+                <prop key="hibernate.connection.password">admin</prop>
+                <prop key="hibernate.show_sql">false</prop>
+
+            </props>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.wcms.entity.CurtainEntity</value>
+                <value>com.wcms.entity.CustomerEntity</value>
+                <value>com.wcms.entity.AfterSalesServiceEntity</value>
+                <value>com.wcms.entity.TestTableEntity</value>
+                <value>com.wcms.entity.BusinessEntity</value>
+                <value>com.wcms.entity.EmployeeEntity</value>
+                <value>com.wcms.entity.MaterialEntity</value>
+                <value>com.wcms.entity.OrderDetailEntity</value>
+                <value>com.wcms.entity.OrderlEntity</value>
+                <value>com.wcms.entity.ProcurementEntity</value>
+                <value>com.wcms.entity.ProcurementDetailEntity</value>
+                <value>com.wcms.entity.ReturnDetailEntity</value>
+                <value>com.wcms.entity.ReturnlEntity</value>
+                <value>com.wcms.entity.SalaryEntity</value>
+                <value>com.wcms.entity.SupplierEntity</value>
+                <value>com.wcms.entity.UseMaterialDetailEntity</value>
+                <value>com.wcms.entity.WarehouseEntity</value>
+            </list>
+        </property>
+    </bean>
+    <!-- Dao-->
+    <bean id="dao" class="com.wcms.dao.AfterSalesServiceDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- Server-->
+    <bean id="server" class="com.wcms.service.Server">
+        <property name="baseDao" ref="dao"/>
+    </bean>
+
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory">
+            <ref local="sessionFactory"/>
+        </property>
+    </bean>
+
+    <!--事务拦截器-->
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="beanNames">
+            <list>
+                <value>server</value>
+            </list>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>transactionInterceptor</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="transactionInterceptor"
+          class="org.springframework.transaction.interceptor.TransactionInterceptor">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="transactionAttributes">
+            <props>
+                <!-- 这里的方法签名可以精确到方法, 先懒惰一下全配置上 -->
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- Action-->
+    <bean id="testAction" class="com.wcms.web.action.BaseAction" scope="prototype">
+        <property name="server" ref="server"/>
+    </bean>
+</beans>
