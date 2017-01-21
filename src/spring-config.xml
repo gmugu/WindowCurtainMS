@@ -40,34 +40,72 @@
             </list>
         </property>
     </bean>
+
     <!-- Dao-->
-    <bean id="dao" class="com.wcms.dao.AfterSalesServiceDao">
+    <bean id="afterSalesServiceDao" class="com.wcms.dao.AfterSalesServiceDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="businessDao" class="com.wcms.dao.BusinessDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="curtainDao" class="com.wcms.dao.CurtainDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="customerDao" class="com.wcms.dao.CustomerDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="employeeDao" class="com.wcms.dao.EmployeeDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="materialDao" class="com.wcms.dao.MaterialDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="orderDao" class="com.wcms.dao.OrderDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="orderDetailDao" class="com.wcms.dao.OrderDetailDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="procurementDao" class="com.wcms.dao.ProcurementDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="procurementDetailDao" class="com.wcms.dao.ProcurementDetailDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="returnDetailDao" class="com.wcms.dao.ReturnDetailDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="returnlDao" class="com.wcms.dao.ReturnlDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="salaryDao" class="com.wcms.dao.SalaryDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="supplierDao" class="com.wcms.dao.SupplierDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="useMaterialDetailDao" class="com.wcms.dao.UseMaterialDetailDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="warehouseDao" class="com.wcms.dao.WarehouseDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
     <!-- Server-->
     <bean id="server" class="com.wcms.service.Server">
-        <property name="baseDao" ref="dao"/>
+        <property name="baseDao" ref="curtainDao"/>
     </bean>
 
+    <bean id="customerCrudService" class="com.wcms.service.CustomerCrudService">
+        <property name="customerDao" ref="customerDao"/>
+    </bean>
+
+
+    <!--事务拦截器-->
     <bean id="transactionManager"
           class="org.springframework.orm.hibernate3.HibernateTransactionManager">
         <property name="sessionFactory">
             <ref local="sessionFactory"/>
-        </property>
-    </bean>
-
-    <!--事务拦截器-->
-    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
-        <property name="beanNames">
-            <list>
-                <value>server</value>
-            </list>
-        </property>
-        <property name="interceptorNames">
-            <list>
-                <value>transactionInterceptor</value>
-            </list>
         </property>
     </bean>
     <bean id="transactionInterceptor"
@@ -80,9 +118,24 @@
             </props>
         </property>
     </bean>
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="beanNames">
+            <list>
+                <value>service</value>
+                <value>*Service</value>
+            </list>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>transactionInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
 
     <!-- Action-->
-    <bean id="testAction" class="com.wcms.web.action.BaseAction" scope="prototype">
-        <property name="server" ref="server"/>
+
+    <bean id="customerCrudAction" class="com.wcms.web.action.CustomerCrudAction" scope="prototype">
+        <property name="customerCrudService" ref="customerCrudService"/>
     </bean>
 </beans>

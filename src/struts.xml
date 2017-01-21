@@ -10,7 +10,23 @@
     <constant name="struts.action.extension" value="do,action"/>
     <constant name="struts.objectFactory" value="spring"/>
     <package name="wcms" extends="struts-default" namespace="/">
+        <!--客户资料增删改查-->
+        <action name="customer_getall" class="customerCrudAction" method="getall"></action>
+        <action name="customer_add" class="customerCrudAction" method="add"></action>
+        <action name="customer_remove" class="customerCrudAction" method="remove"></action>
+        <action name="customer_update" class="customerCrudAction" method="update"></action>
+        <!--客户资料增删改查-->
 
-        <action name="test" class="testAction"></action>
+        <!--窗帘资料增删改查-->
+        <!--窗帘资料增删改查-->
+
+        <!--供应商资料增删改查-->
+        <!--供应商资料增删改查-->
+
+        <!--仓库资料增删改查-->
+        <!--仓库资料增删改查-->
+
+        <!--材料资料增删改查-->
+        <!--材料资料增删改查-->
     </package>
 </struts>

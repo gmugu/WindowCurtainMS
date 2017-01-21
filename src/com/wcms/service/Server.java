@@ -1,22 +1,23 @@
 package com.wcms.service;
 
 import com.wcms.dao.AfterSalesServiceDao;
+import com.wcms.dao.BaseDao;
 
 /**
  * Created by Administrator on 2017/1/19.
  */
 public class Server {
-    private AfterSalesServiceDao baseDao;
+    private BaseDao baseDao;
 
     public String test(){
         return baseDao.test();
     }
 
-    public AfterSalesServiceDao getBaseDao() {
+    public BaseDao getBaseDao() {
         return baseDao;
     }
 
-    public void setBaseDao(AfterSalesServiceDao baseDao) {
+    public void setBaseDao(BaseDao baseDao) {
         this.baseDao = baseDao;
     }
 }

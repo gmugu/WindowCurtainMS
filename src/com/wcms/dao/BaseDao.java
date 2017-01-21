@@ -1,19 +1,20 @@
 package com.wcms.dao;
 
-import com.wcms.entity.OrderlEntity;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 
 /**
  * Created by Administrator on 2017/1/19.
  */
 public abstract class BaseDao<T> {
-    private static final ThreadLocal<Session> threadLocal = new ThreadLocal<Session>();
 
     protected SessionFactory sessionFactory;
 
@@ -25,13 +26,23 @@ public abstract class BaseDao<T> {
         this.sessionFactory = sessionFactory;
     }
 
-
     public Session getSession() {
         return sessionFactory.getCurrentSession();
     }
 
     protected Class getEntityClass(){
-        return getClass();
+        Type typeClass1 = getClass().getGenericSuperclass();
+
+        if (typeClass1 instanceof ParameterizedType) {
+            Type actualType1 = ((ParameterizedType)typeClass1).getActualTypeArguments()[0];
+            try {
+                return Class.forName(actualType1.getTypeName());
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException("WRONG ENTITY!");
+            }
+        } else {
+            throw new RuntimeException("WRONG ENTITY!");
+        }
     }
 
     public void save(T entity) {
@@ -70,5 +81,8 @@ public abstract class BaseDao<T> {
         return query.list();
     }
 
-
+    public String test(){
+        System.out.println(findAll());
+        return "";
+    }
 }
