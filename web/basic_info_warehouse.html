@@ -50,30 +50,6 @@
                             </thead>
                             <tbody>
 
-                                <tr class="gradeC">
-                                    <td>PSP browser</td>
-                                    <td>PSP</td>
-                                    <td class="center">-</td>
-                                    <td class="center">C</td>
-                                    <td>
-                                        <a class="edit" href="javascript:;"> Edit </a>
-                                    </td>
-                                    <td>
-                                        <a class="delete" href="javascript:;"> Delete </a>
-                                    </td>
-                                </tr>
-                                <tr class="gradeU">
-                                    <td>others</td>
-                                    <td>-</td>
-                                    <td class="center">-</td>
-                                    <td class="center">U</td>
-                                    <td>
-                                        <a class="edit" href="javascript:;"> Edit </a>
-                                    </td>
-                                    <td>
-                                        <a class="delete" href="javascript:;"> Delete </a>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -93,8 +69,7 @@
     <script src="js/datatables.bootstrap.js"></script>
 
     <!-- 自定义js -->
-    <!--/*<script src="js/content.js?v=1.0.0"></script>*/-->
-
+    <script src="js/apiservice.js"></script>
 
     <!-- Page-Level Scripts -->
     <script>
@@ -127,26 +102,106 @@
             }
 
             function saveRow(oTable, nRow) {
-                var jqInputs = $('input', nRow);
-                // oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
-                // oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
-                oTable.fnUpdate(jqInputs[0].value, nRow, 2, false);
-                oTable.fnUpdate(jqInputs[1].value, nRow, 3, false);
-                oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 4, false);
-                oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 5, false);
-                oTable.fnDraw();
+                ajaxSaveOrUpdate(oTable, nRow);
             }
 
-            // function cancelEditRow(oTable, nRow) {
-            //     var jqInputs = $('input', nRow);
-            //     oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
-            //     oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
-            //     oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
-            //     oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
-            //     oTable.fnUpdate(jqInputs[4].value, nRow, 4, false);
-            //     oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 5, false);
-            //     oTable.fnDraw();
-            // }
+            function ajaxInitData() {
+                warehouse_getall({
+                    success: function (result) {
+                        if (result.code != 0) {
+                            alert("错误:" + result.msg);
+                            return;
+                        }
+                        function ifor(data, opt) {
+                            if (typeof (data) === "undefined" || data === null)
+                                return opt;
+                            else
+                                return data;
+                        }
+
+                        var data = result.data;
+                        oTable.fnClearTable();
+                        for (var i in data) {
+                            var row = data[i];
+                            var a = [];
+                            a.push(row.id);
+                            a.push(row.no);
+                            a.push(ifor(row.name, ''));
+                            a.push(ifor(row.comments, ''));
+                            a.push('<a class="edit" href="">Edit</a>');
+                            a.push('<a class="delete" href="">Delete</a>');
+                            oTable.fnAddData(a);
+                        }
+
+                    },
+                    error: function (xhr, msg) {
+                        alert("错误:" + msg);
+                    }
+                });
+            }
+
+            function ajaxSaveOrUpdate(oTable, nRow) {
+                var jqInputs = $('input', nRow);
+                var aData = oTable.fnGetData(nRow);
+                if (aData[0] !== '') {
+                    warehouse_update(aData[0], aData[1], jqInputs[0].value, jqInputs[1].value, {
+                        success: function (result) {
+                            if (result.code === 0) {
+                                oTable.fnUpdate(jqInputs[0].value, nRow, 2, false);
+                                oTable.fnUpdate(jqInputs[1].value, nRow, 3, false);
+                                oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 4, false);
+                                oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 5, false);
+                                oTable.fnDraw();
+                            } else {
+                                alert(result.msg);
+                                ajaxInitData();
+                            }
+                        },
+                        error: function (xhr, msg) {
+                            alert(msg);
+                            ajaxInitData();
+                        }
+                    });
+                } else {
+                    warehouse_add(jqInputs[0].value, jqInputs[1].value, {
+                        success: function (result) {
+                            if (result.code === 0) {
+                                var data = result.data;
+                                oTable.fnUpdate(data.id, nRow, 0, false);
+                                oTable.fnUpdate(data.no, nRow, 1, false);
+                                oTable.fnUpdate(jqInputs[0].value, nRow, 2, false);
+                                oTable.fnUpdate(jqInputs[1].value, nRow, 3, false);
+                                oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 4, false);
+                                oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 5, false);             oTable.fnDraw();
+                            } else {
+                                alert(result.msg);
+                                ajaxInitData();
+                            }
+                        },
+                        error: function (xhr, msg) {
+                            alert(msg);
+                            ajaxInitData();
+                        }
+                    });
+                }
+
+            }
+
+            function ajaxDelete(nRow) {
+
+                var aData = oTable.fnGetData(nRow);
+
+                warehouse_remove(aData[0], {
+                    success: function (result) {
+                        if (result.code == 0) {
+                            oTable.fnDeleteRow(nRow);
+                        } else {
+                            alert("错误:" + result.msg);
+                        }
+                    }
+                });
+            }
+
 
             var table = $('#editable');
 
@@ -227,8 +282,9 @@
                 }
 
                 var nRow = $(this).parents('tr')[0];
-                oTable.fnDeleteRow(nRow);
-                alert("Deleted! Do not forget to do some ajax to sync with backend :)");
+                ajaxDelete(nRow);
+//                oTable.fnDeleteRow(nRow);
+//                alert("Deleted! Do not forget to do some ajax to sync with backend :)");
             });
 
             table.on('click', '.cancel', function (e) {
@@ -259,14 +315,15 @@
                     /* Editing this row and want to save it */
                     saveRow(oTable, nEditing);
                     nEditing = null;
-                    alert("Updated! Do not forget to do some ajax to sync with backend :)");
+//                    alert("Updated! Do not forget to do some ajax to sync with backend :)");
                 } else {
                     /* No edit in progress - let's start one */
                     editRow(oTable, nRow);
                     nEditing = nRow;
                 }
             });
-        }
+            ajaxInitData();
+        };
 
         return {
 

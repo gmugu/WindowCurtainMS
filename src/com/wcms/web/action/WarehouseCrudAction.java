@@ -1,32 +1,30 @@
 package com.wcms.web.action;
 
-import com.wcms.entity.CustomerEntity;
+import com.wcms.entity.WarehouseEntity;
 import com.wcms.model.Result;
-import com.wcms.service.CustomerCrudService;
+import com.wcms.service.WarehouseCrudService;
 import com.wcms.service.exception.ServiceException;
 
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/1/21.
+ * Created by Administrator on 2017/1/22.
  */
-public class CustomerCrudAction extends BaseAction {
-
-    private CustomerCrudService customerCrudService;
-
+public class WarehouseCrudAction extends BaseAction {
+    private WarehouseCrudService warehouseCrudService;
     public String getall() {
-        Result<List<CustomerEntity>> result = new Result();
-        List<CustomerEntity> list = customerCrudService.findAll();
+        Result<List<WarehouseEntity>> result = new Result();
+        List<WarehouseEntity> list = warehouseCrudService.findAll();
         result.setData(list);
         sendResult(result);
         return NONE;
     }
 
     public String add() {
-        CustomerEntity entity = getRequest(CustomerEntity.class);
-        Result<CustomerEntity> result = new Result();
+        WarehouseEntity entity = getRequest(WarehouseEntity.class);
+        Result<WarehouseEntity> result = new Result();
         try {
-            customerCrudService.add(entity);
+            warehouseCrudService.add(entity);
             result.setData(entity);
         } catch (ServiceException e) {
             result.setCode(1);
@@ -37,10 +35,10 @@ public class CustomerCrudAction extends BaseAction {
     }
 
     public String remove() {
-        CustomerEntity entity = getRequest(CustomerEntity.class);
+        WarehouseEntity entity = getRequest(WarehouseEntity.class);
         Result result = new Result();
         try {
-            customerCrudService.delete(entity.getId());
+            warehouseCrudService.delete(entity.getId());
         } catch (ServiceException e) {
             result.setCode(1);
             result.setMsg(e.getMessage());
@@ -50,10 +48,10 @@ public class CustomerCrudAction extends BaseAction {
     }
 
     public String update() {
-        CustomerEntity entity = getRequest(CustomerEntity.class);
+        WarehouseEntity entity = getRequest(WarehouseEntity.class);
         Result result = new Result();
         try {
-            customerCrudService.update(entity);
+            warehouseCrudService.update(entity);
         } catch (ServiceException e) {
             result.setCode(1);
             result.setMsg(e.getMessage());
@@ -62,11 +60,11 @@ public class CustomerCrudAction extends BaseAction {
         return NONE;
     }
 
-    public CustomerCrudService getCustomerCrudService() {
-        return customerCrudService;
+    public WarehouseCrudService getWarehouseCrudService() {
+        return warehouseCrudService;
     }
 
-    public void setCustomerCrudService(CustomerCrudService customerCrudService) {
-        this.customerCrudService = customerCrudService;
+    public void setWarehouseCrudService(WarehouseCrudService warehouseCrudService) {
+        this.warehouseCrudService = warehouseCrudService;
     }
 }

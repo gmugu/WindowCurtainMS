@@ -14,9 +14,13 @@ public class SupplierEntity {
     private String contactPerson;
     private String phone;
     private String area;
+    private String address;
+    private String zipCode;
+    private String comments;
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -75,6 +79,36 @@ public class SupplierEntity {
         this.area = area;
     }
 
+    @Basic
+    @Column(name = "address")
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Basic
+    @Column(name = "zip_code")
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    @Basic
+    @Column(name = "comments")
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -89,8 +123,10 @@ public class SupplierEntity {
             return false;
         if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
         if (area != null ? !area.equals(that.area) : that.area != null) return false;
+        if (address != null ? !address.equals(that.address) : that.address != null) return false;
+        if (zipCode != null ? !zipCode.equals(that.zipCode) : that.zipCode != null) return false;
+        return !(comments != null ? !comments.equals(that.comments) : that.comments != null);
 
-        return true;
     }
 
     @Override
@@ -101,6 +137,24 @@ public class SupplierEntity {
         result = 31 * result + (contactPerson != null ? contactPerson.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (area != null ? area.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (zipCode != null ? zipCode.hashCode() : 0);
+        result = 31 * result + (comments != null ? comments.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "SupplierEntity{" +
+                "id=" + id +
+                ", no='" + no + '\'' +
+                ", name='" + name + '\'' +
+                ", contactPerson='" + contactPerson + '\'' +
+                ", phone='" + phone + '\'' +
+                ", area='" + area + '\'' +
+                ", address='" + address + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", comments='" + comments + '\'' +
+                '}';
     }
 }

@@ -100,6 +100,22 @@
         <property name="customerDao" ref="customerDao"/>
     </bean>
 
+    <bean id="curtainCrudService" class="com.wcms.service.CurtainCrudService">
+        <property name="curtainDao" ref="curtainDao"/>
+    </bean>
+
+    <bean id="materialCrudService" class="com.wcms.service.MaterialCrudService">
+        <property name="materialDao" ref="materialDao"/>
+    </bean>
+
+    <bean id="supplierCrudService" class="com.wcms.service.SupplierCrudService">
+        <property name="supplierDao" ref="supplierDao"/>
+    </bean>
+
+    <bean id="warehouseCrudService" class="com.wcms.service.WarehouseCrudService">
+        <property name="warehouseDao" ref="warehouseDao"/>
+    </bean>
+
 
     <!--事务拦截器-->
     <bean id="transactionManager"
@@ -137,5 +153,21 @@
 
     <bean id="customerCrudAction" class="com.wcms.web.action.CustomerCrudAction" scope="prototype">
         <property name="customerCrudService" ref="customerCrudService"/>
+    </bean>
+
+    <bean id="curtainCrudAction" class="com.wcms.web.action.CurtainCrudAction" scope="prototype">
+        <property name="curtainCrudService" ref="curtainCrudService"/>
+    </bean>
+
+    <bean id="materialCrudAction" class="com.wcms.web.action.MaterialCrudAction" scope="prototype">
+        <property name="materialCrudService" ref="materialCrudService"/>
+    </bean>
+
+    <bean id="supplierCrudAction" class="com.wcms.web.action.SupplierCrudAction" scope="prototype">
+        <property name="supplierCrudService" ref="supplierCrudService"/>
+    </bean>
+
+    <bean id="warehouseCrudAction" class="com.wcms.web.action.WarehouseCrudAction" scope="prototype">
+        <property name="warehouseCrudService" ref="warehouseCrudService"/>
     </bean>
 </beans>

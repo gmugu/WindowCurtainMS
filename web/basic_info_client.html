@@ -45,7 +45,6 @@
                             <th>客户名称</th>
                             <th>联系人</th>
                             <th>联系电话</th>
-                            <th>联系地址</th>
                             <th>备注</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -53,36 +52,6 @@
                         </thead>
                         <tbody>
 
-                        <tr class="gradeC">
-                            <td>1</td>
-                            <td>PSP browser</td>
-                            <td>PSP</td>
-                            <td>PSP</td>
-                            <td>PSP</td>
-                            <td class="center">-</td>
-                            <td class="center">C</td>
-                            <td>
-                                <a class="edit" href="javascript:;"> Edit </a>
-                            </td>
-                            <td>
-                                <a class="delete" href="javascript:;"> Delete </a>
-                            </td>
-                        </tr>
-                        <tr class="gradeU">
-                            <td>Other browsers</td>
-                            <td>others</td>
-                            <td>others</td>
-                            <td>others</td>
-                            <td>-</td>
-                            <td class="center">-</td>
-                            <td class="center">U</td>
-                            <td>
-                                <a class="edit" href="javascript:;"> Edit </a>
-                            </td>
-                            <td>
-                                <a class="delete" href="javascript:;"> Delete </a>
-                            </td>
-                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -107,17 +76,7 @@
 
 <!-- Page-Level Scripts -->
 <script>
-    customer_add(1, 'd', 'as', null, null, {
-        success: function (data) {
-            console.log("success:" + data);
-        },
-        error: function (xhr, msg) {
-            console.log("error:" + msg);
-        },
-        complete: function (xhr, str) {
-            console.log("complete:" + str);
-        }
-    });
+
     $(document).ready(function () {
 
         var TableDatatablesEditable = function () {
@@ -139,42 +98,122 @@
                     var aData = oTable.fnGetData(nRow);
                     var jqTds = $('>td', nRow);
                     // jqTds[0].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[0] + '">';
-                    // jqTds[1].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[1] + '">';
+//                    jqTds[1].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[1] + '">';
                     jqTds[2].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[2] + '">';
                     jqTds[3].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[3] + '">';
                     jqTds[4].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[4] + '">';
                     jqTds[5].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[5] + '">';
-                    jqTds[6].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[6] + '">';
-                    jqTds[7].innerHTML = '<a class="edit" href="">Save</a>';
-                    jqTds[8].innerHTML = '<a class="cancel" href="">Cancel</a>';
+                    jqTds[6].innerHTML = '<a class="edit" href="">Save</a>';
+                    jqTds[7].innerHTML = '<a class="cancel" href="">Cancel</a>';
                 }
 
                 function saveRow(oTable, nRow) {
-                    var jqInputs = $('input', nRow);
-                    // oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
-                    // oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
-                    oTable.fnUpdate(jqInputs[0].value, nRow, 2, false);
-                    oTable.fnUpdate(jqInputs[1].value, nRow, 3, false);
-                    oTable.fnUpdate(jqInputs[2].value, nRow, 4, false);
-                    oTable.fnUpdate(jqInputs[3].value, nRow, 5, false);
-                    oTable.fnUpdate(jqInputs[4].value, nRow, 6, false);
-                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 7, false);
-                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 8, false);
-                    oTable.fnDraw();
+                    ajaxSaveOrUpdate(oTable, nRow);
                 }
 
-                // function cancelEditRow(oTable, nRow) {
-                //     var jqInputs = $('input', nRow);
-                // oTable.fnUpdate(jqInputs[0].value, nRow, 0, false);
-                // oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
-                //     oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
-                //     oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
-                //     oTable.fnUpdate(jqInputs[4].value, nRow, 4, false);
-                //     oTable.fnUpdate(jqInputs[5].value, nRow, 5, false);
-                //     oTable.fnUpdate(jqInputs[6].value, nRow, 6, false);
-                //     oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 7, false);
-                //     oTable.fnDraw();
-                // }
+                function ajaxInitData() {
+                    customer_getall({
+                        success: function (result) {
+                            if (result.code != 0) {
+                                alert("错误:" + result.msg);
+                                return;
+                            }
+                            function ifor(data, opt) {
+                                if (typeof (data) === "undefined" || data === null)
+                                    return opt;
+                                else
+                                    return data;
+                            }
+
+                            var data = result.data;
+                            oTable.fnClearTable();
+                            for (var i in data) {
+                                var row = data[i];
+                                var a = [];
+                                a.push(row.id);
+                                a.push(row.no);
+                                a.push(ifor(row.name, ''));
+                                a.push(ifor(row.contactPerson, ''));
+                                a.push(ifor(row.phone, ''));
+                                a.push(ifor(row.comments, ''));
+                                a.push('<a class="edit" href="">Edit</a>');
+                                a.push('<a class="delete" href="">Delete</a>');
+                                oTable.fnAddData(a);
+                            }
+
+                        },
+                        error: function (xhr, msg) {
+                            alert("错误:" + msg);
+                        }
+                    });
+                }
+
+                function ajaxSaveOrUpdate(oTable, nRow) {
+                    var jqInputs = $('input', nRow);
+                    var aData = oTable.fnGetData(nRow);
+                    if (aData[0] !== '') {
+                        customer_update(aData[0], aData[1], jqInputs[0].value, jqInputs[1].value, jqInputs[2].value, jqInputs[3].value, {
+                            success: function (result) {
+                                if (result.code === 0) {
+                                    oTable.fnUpdate(jqInputs[0].value, nRow, 2, false);
+                                    oTable.fnUpdate(jqInputs[1].value, nRow, 3, false);
+                                    oTable.fnUpdate(jqInputs[2].value, nRow, 4, false);
+                                    oTable.fnUpdate(jqInputs[3].value, nRow, 5, false);
+                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 6, false);
+                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 7, false);
+                                } else {
+                                    alert(result.msg);
+                                    ajaxInitData();
+                                }
+                            },
+                            error: function (xhr, msg) {
+                                alert(msg);
+                                ajaxInitData();
+                            }
+                        });
+                    } else {
+                        customer_add(jqInputs[0].value, jqInputs[1].value, jqInputs[2].value, jqInputs[3].value, {
+                            success: function (result) {
+                                if (result.code === 0) {
+                                    var data = result.data;
+                                    oTable.fnUpdate(data.id, nRow, 0, false);
+                                    oTable.fnUpdate(data.no, nRow, 1, false);
+                                    oTable.fnUpdate(jqInputs[0].value, nRow, 2, false);
+                                    oTable.fnUpdate(jqInputs[1].value, nRow, 3, false);
+                                    oTable.fnUpdate(jqInputs[2].value, nRow, 4, false);
+                                    oTable.fnUpdate(jqInputs[3].value, nRow, 5, false);
+                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 6, false);
+                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 7, false);
+                                    oTable.fnDraw();
+                                } else {
+                                    alert(result.msg);
+                                    ajaxInitData();
+                                }
+                            },
+                            error: function (xhr, msg) {
+                                alert(msg);
+                                ajaxInitData();
+                            }
+                        });
+                    }
+
+                }
+
+                function ajaxDelete(nRow) {
+
+                    var aData = oTable.fnGetData(nRow);
+
+                    customer_remove(aData[0], {
+                        success: function (result) {
+                            if (result.code == 0) {
+                                oTable.fnDeleteRow(nRow);
+                            } else {
+                                alert("错误:" + result.msg);
+                            }
+                        }
+                    });
+                }
+
 
                 var table = $('#editable');
 
@@ -241,7 +280,7 @@
                         }
                     }
 
-                    var aiNew = oTable.fnAddData(['', '', '', '', '', '', '', '', '']);
+                    var aiNew = oTable.fnAddData(['', '', '', '', '', '', '', '']);
                     var nRow = oTable.fnGetNodes(aiNew[0]);
                     editRow(oTable, nRow);
                     nEditing = nRow;
@@ -254,10 +293,9 @@
                     if (confirm("Are you sure to delete this row ?") == false) {
                         return;
                     }
-
                     var nRow = $(this).parents('tr')[0];
-                    oTable.fnDeleteRow(nRow);
-                    alert("Deleted! Do not forget to do some ajax to sync with backend :)");
+                    ajaxDelete(nRow);
+
                 });
 
                 table.on('click', '.cancel', function (e) {
@@ -288,14 +326,17 @@
                         /* Editing this row and want to save it */
                         saveRow(oTable, nEditing);
                         nEditing = null;
-                        alert("Updated! Do not forget to do some ajax to sync with backend :)");
+//                        alert("Updated! Do not forget to do some ajax to sync with backend :)");
                     } else {
                         /* No edit in progress - let's start one */
                         editRow(oTable, nRow);
                         nEditing = nRow;
                     }
                 });
-            }
+
+                ajaxInitData();
+
+            };
 
             return {
 

@@ -4,7 +4,9 @@ import com.wcms.dao.CustomerDao;
 import com.wcms.entity.CustomerEntity;
 import com.wcms.service.exception.ServiceException;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Administrator on 2017/1/21.
@@ -12,12 +14,32 @@ import java.util.List;
 public class CustomerCrudService {
     private CustomerDao customerDao;
 
-    public void add(CustomerEntity entity) throws ServiceException {
-        CustomerEntity byNo = customerDao.findByNo(entity.getNo());
-        if (byNo != null) {
-            throw new ServiceException("客户编号已存在");
+    private String genNo() {
+        List<CustomerEntity> all = customerDao.findAll();
+        Set<String> set = new HashSet<>();
+        for (CustomerEntity e : all) {
+            set.add(e.getNo());
         }
-        customerDao.save(entity);
+        for (int i = 1; ; i++) {
+            String no = String.format("KH%04d", i);
+            if (!set.contains(no)) {
+                return no;
+            }
+        }
+
+    }
+
+    public void add(CustomerEntity entity) throws ServiceException {
+        if (entity.getNo() == null || entity.getNo().equals("")) {
+            entity.setNo(genNo());
+        } else {
+            CustomerEntity byNo = customerDao.findByNo(entity.getNo());
+            if (byNo != null) {
+                throw new ServiceException("客户编号已存在");
+            }
+        }
+
+         customerDao.save(entity);
     }
 
     public void delete(int id) throws ServiceException {
@@ -29,10 +51,6 @@ public class CustomerCrudService {
     }
 
     public void update(CustomerEntity entity) throws ServiceException {
-        CustomerEntity byNo = customerDao.findByNo(entity.getNo());
-        if (byNo != null) {
-            throw new ServiceException("客户编号已存在");
-        }
         customerDao.saveOrUpdate(entity);
     }
 

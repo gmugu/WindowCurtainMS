@@ -49,9 +49,9 @@ function _exec(fnName, data, callback) {
     $.ajax({
         type: "POST",
         url: fnName + ".do",
-        timeout: 5000,
+        //timeout: 5000,
         data: "data=" + JSON.stringify(data),
-        //dataType: "json",
+        dataType: "json",
         success: success,
         error: error,
         complete: complete
@@ -73,73 +73,73 @@ function exec(args) {
 function customer_getall(callback) {
     exec(arguments);
 }
-function customer_add(no, name, contactPerson, phone, comments, callback) {
+function customer_add(name, contactPerson, phone, comments, callback) {
     exec(arguments);
 }
 function customer_remove(id, callback) {
     exec(arguments);
 }
-function customer_update(no, name, contactPerson, phone, comments, callback) {
+function customer_update(id, no, name, contactPerson, phone, comments, callback) {
     exec(arguments);
 }
 //客户资料
 
 //窗帘资料
 function curtain_getall(callback) {
-
+    exec(arguments);
 }
-function curtain_add(no, specifications, brand, size, color, callback) {
-
+function curtain_add(specifications, brand, size, color, callback) {
+    exec(arguments);
 }
 function curtain_remove(id, callback) {
-
+    exec(arguments);
 }
-function curtain_update(no, specifications, brand, size, color, callback) {
-
+function curtain_update(id, no, specifications, brand, size, color, callback) {
+    exec(arguments);
 }
 //窗帘资料
 
 //供应商资料
 function supplier_getall(callback) {
-
+    exec(arguments);
 }
-function supplier_add(no, name, contactPerson, phone, area, callback) {
-
+function supplier_add(name, contactPerson, phone, area, address, zipCode, comments, callback) {
+    exec(arguments);
 }
 function supplier_remove(id, callback) {
-
+    exec(arguments);
 }
-function supplier_update(no, name, contactPerson, phone, area, callback) {
-
+function supplier_update(id, no, name, contactPerson, phone, area, address, zipCode, comments, callback) {
+    exec(arguments);
 }
 //供应商资料
 
 //仓库资料
 function warehouse_getall(callback) {
-
+    exec(arguments);
 }
-function warehouse_add(no, name, comments, callback) {
-
+function warehouse_add(name, comments, callback) {
+    exec(arguments);
 }
 function warehouse_remove(id, callback) {
-
+    exec(arguments);
 }
-function warehouse_update(no, name, comments, callback) {
-
+function warehouse_update(id, no, name, comments, callback) {
+    exec(arguments);
 }
 //仓库资料
 
 //材料资料
 function material_getall(callback) {
-
+    exec(arguments);
 }
-function material_add(no, name, category, model, unit, price, producingArea, ingredient, callback) {
-
+function material_add(name, category, model, unit, price, producingArea, ingredient, callback) {
+    exec(arguments);
 }
 function material_remove(id, callback) {
-
+    exec(arguments);
 }
-function update(no, name, category, model, unit, price, producingArea, ingredient, callback) {
-
+function material_update(id, no, name, category, model, unit, price, producingArea, ingredient, callback) {
+    exec(arguments);
 }
 //材料资料

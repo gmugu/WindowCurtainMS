@@ -18,15 +18,31 @@
         <!--客户资料增删改查-->
 
         <!--窗帘资料增删改查-->
+        <action name="curtain_getall" class="curtainCrudAction" method="getall"></action>
+        <action name="curtain_add" class="curtainCrudAction" method="add"></action>
+        <action name="curtain_remove" class="curtainCrudAction" method="remove"></action>
+        <action name="curtain_update" class="curtainCrudAction" method="update"></action>
         <!--窗帘资料增删改查-->
 
         <!--供应商资料增删改查-->
+        <action name="supplier_getall" class="supplierCrudAction" method="getall"></action>
+        <action name="supplier_add" class="supplierCrudAction" method="add"></action>
+        <action name="supplier_remove" class="supplierCrudAction" method="remove"></action>
+        <action name="supplier_update" class="supplierCrudAction" method="update"></action>
         <!--供应商资料增删改查-->
 
         <!--仓库资料增删改查-->
+        <action name="warehouse_getall" class="warehouseCrudAction" method="getall"></action>
+        <action name="warehouse_add" class="warehouseCrudAction" method="add"></action>
+        <action name="warehouse_remove" class="warehouseCrudAction" method="remove"></action>
+        <action name="warehouse_update" class="warehouseCrudAction" method="update"></action>
         <!--仓库资料增删改查-->
 
         <!--材料资料增删改查-->
+        <action name="material_getall" class="materialCrudAction" method="getall"></action>
+        <action name="material_add" class="materialCrudAction" method="add"></action>
+        <action name="material_remove" class="materialCrudAction" method="remove"></action>
+        <action name="material_update" class="materialCrudAction" method="update"></action>
         <!--材料资料增删改查-->
     </package>
 </struts>
