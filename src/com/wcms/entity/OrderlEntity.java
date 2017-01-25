@@ -2,7 +2,6 @@ package com.wcms.entity;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Administrator on 2017/1/19.
@@ -20,7 +19,7 @@ public class OrderlEntity {
     private Double amountPaid;
     private String comments;
     private CustomerEntity customer;
-    private List<OrderDetailEntity> orderDetails;
+//    private List<OrderDetailEntity> orderDetails;
 
     @Id
     @Column(name = "id")
@@ -123,14 +122,14 @@ public class OrderlEntity {
         this.customer = customer;
     }
 
-    @OneToMany(mappedBy = "order")
-    public List<OrderDetailEntity> getOrderDetails() {
-        return orderDetails;
-    }
-
-    public void setOrderDetails(List<OrderDetailEntity> orderDetails) {
-        this.orderDetails = orderDetails;
-    }
+//    @OneToMany(mappedBy = "order")
+//    public List<OrderDetailEntity> getOrderDetails() {
+//        return orderDetails;
+//    }
+//
+//    public void setOrderDetails(List<OrderDetailEntity> orderDetails) {
+//        this.orderDetails = orderDetails;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -150,8 +149,8 @@ public class OrderlEntity {
         if (amountPaid != null ? !amountPaid.equals(that.amountPaid) : that.amountPaid != null) return false;
         if (comments != null ? !comments.equals(that.comments) : that.comments != null) return false;
         if (customer != null ? !customer.equals(that.customer) : that.customer != null) return false;
-        return !(orderDetails != null ? !orderDetails.equals(that.orderDetails) : that.orderDetails != null);
-
+//        return !(orderDetails != null ? !orderDetails.equals(that.orderDetails) : that.orderDetails != null);
+return true;
     }
 
     @Override
@@ -166,7 +165,7 @@ public class OrderlEntity {
         result = 31 * result + (amountPaid != null ? amountPaid.hashCode() : 0);
         result = 31 * result + (comments != null ? comments.hashCode() : 0);
         result = 31 * result + (customer != null ? customer.hashCode() : 0);
-        result = 31 * result + (orderDetails != null ? orderDetails.hashCode() : 0);
+//        result = 31 * result + (orderDetails != null ? orderDetails.hashCode() : 0);
         return result;
     }
 
@@ -183,7 +182,7 @@ public class OrderlEntity {
                 ", amountPaid=" + amountPaid +
                 ", comments='" + comments + '\'' +
                 ", customer=" + customer +
-                ", orderDetails=" + orderDetails +
+//                ", orderDetails=" + orderDetails +
                 '}';
     }
 }

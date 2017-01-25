@@ -44,5 +44,19 @@
         <action name="material_remove" class="materialCrudAction" method="remove"></action>
         <action name="material_update" class="materialCrudAction" method="update"></action>
         <!--材料资料增删改查-->
+
+        <!--采购明细增删改查-->
+        <action name="procurement_getall" class="procurementCrudAction" method="getall"></action>
+        <action name="procurement_add" class="procurementCrudAction" method="add"></action>
+        <action name="procurement_remove" class="procurementCrudAction" method="remove"></action>
+        <action name="procurement_update" class="procurementCrudAction" method="update"></action>
+        <!--材料资料增删改查-->
+        <!---->
+        <!--材料资料增删改查-->
+        <action name="procurement_detail_getall" class="procurementDetailCrudAction" method="findByProcurementId"></action>
+        <action name="procurement_detail_add" class="procurementDetailCrudAction" method="add"></action>
+        <action name="procurement_detail_remove" class="procurementDetailCrudAction" method="remove"></action>
+        <action name="procurement_detail_update" class="procurementDetailCrudAction" method="update"></action>
+        <!--材料资料增删改查-->
     </package>
 </struts>

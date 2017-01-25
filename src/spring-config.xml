@@ -116,6 +116,47 @@
         <property name="warehouseDao" ref="warehouseDao"/>
     </bean>
 
+    <bean id="employeeCrudService" class="com.wcms.service.EmployeeCrudService">
+        <property name="employeeDao" ref="employeeDao"/>
+    </bean>
+
+    <bean id="afterSalesServiceCrudService" class="com.wcms.service.AfterSalesServiceCrudService">
+        <property name="afterSalesServiceDao" ref="afterSalesServiceDao"/>
+    </bean>
+
+    <bean id="businessCrudService" class="com.wcms.service.BusinessCrudService">
+        <property name="businessDao" ref="businessDao"/>
+    </bean>
+    <bean id="orderCrudService" class="com.wcms.service.OrderCrudService">
+        <property name="orderDao" ref="orderDao"/>
+    </bean>
+    <bean id="orderDetailCrudService" class="com.wcms.service.OrderDetailCrudService">
+        <property name="orderDetailDao" ref="orderDetailDao"/>
+    </bean>
+    <bean id="procurementCrudService" class="com.wcms.service.ProcurementCrudService">
+        <property name="procurementDao" ref="procurementDao"/>
+        <property name="employeeDao" ref="employeeDao"/>
+        <property name="supplierDao" ref="supplierDao"/>
+        <property name="warehouseDao" ref="warehouseDao"/>
+    </bean>
+    <bean id="procurementDetailCrudService" class="com.wcms.service.ProcurementDetailCrudService">
+        <property name="procurementDetailDao" ref="procurementDetailDao"/>
+        <property name="procurementDao" ref="procurementDao"/>
+        <property name="materialDao" ref="materialDao"/>
+    </bean>
+    <bean id="returnCrudService" class="com.wcms.service.ReturnCrudService">
+        <property name="returnlDao" ref="returnlDao"/>
+    </bean>
+    <bean id="returnDetailCrudService" class="com.wcms.service.ReturnDetailCrudService">
+        <property name="returnDetailDao" ref="returnDetailDao"/>
+    </bean>
+    <bean id="salaryCrudService" class="com.wcms.service.SalaryCrudService">
+        <property name="salaryDao" ref="salaryDao"/>
+    </bean>
+    <bean id="useMaterialDetailCrudService" class="com.wcms.service.UseMaterialDetailCrudService">
+        <property name="useMaterialDetailDao" ref="useMaterialDetailDao"/>
+    </bean>
+
 
     <!--事务拦截器-->
     <bean id="transactionManager"
@@ -170,4 +211,45 @@
     <bean id="warehouseCrudAction" class="com.wcms.web.action.WarehouseCrudAction" scope="prototype">
         <property name="warehouseCrudService" ref="warehouseCrudService"/>
     </bean>
+
+    <bean id="afterSalesServiceCrudAction" class="com.wcms.web.action.AfterSalesServiceCrudAction" scope="prototype">
+        <property name="afterSalesServiceCrudService" ref="afterSalesServiceCrudService"/>
+    </bean>
+
+    <bean id="businessCrudAction" class="com.wcms.web.action.BusinessCrudAction" scope="prototype">
+        <property name="businessCrudService" ref="businessCrudService"/>
+    </bean>
+
+    <bean id="employeeCrudAction" class="com.wcms.web.action.EmployeeCrudAction" scope="prototype">
+        <property name="employeeCrudService" ref="employeeCrudService"/>
+    </bean>
+
+    <bean id="orderCrudAction" class="com.wcms.web.action.OrderCrudAction" scope="prototype">
+        <property name="orderCrudService" ref="orderCrudService"/>
+    </bean>
+
+    <bean id="orderDetailCrudAction" class="com.wcms.web.action.OrderDetailCrudAction" scope="prototype">
+        <property name="orderDetailCrudService" ref="orderDetailCrudService"/>
+    </bean>
+
+    <bean id="procurementCrudAction" class="com.wcms.web.action.ProcurementCrudAction" scope="prototype">
+        <property name="procurementCrudService" ref="procurementCrudService"/>
+    </bean>
+    <bean id="procurementDetailCrudAction" class="com.wcms.web.action.ProcurementDetailCrudAction" scope="prototype">
+        <property name="procurementDetailCrudService" ref="procurementDetailCrudService"/>
+    </bean>
+    <bean id="returnCrudAction" class="com.wcms.web.action.ReturnCrudAction" scope="prototype">
+        <property name="returnCrudService" ref="returnCrudService"/>
+    </bean>
+    <bean id="returnDetailCrudAction" class="com.wcms.web.action.ReturnDetailCrudAction" scope="prototype">
+        <property name="returnDetailCrudService" ref="returnDetailCrudService"/>
+    </bean>
+    <bean id="salaryCrudAction" class="com.wcms.web.action.SalaryCrudAction" scope="prototype">
+        <property name="salaryCrudService" ref="salaryCrudService"/>
+    </bean>
+    <bean id="useMateriaDetailCrudAction" class="com.wcms.web.action.UseMateriaDetailCrudAction" scope="prototype">
+        <property name="useMaterialDetailCrudService" ref="useMaterialDetailCrudService"/>
+    </bean>
+
+
 </beans>

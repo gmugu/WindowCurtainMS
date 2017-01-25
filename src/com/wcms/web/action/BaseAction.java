@@ -1,6 +1,7 @@
 package com.wcms.web.action;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
@@ -22,17 +23,18 @@ public class BaseAction extends ActionSupport implements SessionAware {
 
     protected Map<String, Object> session;
     private String data;
+    private Gson gson = new GsonBuilder().setDateFormat("YYYY-MM-dd").create();
 
     protected <T> T getRequest(Class<T> type) {
         System.out.println(getClass().getSimpleName() + ".getRequest---" + data);
         if (data == null) {
             return null;
         }
-        return new Gson().fromJson(data, type);
+        return gson.fromJson(data, type);
     }
 
     protected <T> void sendResult(T result) {
-        String resultStr = new Gson().toJson(result);
+        String resultStr = gson.toJson(result);
         PrintWriter out = null;
         try {
             out = getResponse().getWriter();

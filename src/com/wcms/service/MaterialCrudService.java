@@ -4,9 +4,7 @@ import com.wcms.dao.MaterialDao;
 import com.wcms.entity.MaterialEntity;
 import com.wcms.service.exception.ServiceException;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/1/22.
@@ -21,7 +19,7 @@ public class MaterialCrudService {
             set.add(e.getNo());
         }
         for (int i = 1; ; i++) {
-            String no = String.format("CL%04d", i);
+            String no = String.format("CL%03d", i);
             if (!set.contains(no)) {
                 return no;
             }
@@ -64,5 +62,14 @@ public class MaterialCrudService {
 
     public void setMaterialDao(MaterialDao materialDao) {
         this.materialDao = materialDao;
+    }
+
+    public Map<String, String> getMaterialOpt() {
+        Map<String, String> map = new HashMap<>();
+        List<MaterialEntity> list = materialDao.findAll();
+        for (MaterialEntity e : list) {
+            map.put(e.getId()+"", e.getNo() + ":" + e.getName());
+        }
+        return map;
     }
 }

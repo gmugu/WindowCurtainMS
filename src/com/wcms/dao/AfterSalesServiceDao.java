@@ -1,6 +1,8 @@
 package com.wcms.dao;
 
 import com.wcms.entity.AfterSalesServiceEntity;
+import com.wcms.entity.OrderDetailEntity;
+import org.hibernate.Query;
 
 import java.util.List;
 
@@ -9,8 +11,9 @@ import java.util.List;
  */
 public class AfterSalesServiceDao extends BaseDao<AfterSalesServiceEntity> {
 
-    public String test(){
-
-        return super.test();
+    public AfterSalesServiceEntity findByNo(String no) {
+        Query query = getSession().createQuery("from AfterSalesServiceEntity where no=?");
+        query.setString(0, no);
+        return (AfterSalesServiceEntity) query.uniqueResult();
     }
 }

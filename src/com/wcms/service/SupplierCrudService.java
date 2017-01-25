@@ -1,12 +1,11 @@
 package com.wcms.service;
 
 import com.wcms.dao.SupplierDao;
+import com.wcms.entity.EmployeeEntity;
 import com.wcms.entity.SupplierEntity;
 import com.wcms.service.exception.ServiceException;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/1/22.
@@ -21,7 +20,7 @@ public class SupplierCrudService {
             set.add(e.getNo());
         }
         for (int i = 1; ; i++) {
-            String no = String.format("GYS%04d", i);
+            String no = String.format("GYS%03d", i);
             if (!set.contains(no)) {
                 return no;
             }
@@ -63,5 +62,14 @@ public class SupplierCrudService {
 
     public void setSupplierDao(SupplierDao supplierDao) {
         this.supplierDao = supplierDao;
+    }
+
+    public Map<String, String> getSupplierOpt() {
+        Map<String, String> opt = new HashMap<>();
+        List<SupplierEntity> list = supplierDao.findAll();
+        for (SupplierEntity e : list) {
+            opt.put(e.getId()+"", e.getNo() + ":" + e.getName());
+        }
+        return opt;
     }
 }

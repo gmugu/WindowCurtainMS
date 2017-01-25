@@ -1,12 +1,11 @@
 package com.wcms.service;
 
 import com.wcms.dao.WarehouseDao;
+import com.wcms.entity.EmployeeEntity;
 import com.wcms.entity.WarehouseEntity;
 import com.wcms.service.exception.ServiceException;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/1/22.
@@ -21,7 +20,7 @@ public class WarehouseCrudService {
             set.add(e.getNo());
         }
         for (int i = 1; ; i++) {
-            String no = String.format("CK%04d", i);
+            String no = String.format("CK%03d", i);
             if (!set.contains(no)) {
                 return no;
             }
@@ -57,11 +56,21 @@ public class WarehouseCrudService {
     public List<WarehouseEntity> findAll() {
         return warehouseDao.findAll();
     }
+
     public WarehouseDao getWarehouseDao() {
         return warehouseDao;
     }
 
     public void setWarehouseDao(WarehouseDao warehouseDao) {
         this.warehouseDao = warehouseDao;
+    }
+
+    public Map<String, String> getWarehouseOpt() {
+        Map<String, String> opt = new HashMap<>();
+        List<WarehouseEntity> list = warehouseDao.findAll();
+        for (WarehouseEntity e : list) {
+            opt.put(e.getId() + "", e.getNo() + ":" + e.getName());
+        }
+        return opt;
     }
 }

@@ -143,3 +143,33 @@ function material_update(id, no, name, category, model, unit, price, producingAr
     exec(arguments);
 }
 //材料资料
+
+//采购登记
+function procurement_getall(callback) {
+    exec(arguments);
+}
+function procurement_add(buyDate, operator, warehouse, supplier, totalPaid, amountPaid, callback) {
+    exec(arguments);
+}
+function procurement_remove(id, callback) {
+    exec(arguments);
+}
+function procurement_update(id, no, buyDate, operator, warehouse, supplier, totalPaid, amountPaid, callback) {
+    exec(arguments);
+}
+//采购登记
+
+//采购明细
+function procurement_detail_getall(procurement, callback) {
+    exec(arguments);
+}
+function procurement_detail_add(procurement, material, counts, callback) {
+    exec(arguments);
+}
+function procurement_detail_remove(id, callback) {
+    exec(arguments);
+}
+function procurement_detail_update(id, material, counts, callback) {
+    exec(arguments);
+}
+//采购明细

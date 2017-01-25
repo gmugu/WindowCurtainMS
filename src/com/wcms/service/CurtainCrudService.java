@@ -21,7 +21,7 @@ public class CurtainCrudService {
             set.add(e.getNo());
         }
         for (int i = 1; ; i++) {
-            String no = String.format("CL%04d", i);
+            String no = String.format("CL%03d", i);
             if (!set.contains(no)) {
                 return no;
             }

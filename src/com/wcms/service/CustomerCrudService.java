@@ -21,7 +21,7 @@ public class CustomerCrudService {
             set.add(e.getNo());
         }
         for (int i = 1; ; i++) {
-            String no = String.format("KH%04d", i);
+            String no = String.format("KH%03d", i);
             if (!set.contains(no)) {
                 return no;
             }
