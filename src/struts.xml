@@ -45,18 +45,33 @@
         <action name="material_update" class="materialCrudAction" method="update"></action>
         <!--材料资料增删改查-->
 
-        <!--采购明细增删改查-->
+        <!--采购登记增删改查-->
         <action name="procurement_getall" class="procurementCrudAction" method="getall"></action>
         <action name="procurement_add" class="procurementCrudAction" method="add"></action>
         <action name="procurement_remove" class="procurementCrudAction" method="remove"></action>
         <action name="procurement_update" class="procurementCrudAction" method="update"></action>
-        <!--材料资料增删改查-->
-        <!---->
-        <!--材料资料增删改查-->
+        <!--材料登记增删改查-->
+
+        <!--采购明细增删改查-->
         <action name="procurement_detail_getall" class="procurementDetailCrudAction" method="findByProcurementId"></action>
         <action name="procurement_detail_add" class="procurementDetailCrudAction" method="add"></action>
         <action name="procurement_detail_remove" class="procurementDetailCrudAction" method="remove"></action>
         <action name="procurement_detail_update" class="procurementDetailCrudAction" method="update"></action>
-        <!--材料资料增删改查-->
+        <!--采购明细增删改查-->
+
+        <!--采购退货增删改查-->
+        <action name="return_getall" class="returnCrudAction" method="getall"></action>
+        <action name="return_add" class="returnCrudAction" method="add"></action>
+        <action name="return_remove" class="returnCrudAction" method="remove"></action>
+        <action name="return_update" class="returnCrudAction" method="update"></action>
+        <!--材料退货增删改查-->
+
+        <!--退货明细增删改查-->
+        <action name="return_detail_getall" class="returnDetailCrudAction" method="findByReturnId"></action>
+        <action name="return_detail_add" class="returnDetailCrudAction" method="add"></action>
+        <action name="return_detail_remove" class="returnDetailCrudAction" method="remove"></action>
+        <action name="return_detail_update" class="returnDetailCrudAction" method="update"></action>
+        <!--退货明细增删改查-->
+
     </package>
 </struts>

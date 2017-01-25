@@ -17,7 +17,7 @@ public class ReturnlEntity {
     private EmployeeEntity operator;
     private WarehouseEntity warehouse;
     private SupplierEntity supplier;
-    private List<ReturnDetailEntity> returnDetails;
+//    private List<ReturnDetailEntity> returnDetails;
 
     @Id
     @Column(name = "id")
@@ -61,7 +61,7 @@ public class ReturnlEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "operator_id",referencedColumnName = "id")
+    @JoinColumn(name = "operator_id", referencedColumnName = "id")
     public EmployeeEntity getOperator() {
         return operator;
     }
@@ -71,7 +71,7 @@ public class ReturnlEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "warehouse_id",referencedColumnName = "id")
+    @JoinColumn(name = "warehouse_id", referencedColumnName = "id")
     public WarehouseEntity getWarehouse() {
         return warehouse;
     }
@@ -81,7 +81,7 @@ public class ReturnlEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "supplier_id",referencedColumnName = "id")
+    @JoinColumn(name = "supplier_id", referencedColumnName = "id")
     public SupplierEntity getSupplier() {
         return supplier;
     }
@@ -90,14 +90,14 @@ public class ReturnlEntity {
         this.supplier = supplier;
     }
 
-    @OneToMany(mappedBy = "returnl")
-    public List<ReturnDetailEntity> getReturnDetails() {
-        return returnDetails;
-    }
-
-    public void setReturnDetails(List<ReturnDetailEntity> returnDetails) {
-        this.returnDetails = returnDetails;
-    }
+//    @OneToMany(mappedBy = "returnl")
+//    public List<ReturnDetailEntity> getReturnDetails() {
+//        return returnDetails;
+//    }
+//
+//    public void setReturnDetails(List<ReturnDetailEntity> returnDetails) {
+//        this.returnDetails = returnDetails;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -113,8 +113,8 @@ public class ReturnlEntity {
         if (operator != null ? !operator.equals(that.operator) : that.operator != null) return false;
         if (warehouse != null ? !warehouse.equals(that.warehouse) : that.warehouse != null) return false;
         if (supplier != null ? !supplier.equals(that.supplier) : that.supplier != null) return false;
-        return !(returnDetails != null ? !returnDetails.equals(that.returnDetails) : that.returnDetails != null);
-
+//        return !(returnDetails != null ? !returnDetails.equals(that.returnDetails) : that.returnDetails != null);
+        return true;
     }
 
     @Override
@@ -126,7 +126,7 @@ public class ReturnlEntity {
         result = 31 * result + (operator != null ? operator.hashCode() : 0);
         result = 31 * result + (warehouse != null ? warehouse.hashCode() : 0);
         result = 31 * result + (supplier != null ? supplier.hashCode() : 0);
-        result = 31 * result + (returnDetails != null ? returnDetails.hashCode() : 0);
+//        result = 31 * result + (returnDetails != null ? returnDetails.hashCode() : 0);
         return result;
     }
 
@@ -140,7 +140,7 @@ public class ReturnlEntity {
                 ", operator=" + operator +
                 ", warehouse=" + warehouse +
                 ", supplier=" + supplier +
-                ", returnDetails=" + returnDetails +
+//                ", returnDetails=" + returnDetails +
                 '}';
     }
 }

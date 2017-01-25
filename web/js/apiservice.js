@@ -173,3 +173,33 @@ function procurement_detail_update(id, material, counts, callback) {
     exec(arguments);
 }
 //采购明细
+
+//采购退货
+function return_getall(callback) {
+    exec(arguments);
+}
+function return_add(returnDate, operator, warehouse, supplier, comments, callback) {
+    exec(arguments);
+}
+function return_remove(id, callback) {
+    exec(arguments);
+}
+function return_update(id, no, returnDate, operator, warehouse, supplier, comments, callback) {
+    exec(arguments);
+}
+//采购退货
+
+//退货明细
+function return_detail_getall(returnl, callback) {
+    exec(arguments);
+}
+function return_detail_add(returnl, material, counts, callback) {
+    exec(arguments);
+}
+function return_detail_remove(id, callback) {
+    exec(arguments);
+}
+function return_detail_update(id, material, counts, callback) {
+    exec(arguments);
+}
+//退货明细

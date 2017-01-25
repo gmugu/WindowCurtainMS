@@ -1,5 +1,6 @@
 package com.wcms.web.action;
 
+import com.wcms.entity.ProcurementDetailEntity;
 import com.wcms.entity.ReturnDetailEntity;
 import com.wcms.model.Result;
 import com.wcms.service.ReturnDetailCrudService;
@@ -17,6 +18,20 @@ public class ReturnDetailCrudAction extends BaseAction {
         Result<List<ReturnDetailEntity>> result = new Result();
         List<ReturnDetailEntity> list = returnDetailCrudService.findAll();
         result.setData(list);
+        sendResult(result);
+        return NONE;
+    }
+
+    public String findByReturnId() throws Exception {
+        Result<List<ReturnDetailEntity>> result = new Result();
+        ReturnDetailEntity request = getRequest(ReturnDetailEntity.class);
+        try {
+            List<ReturnDetailEntity> byReturnId = returnDetailCrudService.findByReturnId(request.getReturnl().getId());
+            result.setData(byReturnId);
+        } catch (Exception e) {
+            result.setCode(1);
+            result.setMsg(e.getMessage());
+        }
         sendResult(result);
         return NONE;
     }
@@ -57,7 +72,8 @@ public class ReturnDetailCrudAction extends BaseAction {
         Result result = new Result();
         try {
             returnDetailCrudService.update(entity);
-        } catch (ServiceException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             result.setCode(1);
             result.setMsg(e.getMessage());
         }
@@ -72,4 +88,5 @@ public class ReturnDetailCrudAction extends BaseAction {
     public void setReturnDetailCrudService(ReturnDetailCrudService ReturnDetailCrudService) {
         this.returnDetailCrudService = ReturnDetailCrudService;
     }
+
 }

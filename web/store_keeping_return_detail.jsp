@@ -1,24 +1,14 @@
-<!--采购退货-->
-<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
 <%@ page import="org.springframework.context.ApplicationContext" %>
-<%@ page import="com.wcms.service.EmployeeCrudService" %>
+<%@ page import="com.wcms.service.MaterialCrudService" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="com.wcms.util.HtmlTagGenerater" %>
-<%@ page import="com.wcms.service.WarehouseCrudService" %>
-<%@ page import="com.wcms.service.SupplierCrudService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     ServletContext context = request.getSession().getServletContext();
     ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(context);
-    EmployeeCrudService employeeCrudService = (EmployeeCrudService) ctx.getBean("employeeCrudService");
-    WarehouseCrudService warehouseCrudService = (WarehouseCrudService) ctx.getBean("warehouseCrudService");
-    SupplierCrudService supplierCrudService = (SupplierCrudService) ctx.getBean("supplierCrudService");
-
-    Map<String, String> employeeOpt = employeeCrudService.getEmployeeOpt();
-    Map<String, String> warehouseOpt = warehouseCrudService.getWarehouseOpt();
-    Map<String, String> supplierOpt = supplierCrudService.getSupplierOpt();
-
+    MaterialCrudService materialCrudService = (MaterialCrudService) ctx.getBean("materialCrudService");
+    Map<String, String> materialOpt = materialCrudService.getMaterialOpt();
 %>
 <!DOCTYPE html>
 <html>
@@ -27,7 +17,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>采购退货</title>
+    <title>退货明细</title>
 
     <link rel="shortcut icon" href="images/favicon.ico">
     <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
@@ -50,7 +40,7 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>采购退货</h5>
+                    <h5>退货明细</h5>
 
                 </div>
                 <div class="ibox-content">
@@ -62,13 +52,8 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>退货单号</th>
-                            <th>退货日期</th>
-                            <th>操作员</th>
-                            <th>仓库名称</th>
-                            <th>供应商</th>
-                            <th>备注</th>
-                            <th>退货明细</th>
+                            <th>材料</th>
+                            <th>数量</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -81,7 +66,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 <!-- 全局js -->
@@ -94,17 +78,11 @@
 <script src="js/datatables.min.js"></script>
 <script src="js/datatables.bootstrap.js"></script>
 
-<!--layui & layer-->
-<script src="js/layer/layer.js"></script>
-<script src="js/layui/layui.js"></script>
-
 <!-- 自定义js -->
 <script src="js/apiservice.js"></script>
 
-
 <!-- Page-Level Scripts -->
 <script>
-    layui.use('laydate');
     $(document).ready(function () {
 
         var TableDatatablesEditable = function () {
@@ -135,37 +113,40 @@
                     var aData = oTable.fnGetData(nRow);
                     var jqTds = $('>td', nRow);
                     // jqTds[0].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[0] + '">';
-                    // jqTds[1].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[1] + '">';
-                    jqTds[2].innerHTML = '<input type="text" class="form-control input-small" onclick="layui.laydate({elem: this})" value="' + aData[2] + '">';
-                    jqTds[3].innerHTML = '<%=HtmlTagGenerater.genSelectTag(employeeOpt)%>';
-                    setSelected(jqTds[3].children[0], aData[3]);
-                    jqTds[4].innerHTML = '<%=HtmlTagGenerater.genSelectTag(warehouseOpt)%>';
-                    setSelected(jqTds[4].children[0], aData[4]);
-                    jqTds[5].innerHTML = '<%=HtmlTagGenerater.genSelectTag(supplierOpt)%>';
-                    setSelected(jqTds[5].children[0], aData[5]);
-                    jqTds[6].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[6] + '">';
-                    jqTds[8].innerHTML = '<a class="edit" href="">Save</a>';
-                    jqTds[9].innerHTML = '<a class="cancel" href="">Cancel</a>';
+                    jqTds[1].innerHTML = '<%=HtmlTagGenerater.genSelectTag(materialOpt)%>';
+                    setSelected(jqTds[1].children[0], aData[1]);
+                    jqTds[2].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[2] + '">';
+                    jqTds[3].innerHTML = '<a class="edit" href="">Save</a>';
+                    jqTds[4].innerHTML = '<a class="cancel" href="">Cancel</a>';
                 }
 
                 function saveRow(oTable, nRow) {
-
                     ajaxSaveOrUpdate(oTable, nRow);
                 }
 
-                function ifor(data, opt) {
-                    if (typeof (data) === "undefined" || data === null)
-                        return opt;
-                    else
-                        return data;
+                function getQueryString(name) {
+                    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+                    var r = window.location.search.substr(1).match(reg);
+                    if (r != null) {
+                        return unescape(r[2]);
+                    }
+                    return null;
                 }
 
+                var returnId = getQueryString('return_id');
+
                 function ajaxInitData() {
-                    return_getall({
+                    return_detail_getall({'id': returnId}, {
                         success: function (result) {
                             if (result.code != 0) {
                                 alert("错误:" + result.msg);
                                 return;
+                            }
+                            function ifor(data, opt) {
+                                if (typeof (data) === "undefined" || data === null)
+                                    return opt;
+                                else
+                                    return data;
                             }
 
                             var data = result.data;
@@ -174,17 +155,9 @@
                                 var row = data[i];
                                 var a = [];
                                 a.push(row.id);
-                                a.push(row.no);
-                                a.push(row.returnDate);
-                                var operator = row.operator;
-                                a.push(operator.no + ':' + operator.name);
-                                var warehouse = row.warehouse;
-                                a.push(warehouse.no + ':' + warehouse.name);
-                                var supplier = row.supplier;
-                                a.push(supplier.no + ':' + supplier.name);
-
-                                a.push(ifor(row.comments, ''));
-                                a.push('<a class="details" href="">退货明细</a>');
+                                var material = row.material;
+                                a.push(material.no + ':' + material.name);
+                                a.push(ifor(row.counts, ''));
                                 a.push('<a class="edit" href="">Edit</a>');
                                 a.push('<a class="delete" href="">Delete</a>');
                                 oTable.fnAddData(a);
@@ -197,30 +170,24 @@
                     });
                 }
 
-
                 function ajaxSaveOrUpdate(oTable, nRow) {
                     var jqInputs = $('input', nRow);
                     var jqSelects = $('select', nRow);
                     var aData = oTable.fnGetData(nRow);
-                    var id = aData[0];
-                    var no = aData[1];
-                    var returnDate = jqInputs[0].value !== '' ? jqInputs[0].value : '2016-1-1';
-                    var operator = {"no": jqSelects[0].options[jqSelects[0].selectedIndex].text.split(':')[0]};
-                    var warehouse = {"no": jqSelects[1].options[jqSelects[1].selectedIndex].text.split(':')[0]};
-                    var supplier = {"no": jqSelects[2].options[jqSelects[2].selectedIndex].text.split(':')[0]};
-                    var comments = jqInputs[1].value;
+                    var material = {"no": jqSelects[0].options[jqSelects[0].selectedIndex].text.split(':')[0]};
+                    var counts = parseFloat(jqInputs[0].value);
+                    if (isNaN(counts)) {
+                        counts = 0;
+                    }
+
                     if (aData[0] !== '') {
-                        return_update(id, no, returnDate, operator, warehouse, supplier, comments, {
+                        return_detail_update(aData[0], material, counts, {
                             success: function (result) {
                                 if (result.code === 0) {
-                                    oTable.fnUpdate(returnDate, nRow, 2, false);
-                                    oTable.fnUpdate(comments, nRow, 6, false);
-                                    oTable.fnUpdate(jqSelects[0].options[jqSelects[0].selectedIndex].text, nRow, 3, false);
-                                    oTable.fnUpdate(jqSelects[1].options[jqSelects[1].selectedIndex].text, nRow, 4, false);
-                                    oTable.fnUpdate(jqSelects[2].options[jqSelects[2].selectedIndex].text, nRow, 5, false);
-                                    oTable.fnUpdate('<a class="details" href="">退货明细</a>', nRow, 7, false);
-                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 8, false);
-                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 9, false);
+                                    oTable.fnUpdate(jqSelects[0].options[jqSelects[0].selectedIndex].text, nRow, 1, false);
+                                    oTable.fnUpdate(counts, nRow, 2, false);
+                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 3, false);
+                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 4, false);
                                     oTable.fnDraw();
                                 } else {
                                     alert(result.msg);
@@ -233,31 +200,28 @@
                             }
                         });
                     } else {
-                        return_add(returnDate, operator, warehouse, supplier, comments, {
-                            success: function (result) {
-                                if (result.code === 0) {
-                                    var data = result.data;
-                                    oTable.fnUpdate(data.id, nRow, 0, false);
-                                    oTable.fnUpdate(data.no, nRow, 1, false);
-                                    oTable.fnUpdate(returnDate, nRow, 2, false);
-                                    oTable.fnUpdate(comments, nRow, 6, false);
-                                    oTable.fnUpdate(jqSelects[0].options[jqSelects[0].selectedIndex].text, nRow, 3, false);
-                                    oTable.fnUpdate(jqSelects[1].options[jqSelects[1].selectedIndex].text, nRow, 4, false);
-                                    oTable.fnUpdate(jqSelects[2].options[jqSelects[2].selectedIndex].text, nRow, 5, false);
-                                    oTable.fnUpdate('<a class="details" href="">退货明细</a>', nRow, 7, false);
-                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 8, false);
-                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 9, false);
-                                    oTable.fnDraw();
-                                } else {
-                                    alert(result.msg);
-                                    ajaxInitData();
+                        return_detail_add({'id': returnId}, material, counts, {
+                                    success: function (result) {
+                                        if (result.code === 0) {
+                                            var data = result.data;
+                                            oTable.fnUpdate(data.id, nRow, 0, false);
+                                            oTable.fnUpdate(jqSelects[0].options[jqSelects[0].selectedIndex].text, nRow, 1, false);
+                                            oTable.fnUpdate(counts, nRow, 2, false);
+                                            oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 3, false);
+                                            oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 4, false);
+                                            oTable.fnDraw();
+                                        } else {
+                                            alert(result.msg);
+                                            ajaxInitData();
+                                        }
+                                    }
+                                    ,
+                                    error: function (xhr, msg) {
+                                        alert(msg);
+                                        ajaxInitData();
+                                    }
                                 }
-                            },
-                            error: function (xhr, msg) {
-                                alert(msg);
-                                ajaxInitData();
-                            }
-                        });
+                        );
                     }
 
                 }
@@ -266,7 +230,7 @@
 
                     var aData = oTable.fnGetData(nRow);
 
-                    return_remove(aData[0], {
+                    return_detail_remove(aData[0], {
                         success: function (result) {
                             if (result.code == 0) {
                                 oTable.fnDeleteRow(nRow);
@@ -277,6 +241,7 @@
                     });
                 }
 
+
                 var table = $('#editable');
 
                 var oTable = table.dataTable({
@@ -286,6 +251,12 @@
                         [10, 25, 50, "All"] // change per page values here
                     ],
 
+                    // Or you can use remote translation file
+                    // "language": {
+                    //   url: '//cdn.datatables.net/plug-ins/3cfcc339e89/i18n/Portuguese.json'
+                    // },
+
+                    // set the initial value
                     "pageLength": 10,
 
                     "language": {
@@ -308,6 +279,7 @@
                     "order": [
                         [0, "asc"]
                     ], // set first column as a default sort by asc
+
 
                 });
 
@@ -335,7 +307,7 @@
                         }
                     }
 
-                    var aiNew = oTable.fnAddData(['', '', '', '', '', '', '', '', '', '']);
+                    var aiNew = oTable.fnAddData(['', '', '', '', '', '', '', '', '', '', '']);
                     var nRow = oTable.fnGetNodes(aiNew[0]);
                     editRow(oTable, nRow);
                     nEditing = nRow;
@@ -350,9 +322,9 @@
                     }
 
                     var nRow = $(this).parents('tr')[0];
-//                    oTable.fnDeleteRow(nRow);
                     ajaxDelete(nRow);
-//                    alert("Deleted! Do not forget to do some ajax to sync with backend :)");
+//                oTable.fnDeleteRow(nRow);
+//                alert("Deleted! Do not forget to do some ajax to sync with backend :)");
                 });
 
                 table.on('click', '.cancel', function (e) {
@@ -383,24 +355,12 @@
                         /* Editing this row and want to save it */
                         saveRow(oTable, nEditing);
                         nEditing = null;
-//                        alert("Updated! Do not forget to do some ajax to sync with backend :)");
+//                    alert("Updated! Do not forget to do some ajax to sync with backend :)");
                     } else {
                         /* No edit in progress - let's start one */
                         editRow(oTable, nRow);
                         nEditing = nRow;
                     }
-                });
-
-                table.on('click', '.details', function (e) {
-                    e.preventDefault();
-                    var nRow = $(this).parents('tr')[0];
-                    var id = nRow.children[0].innerHTML;
-                    layer.open({
-                        type: 2,
-                        title: '退货明细',
-                        area: ['95%', '95%'],
-                        content: 'store_keeping_return_detail.jsp?return_id=' + id
-                    });
                 });
                 ajaxInitData();
             };
@@ -418,7 +378,6 @@
 
         jQuery(document).ready(function () {
             TableDatatablesEditable.init();
-
         });
 
     });

@@ -15,8 +15,14 @@ public class ReturnCrudAction extends BaseAction {
 
     public String getall() {
         Result<List<ReturnlEntity>> result = new Result();
-        List<ReturnlEntity> list = returnCrudService.findAll();
-        result.setData(list);
+        try {
+            List<ReturnlEntity> list = returnCrudService.findAll();
+            result.setData(list);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.setCode(1);
+            result.setMsg(e.getMessage());
+        }
         sendResult(result);
         return NONE;
     }

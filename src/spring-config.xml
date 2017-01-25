@@ -146,9 +146,14 @@
     </bean>
     <bean id="returnCrudService" class="com.wcms.service.ReturnCrudService">
         <property name="returnlDao" ref="returnlDao"/>
+        <property name="employeeDao" ref="employeeDao"/>
+        <property name="supplierDao" ref="supplierDao"/>
+        <property name="warehouseDao" ref="warehouseDao"/>
     </bean>
     <bean id="returnDetailCrudService" class="com.wcms.service.ReturnDetailCrudService">
         <property name="returnDetailDao" ref="returnDetailDao"/>
+        <property name="returnlDao" ref="returnlDao"/>
+        <property name="materialDao" ref="materialDao"/>
     </bean>
     <bean id="salaryCrudService" class="com.wcms.service.SalaryCrudService">
         <property name="salaryDao" ref="salaryDao"/>
