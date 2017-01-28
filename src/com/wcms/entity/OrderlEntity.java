@@ -18,6 +18,7 @@ public class OrderlEntity {
     private Date acceptanceTime;
     private Double amountPaid;
     private String comments;
+    private String commentsSign;
     private CustomerEntity customer;
 //    private List<OrderDetailEntity> orderDetails;
 
@@ -112,8 +113,18 @@ public class OrderlEntity {
         this.comments = comments;
     }
 
+    @Basic
+    @Column(name = "comments_sign")
+    public String getCommentsSign() {
+        return commentsSign;
+    }
+
+    public void setCommentsSign(String commentsSign) {
+        this.commentsSign = commentsSign;
+    }
+
     @ManyToOne
-    @JoinColumn(name = "customer_id",referencedColumnName = "id")
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
     public CustomerEntity getCustomer() {
         return customer;
     }
@@ -148,9 +159,9 @@ public class OrderlEntity {
             return false;
         if (amountPaid != null ? !amountPaid.equals(that.amountPaid) : that.amountPaid != null) return false;
         if (comments != null ? !comments.equals(that.comments) : that.comments != null) return false;
-        if (customer != null ? !customer.equals(that.customer) : that.customer != null) return false;
-//        return !(orderDetails != null ? !orderDetails.equals(that.orderDetails) : that.orderDetails != null);
-return true;
+        if (commentsSign != null ? !commentsSign.equals(that.commentsSign) : that.commentsSign != null) return false;
+        return !(customer != null ? !customer.equals(that.customer) : that.customer != null);
+
     }
 
     @Override
@@ -164,8 +175,8 @@ return true;
         result = 31 * result + (acceptanceTime != null ? acceptanceTime.hashCode() : 0);
         result = 31 * result + (amountPaid != null ? amountPaid.hashCode() : 0);
         result = 31 * result + (comments != null ? comments.hashCode() : 0);
+        result = 31 * result + (commentsSign != null ? commentsSign.hashCode() : 0);
         result = 31 * result + (customer != null ? customer.hashCode() : 0);
-//        result = 31 * result + (orderDetails != null ? orderDetails.hashCode() : 0);
         return result;
     }
 
@@ -181,8 +192,8 @@ return true;
                 ", acceptanceTime=" + acceptanceTime +
                 ", amountPaid=" + amountPaid +
                 ", comments='" + comments + '\'' +
+                ", commentsSign='" + commentsSign + '\'' +
                 ", customer=" + customer +
-//                ", orderDetails=" + orderDetails +
                 '}';
     }
 }

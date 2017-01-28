@@ -1,5 +1,7 @@
+
 package com.wcms.service;
 
+import com.wcms.dao.CustomerDao;
 import com.wcms.dao.OrderDao;
 import com.wcms.entity.OrderlEntity;
 import com.wcms.service.exception.ServiceException;
@@ -13,6 +15,8 @@ import java.util.Set;
  */
 public class OrderCrudService {
     private OrderDao orderDao;
+    private CustomerDao customerDao;
+
     private String genNo() {
         List<OrderlEntity> all = orderDao.findAll();
         Set<String> set = new HashSet<>();
@@ -37,7 +41,8 @@ public class OrderCrudService {
                 throw new ServiceException("编号已存在");
             }
         }
-
+        entity.setCustomer(customerDao.findByNo(entity.getCustomer().getNo()));
+        entity.setState("预定");
         orderDao.save(entity);
     }
 
@@ -50,7 +55,13 @@ public class OrderCrudService {
     }
 
     public void update(OrderlEntity entity) throws ServiceException {
-        orderDao.saveOrUpdate(entity);
+        OrderlEntity byId = orderDao.findById(entity.getId());
+        byId.setOrderTime(entity.getOrderTime());
+        byId.setCustomer(customerDao.findByNo(entity.getCustomer().getNo()));
+        byId.setDeliveryTime(entity.getDeliveryTime());
+        byId.setDownpayment(entity.getDownpayment());
+        byId.setComments(entity.getComments());
+        orderDao.saveOrUpdate(byId);
     }
 
     public List<OrderlEntity> findAll() {
@@ -64,5 +75,13 @@ public class OrderCrudService {
 
     public void setOrderDao(OrderDao orderDao) {
         this.orderDao = orderDao;
+    }
+
+    public CustomerDao getCustomerDao() {
+        return customerDao;
+    }
+
+    public void setCustomerDao(CustomerDao customerDao) {
+        this.customerDao = customerDao;
     }
 }

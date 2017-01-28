@@ -6,9 +6,7 @@ import com.wcms.dao.ReturnlDao;
 import com.wcms.entity.ReturnDetailEntity;
 import com.wcms.service.exception.ServiceException;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Administrator on 2017/1/23.
@@ -43,7 +41,6 @@ public class ReturnDetailCrudService {
         return returnDetailDao.findAll();
     }
 
-
     public ReturnDetailDao getReturnDetailDao() {
         return returnDetailDao;
     }
@@ -55,7 +52,6 @@ public class ReturnDetailCrudService {
     public void setReturnDetailDao(ReturnDetailDao returnDetailDao) {
         this.returnDetailDao = returnDetailDao;
     }
-
 
     public ReturnlDao getReturnlDao() {
         return returnlDao;

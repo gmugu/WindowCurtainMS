@@ -129,9 +129,12 @@
     </bean>
     <bean id="orderCrudService" class="com.wcms.service.OrderCrudService">
         <property name="orderDao" ref="orderDao"/>
+        <property name="customerDao" ref="customerDao"/>
     </bean>
     <bean id="orderDetailCrudService" class="com.wcms.service.OrderDetailCrudService">
         <property name="orderDetailDao" ref="orderDetailDao"/>
+        <property name="curtainDao" ref="curtainDao"/>
+        <property name="orderDao" ref="orderDao"/>
     </bean>
     <bean id="procurementCrudService" class="com.wcms.service.ProcurementCrudService">
         <property name="procurementDao" ref="procurementDao"/>

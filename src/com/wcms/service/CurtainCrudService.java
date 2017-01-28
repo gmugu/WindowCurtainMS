@@ -2,11 +2,10 @@ package com.wcms.service;
 
 import com.wcms.dao.CurtainDao;
 import com.wcms.entity.CurtainEntity;
+import com.wcms.entity.MaterialEntity;
 import com.wcms.service.exception.ServiceException;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/1/22.
@@ -27,6 +26,20 @@ public class CurtainCrudService {
             }
         }
 
+    }
+
+    public Map<String, String> getCurtainOpt() {
+
+        Map<String, String> map = new HashMap<>();
+        List<CurtainEntity> list = curtainDao.findAll();
+        for (CurtainEntity e : list) {
+            String specifications = e.getSpecifications();
+            if (specifications == null) {
+                specifications = "";
+            }
+            map.put(e.getId() + "", e.getNo() + ":" + specifications);
+        }
+        return map;
     }
 
     public void add(CurtainEntity entity) throws ServiceException {
@@ -65,4 +78,5 @@ public class CurtainCrudService {
     public void setCurtainDao(CurtainDao curtainDao) {
         this.curtainDao = curtainDao;
     }
+
 }

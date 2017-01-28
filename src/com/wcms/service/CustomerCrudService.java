@@ -2,11 +2,10 @@ package com.wcms.service;
 
 import com.wcms.dao.CustomerDao;
 import com.wcms.entity.CustomerEntity;
+import com.wcms.entity.EmployeeEntity;
 import com.wcms.service.exception.ServiceException;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Administrator on 2017/1/21.
@@ -29,6 +28,15 @@ public class CustomerCrudService {
 
     }
 
+    public Map<String, String> getCustomerOpt() {
+        Map<String, String> map = new HashMap<>();
+        List<CustomerEntity> list = customerDao.findAll();
+        for (CustomerEntity e : list) {
+            map.put(e.getId() + "", e.getNo() + ":" + e.getName());
+        }
+        return map;
+    }
+
     public void add(CustomerEntity entity) throws ServiceException {
         if (entity.getNo() == null || entity.getNo().equals("")) {
             entity.setNo(genNo());
@@ -39,7 +47,7 @@ public class CustomerCrudService {
             }
         }
 
-         customerDao.save(entity);
+        customerDao.save(entity);
     }
 
     public void delete(int id) throws ServiceException {
@@ -65,4 +73,5 @@ public class CustomerCrudService {
     public void setCustomerDao(CustomerDao customerDao) {
         this.customerDao = customerDao;
     }
+
 }

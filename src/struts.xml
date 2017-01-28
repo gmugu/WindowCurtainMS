@@ -73,5 +73,19 @@
         <action name="return_detail_update" class="returnDetailCrudAction" method="update"></action>
         <!--退货明细增删改查-->
 
+        <!--订做登记增删改查-->
+        <action name="order_getall" class="orderCrudAction" method="getall"></action>
+        <action name="order_add" class="orderCrudAction" method="add"></action>
+        <action name="order_remove" class="orderCrudAction" method="remove"></action>
+        <action name="order_update" class="orderCrudAction" method="update"></action>        <!--订做登记增删改查-->
+        <!--订做登记增删改查-->
+
+        <!--退货明细增删改查-->
+        <action name="order_detail_getall" class="orderDetailCrudAction" method="findByOrderId"></action>
+        <action name="order_detail_add" class="orderDetailCrudAction" method="add"></action>
+        <action name="order_detail_remove" class="orderDetailCrudAction" method="remove"></action>
+        <action name="order_detail_update" class="orderDetailCrudAction" method="update"></action>
+        <!--退货明细增删改查-->
+
     </package>
 </struts>

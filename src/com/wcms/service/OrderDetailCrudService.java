@@ -1,5 +1,7 @@
 package com.wcms.service;
 
+import com.wcms.dao.CurtainDao;
+import com.wcms.dao.OrderDao;
 import com.wcms.dao.OrderDetailDao;
 import com.wcms.entity.OrderDetailEntity;
 import com.wcms.service.exception.ServiceException;
@@ -12,9 +14,12 @@ import java.util.List;
  */
 public class OrderDetailCrudService {
     private OrderDetailDao orderDetailDao;
-
+    private OrderDao orderDao;
+    private CurtainDao curtainDao;
 
     public void add(OrderDetailEntity entity) throws ServiceException {
+        entity.setOrder(orderDao.findById(entity.getOrder().getId()));
+        entity.setCurtain(curtainDao.findByNo(entity.getCurtain().getNo()));
         orderDetailDao.save(entity);
     }
 
@@ -27,14 +32,22 @@ public class OrderDetailCrudService {
     }
 
     public void update(OrderDetailEntity entity) throws ServiceException {
-        orderDetailDao.saveOrUpdate(entity);
+        OrderDetailEntity byId = orderDetailDao.findById(entity.getId());
+        byId.setCurtain(curtainDao.findByNo(entity.getCurtain().getNo()));
+        byId.setLocation(entity.getLocation());
+        byId.setHeight(entity.getHeight());
+        byId.setCount(entity.getCount());
+        byId.setComments(entity.getComments());
+        orderDetailDao.saveOrUpdate(byId);
+    }
+
+    public List<OrderDetailEntity> findByOrderId(int id) {
+        return orderDetailDao.findByOrderId(id);
     }
 
     public List<OrderDetailEntity> findAll() {
         return orderDetailDao.findAll();
     }
-
-
 
     public OrderDetailDao getOrderDetailDao() {
         return orderDetailDao;
@@ -42,5 +55,21 @@ public class OrderDetailCrudService {
 
     public void setOrderDetailDao(OrderDetailDao orderDetailDao) {
         this.orderDetailDao = orderDetailDao;
+    }
+
+    public OrderDao getOrderDao() {
+        return orderDao;
+    }
+
+    public void setOrderDao(OrderDao orderDao) {
+        this.orderDao = orderDao;
+    }
+
+    public CurtainDao getCurtainDao() {
+        return curtainDao;
+    }
+
+    public void setCurtainDao(CurtainDao curtainDao) {
+        this.curtainDao = curtainDao;
     }
 }

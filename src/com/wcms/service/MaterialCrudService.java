@@ -27,6 +27,16 @@ public class MaterialCrudService {
 
     }
 
+
+    public Map<String, String> getMaterialOpt() {
+        Map<String, String> map = new HashMap<>();
+        List<MaterialEntity> list = materialDao.findAll();
+        for (MaterialEntity e : list) {
+            map.put(e.getId() + "", e.getNo() + ":" + e.getName());
+        }
+        return map;
+    }
+
     public void add(MaterialEntity entity) throws ServiceException {
         if (entity.getNo() == null || entity.getNo().equals("")) {
             entity.setNo(genNo());
@@ -62,14 +72,5 @@ public class MaterialCrudService {
 
     public void setMaterialDao(MaterialDao materialDao) {
         this.materialDao = materialDao;
-    }
-
-    public Map<String, String> getMaterialOpt() {
-        Map<String, String> map = new HashMap<>();
-        List<MaterialEntity> list = materialDao.findAll();
-        for (MaterialEntity e : list) {
-            map.put(e.getId()+"", e.getNo() + ":" + e.getName());
-        }
-        return map;
     }
 }

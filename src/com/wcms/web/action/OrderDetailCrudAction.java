@@ -57,7 +57,7 @@ public class OrderDetailCrudAction extends BaseAction {
         Result result = new Result();
         try {
             orderDetailCrudService.update(entity);
-        } catch (ServiceException e) {
+        } catch (Exception e) {
             result.setCode(1);
             result.setMsg(e.getMessage());
         }
@@ -71,5 +71,19 @@ public class OrderDetailCrudAction extends BaseAction {
 
     public void setOrderDetailCrudService(OrderDetailCrudService OrderDetailCrudService) {
         this.orderDetailCrudService = OrderDetailCrudService;
+    }
+
+    public String findByOrderId() throws Exception {
+        Result<List<OrderDetailEntity>> result = new Result();
+        OrderDetailEntity request = getRequest(OrderDetailEntity.class);
+        try {
+            List<OrderDetailEntity> byOrderId = orderDetailCrudService.findByOrderId(request.getOrder().getId());
+            result.setData(byOrderId);
+        } catch (Exception e) {
+            result.setCode(1);
+            result.setMsg(e.getMessage());
+        }
+        sendResult(result);
+        return NONE;
     }
 }

@@ -203,3 +203,43 @@ function return_detail_update(id, material, counts, callback) {
     exec(arguments);
 }
 //退货明细
+
+//订做登记
+function order_getall(callback) {
+    exec(arguments);
+}
+function order_add(orderTime, customer, deliveryTime, downpayment, comments, callback) {
+    exec(arguments);
+}
+function order_remove(id, callback) {
+    exec(arguments);
+}
+function order_update(id, no, orderTime, customer, deliveryTime, downpayment, comments, callback) {
+    exec(arguments);
+}
+//订做登记
+
+//订做明细
+function order_detail_getall(order, callback) {
+    exec(arguments);
+}
+function order_detail_add(curtain, order, location, height, width, counts, comments, callback) {
+    exec(arguments);
+}
+function order_detail_remove(id, callback) {
+    exec(arguments);
+}
+function order_detail_update(id, curtain, location, height, width, counts, comments, callback) {
+    exec(arguments);
+}
+//订做明细
+
+//签收登记
+function order_sign_add(no, acceptanceTime, amountPaid, commentsSign, callback) {
+    exec(arguments);
+}
+function order_sign_update(id, acceptanceTime, amountPaid, commentsSign, callback) {
+    exec(arguments);
+}
+//签收登记
+
