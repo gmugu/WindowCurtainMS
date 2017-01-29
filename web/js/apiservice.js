@@ -235,7 +235,13 @@ function order_detail_update(id, curtain, location, height, width, counts, comme
 //订做明细
 
 //签收登记
+function order_sign_getall(callback) {
+    exec(arguments);
+}
 function order_sign_add(no, acceptanceTime, amountPaid, commentsSign, callback) {
+    exec(arguments);
+}
+function order_sign_remove(id, callback) {
     exec(arguments);
 }
 function order_sign_update(id, acceptanceTime, amountPaid, commentsSign, callback) {
@@ -243,3 +249,47 @@ function order_sign_update(id, acceptanceTime, amountPaid, commentsSign, callbac
 }
 //签收登记
 
+//业务预约
+function business_getall(callback) {
+    exec(arguments);
+}
+function business_add(signTime, businessType, customer, appointmentTime, comments, callback) {
+    exec(arguments);
+}
+function business_remove(id, callback) {
+    exec(arguments);
+}
+function business_update(id, no, signTime, businessType, customer, appointmentTime, comments, callback) {
+    exec(arguments);
+}
+//业务预约
+
+//派工登记
+function business_sign_getall(callback) {
+    exec(arguments);
+}
+function business_sign_add(no, acceptanceTime, commentsReg, callback) {
+    exec(arguments);
+}
+function business_sign_remove(id, callback) {
+    exec(arguments);
+}
+function business_sign_update(id, acceptanceTime, commentsReg, callback) {
+    exec(arguments);
+}
+//派工登记
+
+//售后服务
+function after_sales_getall(callback) {
+    exec(arguments);
+}
+function after_sales_add(time, customer, employee, comments, callback) {
+    exec(arguments);
+}
+function after_sales_remove(id, callback) {
+    exec(arguments);
+}
+function after_sales_update(id, time, customer, employee, comments, callback) {
+    exec(arguments);
+}
+//售后服务

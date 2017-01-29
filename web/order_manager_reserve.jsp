@@ -195,9 +195,9 @@
                     var aData = oTable.fnGetData(nRow);
                     var id = aData[0];
                     var no = aData[1];
-                    var orderTime = jqInputs[0].value !== '' ? jqInputs[0].value : '2016-1-1';
+                    var orderTime = jqInputs[0].value;
                     var customer = {"no": jqSelects[0].options[jqSelects[0].selectedIndex].text.split(':')[0]};
-                    var deliveryTime = jqInputs[1].value !== '' ? jqInputs[1].value : '2016-1-1';
+                    var deliveryTime = jqInputs[1].value;
                     var downpayment = jqInputs[2].value !== '' ? jqInputs[2].value : 0;
                     var comments = jqInputs[3].value;
                     if (aData[0] !== '') {

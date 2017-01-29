@@ -204,7 +204,7 @@
                     var aData = oTable.fnGetData(nRow);
                     var id = aData[0];
                     var no = aData[1];
-                    var returnDate = jqInputs[0].value !== '' ? jqInputs[0].value : '2016-1-1';
+                    var returnDate = jqInputs[0].value;
                     var operator = {"no": jqSelects[0].options[jqSelects[0].selectedIndex].text.split(':')[0]};
                     var warehouse = {"no": jqSelects[1].options[jqSelects[1].selectedIndex].text.split(':')[0]};
                     var supplier = {"no": jqSelects[2].options[jqSelects[2].selectedIndex].text.split(':')[0]};

@@ -28,7 +28,8 @@ public class AfterSalesServiceCrudAction extends BaseAction {
         try {
             afterSalesServiceCrudService.add(entity);
             result.setData(entity);
-        } catch (ServiceException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             result.setCode(1);
             result.setMsg(e.getMessage());
         }
@@ -41,7 +42,8 @@ public class AfterSalesServiceCrudAction extends BaseAction {
         Result result = new Result();
         try {
             afterSalesServiceCrudService.delete(entity.getId());
-        } catch (ServiceException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             result.setCode(1);
             result.setMsg(e.getMessage());
         }
@@ -54,7 +56,8 @@ public class AfterSalesServiceCrudAction extends BaseAction {
         Result result = new Result();
         try {
             afterSalesServiceCrudService.update(entity);
-        } catch (ServiceException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             result.setCode(1);
             result.setMsg(e.getMessage());
         }

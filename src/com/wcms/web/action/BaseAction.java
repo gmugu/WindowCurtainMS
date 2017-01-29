@@ -3,6 +3,10 @@ package com.wcms.web.action;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.opensymphony.xwork2.ActionSupport;
+import com.wcms.util.gson.DateAdapter;
+import com.wcms.util.gson.DoubleAdapter;
+import com.wcms.util.gson.IntegerAdapter;
+import com.wcms.util.gson.LongAdapter;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -12,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.Map;
 
 
@@ -23,7 +28,16 @@ public class BaseAction extends ActionSupport implements SessionAware {
 
     protected Map<String, Object> session;
     private String data;
-    private Gson gson = new GsonBuilder().setDateFormat("YYYY-MM-dd").create();
+    private Gson gson = new GsonBuilder()
+            .registerTypeAdapter(Integer.class, new IntegerAdapter())
+            .registerTypeAdapter(int.class, new IntegerAdapter())
+            .registerTypeAdapter(Double.class, new DoubleAdapter())
+            .registerTypeAdapter(double.class, new DoubleAdapter())
+            .registerTypeAdapter(Long.class, new LongAdapter())
+            .registerTypeAdapter(long.class, new LongAdapter())
+            .registerTypeAdapter(Date.class,new DateAdapter("yyyy-MM-dd"))
+//            .setDateFormat("yyyy-MM-dd")
+            .create();
 
     protected <T> T getRequest(Class<T> type) {
         System.out.println(getClass().getSimpleName() + ".getRequest---" + data);

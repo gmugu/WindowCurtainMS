@@ -16,8 +16,8 @@ public class BusinessEntity {
     private Date appointmentTime;
     private String state;
     private Date acceptanceTime;
-    private Double amount;
     private String comments;
+    private String commentsReg;
     private CustomerEntity customer;
 
     @Id
@@ -92,16 +92,6 @@ public class BusinessEntity {
     }
 
     @Basic
-    @Column(name = "amount")
-    public Double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
-    @Basic
     @Column(name = "comments")
     public String getComments() {
         return comments;
@@ -109,6 +99,16 @@ public class BusinessEntity {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    @Basic
+    @Column(name = "comments_reg")
+    public String getCommentsReg() {
+        return commentsReg;
+    }
+
+    public void setCommentsReg(String commentsReg) {
+        this.commentsReg = commentsReg;
     }
 
     @ManyToOne
@@ -137,8 +137,8 @@ public class BusinessEntity {
         if (state != null ? !state.equals(that.state) : that.state != null) return false;
         if (acceptanceTime != null ? !acceptanceTime.equals(that.acceptanceTime) : that.acceptanceTime != null)
             return false;
-        if (amount != null ? !amount.equals(that.amount) : that.amount != null) return false;
         if (comments != null ? !comments.equals(that.comments) : that.comments != null) return false;
+        if (commentsReg != null ? !commentsReg.equals(that.commentsReg) : that.commentsReg != null) return false;
         return !(customer != null ? !customer.equals(that.customer) : that.customer != null);
 
     }
@@ -152,8 +152,8 @@ public class BusinessEntity {
         result = 31 * result + (appointmentTime != null ? appointmentTime.hashCode() : 0);
         result = 31 * result + (state != null ? state.hashCode() : 0);
         result = 31 * result + (acceptanceTime != null ? acceptanceTime.hashCode() : 0);
-        result = 31 * result + (amount != null ? amount.hashCode() : 0);
         result = 31 * result + (comments != null ? comments.hashCode() : 0);
+        result = 31 * result + (commentsReg != null ? commentsReg.hashCode() : 0);
         result = 31 * result + (customer != null ? customer.hashCode() : 0);
         return result;
     }
@@ -168,8 +168,8 @@ public class BusinessEntity {
                 ", appointmentTime=" + appointmentTime +
                 ", state='" + state + '\'' +
                 ", acceptanceTime=" + acceptanceTime +
-                ", amount=" + amount +
                 ", comments='" + comments + '\'' +
+                ", commentsReg='" + commentsReg + '\'' +
                 ", customer=" + customer +
                 '}';
     }

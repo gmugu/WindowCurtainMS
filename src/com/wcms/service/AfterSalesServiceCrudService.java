@@ -1,6 +1,8 @@
 package com.wcms.service;
 
 import com.wcms.dao.AfterSalesServiceDao;
+import com.wcms.dao.CustomerDao;
+import com.wcms.dao.EmployeeDao;
 import com.wcms.entity.AfterSalesServiceEntity;
 import com.wcms.service.exception.ServiceException;
 
@@ -13,6 +15,8 @@ import java.util.Set;
  */
 public class AfterSalesServiceCrudService {
     private AfterSalesServiceDao afterSalesServiceDao;
+    private CustomerDao customerDao;
+    private EmployeeDao employeeDao;
 
     private String genNo() {
         List<AfterSalesServiceEntity> all = afterSalesServiceDao.findAll();
@@ -21,7 +25,7 @@ public class AfterSalesServiceCrudService {
             set.add(e.getNo());
         }
         for (int i = 1; ; i++) {
-            String no = String.format("CL%03d", i);
+            String no = String.format("SH%03d", i);
             if (!set.contains(no)) {
                 return no;
             }
@@ -38,7 +42,8 @@ public class AfterSalesServiceCrudService {
                 throw new ServiceException("编号已存在");
             }
         }
-
+        entity.setCustomer(customerDao.findByNo(entity.getCustomer().getNo()));
+        entity.setEmployee(employeeDao.findByNo(entity.getEmployee().getNo()));
         afterSalesServiceDao.save(entity);
     }
 
@@ -51,7 +56,12 @@ public class AfterSalesServiceCrudService {
     }
 
     public void update(AfterSalesServiceEntity entity) throws ServiceException {
-        afterSalesServiceDao.saveOrUpdate(entity);
+        AfterSalesServiceEntity byId = afterSalesServiceDao.findById(entity.getId());
+        byId.setTime(entity.getTime());
+        byId.setComments(entity.getComments());
+        byId.setCustomer(customerDao.findByNo(entity.getCustomer().getNo()));
+        byId.setEmployee(employeeDao.findByNo(entity.getEmployee().getNo()));
+        afterSalesServiceDao.saveOrUpdate(byId);
     }
 
     public List<AfterSalesServiceEntity> findAll() {
@@ -64,5 +74,21 @@ public class AfterSalesServiceCrudService {
 
     public void setAfterSalesServiceDao(AfterSalesServiceDao afterSalesServiceDao) {
         this.afterSalesServiceDao = afterSalesServiceDao;
+    }
+
+    public CustomerDao getCustomerDao() {
+        return customerDao;
+    }
+
+    public void setCustomerDao(CustomerDao customerDao) {
+        this.customerDao = customerDao;
+    }
+
+    public EmployeeDao getEmployeeDao() {
+        return employeeDao;
+    }
+
+    public void setEmployeeDao(EmployeeDao employeeDao) {
+        this.employeeDao = employeeDao;
     }
 }

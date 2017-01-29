@@ -1,23 +1,20 @@
-<!--采购登记-->
+<!--售后服务-->
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
 <%@ page import="org.springframework.context.ApplicationContext" %>
 <%@ page import="com.wcms.service.EmployeeCrudService" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="com.wcms.util.HtmlTagGenerater" %>
-<%@ page import="com.wcms.service.WarehouseCrudService" %>
-<%@ page import="com.wcms.service.SupplierCrudService" %>
+<%@ page import="com.wcms.service.CustomerCrudService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     ServletContext context = request.getSession().getServletContext();
     ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(context);
     EmployeeCrudService employeeCrudService = (EmployeeCrudService) ctx.getBean("employeeCrudService");
-    WarehouseCrudService warehouseCrudService = (WarehouseCrudService) ctx.getBean("warehouseCrudService");
-    SupplierCrudService supplierCrudService = (SupplierCrudService) ctx.getBean("supplierCrudService");
+    CustomerCrudService customerCrudService = (CustomerCrudService) ctx.getBean("customerCrudService");
 
     Map<String, String> employeeOpt = employeeCrudService.getEmployeeOpt();
-    Map<String, String> warehouseOpt = warehouseCrudService.getWarehouseOpt();
-    Map<String, String> supplierOpt = supplierCrudService.getSupplierOpt();
+    Map<String, String> customerOpt = customerCrudService.getCustomerOpt();
 
 %>
 <!DOCTYPE html>
@@ -27,7 +24,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>采购登记</title>
+    <title>售后服务</title>
 
     <link rel="shortcut icon" href="images/favicon.ico">
     <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
@@ -50,7 +47,7 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>采购登记</h5>
+                    <h5>售后服务</h5>
 
                 </div>
                 <div class="ibox-content">
@@ -62,15 +59,11 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>采购单号</th>
-                            <th>采购日期</th>
-                            <th>操作员</th>
-                            <th>仓库名称</th>
-                            <th>供应商</th>
-                            <th>总金额</th>
-                            <th>实付金额</th>
-                            <th>欠付金额</th>
-                            <th>采购明细</th>
+                            <th>服务单号</th>
+                            <th>服务日期</th>
+                            <th>客户</th>
+                            <th>服务人员</th>
+                            <th>备注</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -139,16 +132,13 @@
                     // jqTds[0].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[0] + '">';
                     // jqTds[1].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[1] + '">';
                     jqTds[2].innerHTML = '<input type="text" class="form-control input-small" onclick="layui.laydate({elem: this})" value="' + aData[2] + '">';
-                    jqTds[3].innerHTML = '<%=HtmlTagGenerater.genSelectTag(employeeOpt)%>';
+                    jqTds[3].innerHTML = '<%=HtmlTagGenerater.genSelectTag(customerOpt)%>';
                     setSelected(jqTds[3].children[0], aData[3]);
-                    jqTds[4].innerHTML = '<%=HtmlTagGenerater.genSelectTag(warehouseOpt)%>';
+                    jqTds[4].innerHTML = '<%=HtmlTagGenerater.genSelectTag(employeeOpt)%>';
                     setSelected(jqTds[4].children[0], aData[4]);
-                    jqTds[5].innerHTML = '<%=HtmlTagGenerater.genSelectTag(supplierOpt)%>';
-                    setSelected(jqTds[5].children[0], aData[5]);
-                    jqTds[6].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[6] + '">';
-                    jqTds[7].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[7] + '">';
-                    jqTds[10].innerHTML = '<a class="edit" href="">Save</a>';
-                    jqTds[11].innerHTML = '<a class="cancel" href="">Cancel</a>';
+                    jqTds[5].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[5] + '">';
+                    jqTds[6].innerHTML = '<a class="edit" href="">Save</a>';
+                    jqTds[7].innerHTML = '<a class="cancel" href="">Cancel</a>';
                 }
 
                 function saveRow(oTable, nRow) {
@@ -164,7 +154,7 @@
                 }
 
                 function ajaxInitData() {
-                    procurement_getall({
+                    after_sales_getall({
                         success: function (result) {
                             if (result.code != 0) {
                                 alert("错误:" + result.msg);
@@ -178,18 +168,12 @@
                                 var a = [];
                                 a.push(row.id);
                                 a.push(row.no);
-                                a.push(row.buyDate);
-                                var operator = row.operator;
-                                a.push(operator.no + ':' + operator.name);
-                                var warehouse = row.warehouse;
-                                a.push(warehouse.no + ':' + warehouse.name);
-                                var supplier = row.supplier;
-                                a.push(supplier.no + ':' + supplier.name);
-
-                                a.push(ifor(row.totalPaid, '0'));
-                                a.push(ifor(row.amountPaid, '0'));
-                                a.push(ifor(row.totalPaid - row.amountPaid, ''));
-                                a.push('<a class="details" href="">采购明细</a>');
+                                a.push(row.time);
+                                var customer = row.customer;
+                                a.push(customer.no + ':' + customer.name);
+                                var employee = row.employee;
+                                a.push(employee.no + ':' + employee.name);
+                                a.push(ifor(row.comments, ''));
                                 a.push('<a class="edit" href="">Edit</a>');
                                 a.push('<a class="delete" href="">Delete</a>');
                                 oTable.fnAddData(a);
@@ -209,26 +193,20 @@
                     var aData = oTable.fnGetData(nRow);
                     var id = aData[0];
                     var no = aData[1];
-                    var buyDate = jqInputs[0].value;
-                    var operator = {"no": jqSelects[0].options[jqSelects[0].selectedIndex].text.split(':')[0]};
-                    var warehouse = {"no": jqSelects[1].options[jqSelects[1].selectedIndex].text.split(':')[0]};
-                    var supplier = {"no": jqSelects[2].options[jqSelects[2].selectedIndex].text.split(':')[0]};
-                    var totalPaid = jqInputs[1].value !== '' ? jqInputs[1].value : 0;
-                    var amountPaid = jqInputs[2].value !== '' ? jqInputs[2].value : 0;
+                    var time = jqInputs[0].value;
+                    var customer = {"no": jqSelects[0].options[jqSelects[0].selectedIndex].text.split(':')[0]};
+                    var employee = {"no": jqSelects[1].options[jqSelects[1].selectedIndex].text.split(':')[0]};
+                    var comments = jqInputs[1].value;
                     if (aData[0] !== '') {
-                        procurement_update(id, no, buyDate, operator, warehouse, supplier, totalPaid, amountPaid, {
+                        after_sales_update(id, time, customer, employee, comments, {
                             success: function (result) {
                                 if (result.code === 0) {
-                                    oTable.fnUpdate(buyDate, nRow, 2, false);
-                                    oTable.fnUpdate(totalPaid, nRow, 6, false);
-                                    oTable.fnUpdate(amountPaid, nRow, 7, false);
+                                    oTable.fnUpdate(time, nRow, 2, false);
                                     oTable.fnUpdate(jqSelects[0].options[jqSelects[0].selectedIndex].text, nRow, 3, false);
                                     oTable.fnUpdate(jqSelects[1].options[jqSelects[1].selectedIndex].text, nRow, 4, false);
-                                    oTable.fnUpdate(jqSelects[2].options[jqSelects[2].selectedIndex].text, nRow, 5, false);
-                                    oTable.fnUpdate(parseFloat(totalPaid) - parseFloat(amountPaid), nRow, 8, false);
-                                    oTable.fnUpdate('<a class="details" href="">采购明细</a>', nRow, 9, false);
-                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 10, false);
-                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 11, false);
+                                    oTable.fnUpdate(ifor(comments, ''), nRow, 5, false);
+                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 6, false);
+                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 7, false);
                                     oTable.fnDraw();
                                 } else {
                                     alert(result.msg);
@@ -241,22 +219,18 @@
                             }
                         });
                     } else {
-                        procurement_add(buyDate, operator, warehouse, supplier, totalPaid, amountPaid, {
+                        after_sales_add(time, customer, employee, comments, {
                             success: function (result) {
                                 if (result.code === 0) {
                                     var data = result.data;
                                     oTable.fnUpdate(data.id, nRow, 0, false);
                                     oTable.fnUpdate(data.no, nRow, 1, false);
-                                    oTable.fnUpdate(buyDate, nRow, 2, false);
-                                    oTable.fnUpdate(totalPaid, nRow, 6, false);
-                                    oTable.fnUpdate(amountPaid, nRow, 7, false);
+                                    oTable.fnUpdate(time, nRow, 2, false);
                                     oTable.fnUpdate(jqSelects[0].options[jqSelects[0].selectedIndex].text, nRow, 3, false);
                                     oTable.fnUpdate(jqSelects[1].options[jqSelects[1].selectedIndex].text, nRow, 4, false);
-                                    oTable.fnUpdate(jqSelects[2].options[jqSelects[2].selectedIndex].text, nRow, 5, false);
-                                    oTable.fnUpdate(parseFloat(totalPaid) - parseFloat(amountPaid), nRow, 8, false);
-                                    oTable.fnUpdate('<a class="details" href="">采购明细</a>', nRow, 9, false);
-                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 10, false);
-                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 11, false);
+                                    oTable.fnUpdate(ifor(comments, ''), nRow, 5, false);
+                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 6, false);
+                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 7, false);
                                     oTable.fnDraw();
                                 } else {
                                     alert(result.msg);
@@ -276,7 +250,7 @@
 
                     var aData = oTable.fnGetData(nRow);
 
-                    procurement_remove(aData[0], {
+                    after_sales_remove(aData[0], {
                         success: function (result) {
                             if (result.code == 0) {
                                 oTable.fnDeleteRow(nRow);
@@ -345,7 +319,7 @@
                         }
                     }
 
-                    var aiNew = oTable.fnAddData(['', '', '', '', '', '', '0', '0', '', '', '', '']);
+                    var aiNew = oTable.fnAddData(['', '', '', '', '', '', '', '']);
                     var nRow = oTable.fnGetNodes(aiNew[0]);
                     editRow(oTable, nRow);
                     nEditing = nRow;

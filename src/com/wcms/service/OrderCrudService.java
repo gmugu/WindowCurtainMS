@@ -24,7 +24,7 @@ public class OrderCrudService {
             set.add(e.getNo());
         }
         for (int i = 1; ; i++) {
-            String no = String.format("CL%03d", i);
+            String no = String.format("DD%03d", i);
             if (!set.contains(no)) {
                 return no;
             }
@@ -64,6 +64,31 @@ public class OrderCrudService {
         orderDao.saveOrUpdate(byId);
     }
 
+    public OrderlEntity signAdd(OrderlEntity entity) throws ServiceException {
+        OrderlEntity byNo = orderDao.findByNo(entity.getNo());
+        if (byNo == null) {
+            throw new ServiceException("订单号不存在，无法签收");
+        }
+        if ("签收".equals(byNo.getState())) {
+            throw new ServiceException("订单号已签收");
+        }
+        byNo.setAcceptanceTime(entity.getAcceptanceTime());
+        byNo.setAmountPaid(entity.getAmountPaid());
+        byNo.setCommentsSign(entity.getCommentsSign());
+        byNo.setState("签收");
+        orderDao.saveOrUpdate(byNo);
+        return byNo;
+    }
+
+    public OrderlEntity signUpdate(OrderlEntity entity) throws ServiceException {
+        OrderlEntity byId = orderDao.findById(entity.getId());
+        byId.setAcceptanceTime(entity.getAcceptanceTime());
+        byId.setAmountPaid(entity.getAmountPaid());
+        byId.setCommentsSign(entity.getCommentsSign());
+        orderDao.saveOrUpdate(byId);
+        return byId;
+    }
+
     public List<OrderlEntity> findAll() {
         return orderDao.findAll();
     }
@@ -83,5 +108,18 @@ public class OrderCrudService {
 
     public void setCustomerDao(CustomerDao customerDao) {
         this.customerDao = customerDao;
+    }
+
+
+    public void signDelete(int id) throws ServiceException {
+        OrderlEntity entity = orderDao.findById(id);
+        if (entity == null) {
+            throw new ServiceException("id不存在");
+        }
+        entity.setState("预定");
+        entity.setAcceptanceTime(null);
+        entity.setAmountPaid(null);
+        entity.setCommentsSign(null);
+        orderDao.saveOrUpdate(entity);
     }
 }

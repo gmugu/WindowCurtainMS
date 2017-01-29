@@ -122,10 +122,13 @@
 
     <bean id="afterSalesServiceCrudService" class="com.wcms.service.AfterSalesServiceCrudService">
         <property name="afterSalesServiceDao" ref="afterSalesServiceDao"/>
+        <property name="customerDao" ref="customerDao"/>
+        <property name="employeeDao" ref="employeeDao"/>
     </bean>
 
     <bean id="businessCrudService" class="com.wcms.service.BusinessCrudService">
         <property name="businessDao" ref="businessDao"/>
+        <property name="customerDao" ref="customerDao"/>
     </bean>
     <bean id="orderCrudService" class="com.wcms.service.OrderCrudService">
         <property name="orderDao" ref="orderDao"/>

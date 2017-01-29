@@ -155,7 +155,7 @@
                 }
 
                 function ajaxInitData() {
-                    order_getall({
+                    order_sign_getall({
                         success: function (result) {
                             if (result.code != 0) {
                                 alert("错误:" + result.msg);
@@ -177,7 +177,7 @@
                                 a.push(row.state);
                                 a.push(ifor(row.acceptanceTime, ''));
                                 a.push(ifor(row.amountPaid, ''));
-                                a.push(ifor(row.comments, ''));
+                                a.push(ifor(row.commentsSign, ''));
                                 a.push('<a class="details" href="">订做明细</a>');
                                 a.push('<a class="edit" href="">Edit</a>');
                                 a.push('<a class="delete" href="">Delete</a>');
@@ -196,53 +196,65 @@
                     var jqInputs = $('input', nRow);
                     var aData = oTable.fnGetData(nRow);
                     var id = aData[0];
-                    var no = aData[1];
-                    var acceptanceTime = jqInputs[0].value !== '' ? jqInputs[0].value : '2016-1-1';
-                    var amountPaid = jqInputs[1].value !== '' ? jqInputs[1].value : 0;
-                    var commentsSign = jqInputs[2].value !== '' ? jqInputs[2].value : '';
+
                     if (aData[0] !== '') {
+                        var acceptanceTime = jqInputs[0].value;
+                        var amountPaid = jqInputs[1].value !== '' ? jqInputs[1].value : 0;
+                        var commentsSign = jqInputs[2].value;
                         order_sign_update(id, acceptanceTime, amountPaid, commentsSign, {
                                     success: function (result) {
                                         if (result.code === 0) {
-                                            oTable.fnUpdate(orderTime, nRow, 2, false);
-                                            oTable.fnUpdate(jqSelects[0].options[jqSelects[0].selectedIndex].text, nRow, 3, false);
-                                            oTable.fnUpdate(deliveryTime, nRow, 4, false);
-                                            oTable.fnUpdate(downpayment, nRow, 5, false);
-//                                    oTable.fnUpdate("预定", nRow, 6, false);
-                                            oTable.fnUpdate(comments, nRow, 7, false);
-                                            oTable.fnUpdate('<a class="details" href="">订做明细</a>', nRow, 8, false);
-                                            oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 9, false);
-                                            oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 10, false);
+
+                                            var data = result.data;
+                                            oTable.fnUpdate(data.orderTime, nRow, 2, false);
+                                            var customer = data.customer;
+                                            oTable.fnUpdate(customer.no + ':' + customer.name, nRow, 3, false);
+                                            oTable.fnUpdate(data.deliveryTime, nRow, 4, false);
+                                            oTable.fnUpdate(data.downpayment, nRow, 5, false);
+                                            oTable.fnUpdate(data.state, nRow, 6, false);
+                                            oTable.fnUpdate(acceptanceTime, nRow, 7, false);
+                                            oTable.fnUpdate(data.amountPaid, nRow, 8, false);
+                                            oTable.fnUpdate(data.commentsSign, nRow, 9, false);
+
+                                            oTable.fnUpdate('<a class="details" href="">订做明细</a>', nRow, 10, false);
+                                            oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 11, false);
+                                            oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 12, false);
                                             oTable.fnDraw();
                                         } else {
                                             alert(result.msg);
                                             ajaxInitData();
                                         }
-                                    }
-                                    ,
+                                    },
                                     error: function (xhr, msg) {
                                         alert(msg);
                                         ajaxInitData();
                                     }
                                 }
-                        )
-                        ;
+                        );
                     } else {
-                        order_sign_add(orderTime, customer, deliveryTime, downpayment, comments, {
+                        var no = jqInputs[0].value;
+                        var acceptanceTime = jqInputs[1].value !== '' ? jqInputs[1].value : '';
+                        var amountPaid = jqInputs[2].value !== '' ? jqInputs[2].value : 0;
+                        var commentsSign = jqInputs[3].value !== '' ? jqInputs[3].value : '';
+                        order_sign_add(no, acceptanceTime, amountPaid, commentsSign, {
                             success: function (result) {
                                 if (result.code === 0) {
                                     var data = result.data;
                                     oTable.fnUpdate(data.id, nRow, 0, false);
                                     oTable.fnUpdate(data.no, nRow, 1, false);
-                                    oTable.fnUpdate(orderTime, nRow, 2, false);
-                                    oTable.fnUpdate(jqSelects[0].options[jqSelects[0].selectedIndex].text, nRow, 3, false);
-                                    oTable.fnUpdate(deliveryTime, nRow, 4, false);
-                                    oTable.fnUpdate(downpayment, nRow, 5, false);
-                                    oTable.fnUpdate("预定", nRow, 6, false);
-                                    oTable.fnUpdate(comments, nRow, 7, false);
-                                    oTable.fnUpdate('<a class="details" href="">订做明细</a>', nRow, 8, false);
-                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 9, false);
-                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 10, false);
+                                    oTable.fnUpdate(data.orderTime, nRow, 2, false);
+                                    var customer = data.customer;
+                                    oTable.fnUpdate(customer.no + ':' + customer.name, nRow, 3, false);
+                                    oTable.fnUpdate(data.deliveryTime, nRow, 4, false);
+                                    oTable.fnUpdate(data.downpayment, nRow, 5, false);
+                                    oTable.fnUpdate(data.state, nRow, 6, false);
+                                    oTable.fnUpdate(acceptanceTime, nRow, 7, false);
+                                    oTable.fnUpdate(data.amountPaid, nRow, 8, false);
+                                    oTable.fnUpdate(data.commentsSign, nRow, 9, false);
+
+                                    oTable.fnUpdate('<a class="details" href="">订做明细</a>', nRow, 10, false);
+                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 11, false);
+                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 12, false);
                                     oTable.fnDraw();
                                 } else {
                                     alert(result.msg);
@@ -262,7 +274,7 @@
 
                     var aData = oTable.fnGetData(nRow);
 
-                    order_remove(aData[0], {
+                    order_sign_remove(aData[0], {
                         success: function (result) {
                             if (result.code == 0) {
                                 oTable.fnDeleteRow(nRow);
@@ -373,7 +385,7 @@
                     if (nEditing !== null && nEditing != nRow) {
                         /* Currently editing - but not this row - restore the old before continuing to edit mode */
                         restoreRow(oTable, nEditing);
-                        editRow(oTable, nRow);
+                        editRow(oTable, nRow, 1);
                         nEditing = nRow;
                     } else if (nEditing == nRow && this.innerHTML == "Save") {
                         /* Editing this row and want to save it */

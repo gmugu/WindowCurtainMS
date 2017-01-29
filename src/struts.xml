@@ -53,7 +53,8 @@
         <!--材料登记增删改查-->
 
         <!--采购明细增删改查-->
-        <action name="procurement_detail_getall" class="procurementDetailCrudAction" method="findByProcurementId"></action>
+        <action name="procurement_detail_getall" class="procurementDetailCrudAction"
+                method="findByProcurementId"></action>
         <action name="procurement_detail_add" class="procurementDetailCrudAction" method="add"></action>
         <action name="procurement_detail_remove" class="procurementDetailCrudAction" method="remove"></action>
         <action name="procurement_detail_update" class="procurementDetailCrudAction" method="update"></action>
@@ -87,5 +88,32 @@
         <action name="order_detail_update" class="orderDetailCrudAction" method="update"></action>
         <!--退货明细增删改查-->
 
+        <!--签收登记-->
+        <action name="order_sign_getall" class="orderCrudAction" method="signGetall"></action>
+        <action name="order_sign_add" class="orderCrudAction" method="signAdd"></action>
+        <action name="order_sign_remove" class="orderCrudAction" method="signRemove"></action>
+        <action name="order_sign_update" class="orderCrudAction" method="signUpdate"></action>
+        <!--签收登记-->
+
+        <!--业务预约-->
+        <action name="business_getall" class="businessCrudAction" method="getall"></action>
+        <action name="business_add" class="businessCrudAction" method="add"></action>
+        <action name="business_remove" class="businessCrudAction" method="remove"></action>
+        <action name="business_update" class="businessCrudAction" method="update"></action>
+        <!--业务预约-->
+
+        <!--派工登记-->
+        <action name="business_sign_getall" class="businessCrudAction" method="signGetall"></action>
+        <action name="business_sign_add" class="businessCrudAction" method="signAdd"></action>
+        <action name="business_sign_remove" class="businessCrudAction" method="signRemove"></action>
+        <action name="business_sign_update" class="businessCrudAction" method="signUpdate"></action>
+        <!--派工登记-->
+
+        <!--售后服务-->
+        <action name="after_sales_getall" class="afterSalesServiceCrudAction" method="getall"></action>
+        <action name="after_sales_add" class="afterSalesServiceCrudAction" method="add"></action>
+        <action name="after_sales_remove" class="afterSalesServiceCrudAction" method="remove"></action>
+        <action name="after_sales_update" class="afterSalesServiceCrudAction" method="update"></action>
+        <!--售后服务-->
     </package>
 </struts>
