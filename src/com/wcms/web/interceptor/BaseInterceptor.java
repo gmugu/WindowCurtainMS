@@ -1,33 +1,31 @@
-package com.wcms.web.action;
+package com.wcms.web.interceptor;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionInvocation;
+import com.opensymphony.xwork2.interceptor.Interceptor;
 import com.wcms.util.gson.DateAdapter;
 import com.wcms.util.gson.DoubleAdapter;
 import com.wcms.util.gson.IntegerAdapter;
 import com.wcms.util.gson.LongAdapter;
 import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.interceptor.SessionAware;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.Map;
 
-
 /**
- * Created by Administrator on 2017/1/19.
+ * Created by mugu on 16-4-25.
  */
-public class BaseAction extends ActionSupport implements SessionAware {
+public class BaseInterceptor implements Interceptor {
 
-
-    protected Map<String, Object> session;
-    private String data;
+    private HttpServletRequest request;
+    private HttpServletResponse response;
+    private Map<String, Object> session;
     private Gson gson = new GsonBuilder()
             .registerTypeAdapter(Integer.class, new IntegerAdapter())
             .registerTypeAdapter(int.class, new IntegerAdapter())
@@ -38,14 +36,46 @@ public class BaseAction extends ActionSupport implements SessionAware {
             .registerTypeAdapter(Date.class, new DateAdapter("yyyy-MM-dd"))
 //            .setDateFormat("yyyy-MM-dd")
             .create();
+    @Override
+    public void destroy() {
 
-    protected <T> T getRequest(Class<T> type) {
-        StackTraceElement stack[] = (new Throwable()).getStackTrace();
-        System.out.println(getClass().getSimpleName() + "." + stack[1].getMethodName() + "(getRequest)---" + data);
-        if (data == null) {
-            return null;
+    }
+
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    public String intercept(ActionInvocation actionInvocation) throws Exception {
+        ActionContext invocationContext = actionInvocation.getInvocationContext();
+        request = (HttpServletRequest) invocationContext.get(ServletActionContext.HTTP_REQUEST);
+        response = (HttpServletResponse) invocationContext.get(ServletActionContext.HTTP_RESPONSE);
+        response.setCharacterEncoding("utf-8");
+        session = invocationContext.getSession();
+        return null;
+    }
+
+    public HttpServletRequest getRequest() {
+        if (request == null) {
+            throw new RuntimeException("You must invoke the super method of intercept()");
         }
-        return gson.fromJson(data, type);
+        return request;
+    }
+
+
+    public HttpServletResponse getResponse() {
+        if (response == null) {
+            throw new RuntimeException("You must invoke the super method of intercept()");
+        }
+        return response;
+    }
+
+    public Map<String, Object> getSession() {
+        if (session == null) {
+            throw new RuntimeException("You must invoke the super method of intercept()");
+        }
+        return session;
     }
 
     protected <T> void sendResult(T result) {
@@ -68,40 +98,4 @@ public class BaseAction extends ActionSupport implements SessionAware {
         }
 
     }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        session = map;
-    }
-
-    protected ServletContext getServletContext() {
-        return ServletActionContext.getServletContext();
-    }
-
-    protected HttpServletResponse getResponse() {
-        HttpServletResponse response = ServletActionContext.getResponse();
-        response.setCharacterEncoding("utf-8");
-        return response;
-    }
-
-    protected HttpServletRequest getRequest() {
-        return ServletActionContext.getRequest();
-    }
-
-    protected HttpSession getHttpSession() {
-        return getRequest().getSession(true);
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public Map<String, Object> getSession() {
-        return session;
-    }
-
 }

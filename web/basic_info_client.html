@@ -105,6 +105,7 @@
                     jqTds[5].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[5] + '">';
                     jqTds[6].innerHTML = '<a class="edit" href="">Save</a>';
                     jqTds[7].innerHTML = '<a class="cancel" href="">Cancel</a>';
+
                 }
 
                 function saveRow(oTable, nRow) {
@@ -161,6 +162,7 @@
                                     oTable.fnUpdate(jqInputs[3].value, nRow, 5, false);
                                     oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 6, false);
                                     oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 7, false);
+                                    oTable.fnDraw();
                                 } else {
                                     alert(result.msg);
                                     ajaxInitData();

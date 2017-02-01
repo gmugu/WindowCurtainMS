@@ -1,21 +1,13 @@
-<!--售后服务-->
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
-<%@ page import="org.springframework.context.ApplicationContext" %>
-<%@ page import="com.wcms.service.EmployeeCrudService" %>
+<!--系统用户管理-->
+<%@ page import="java.util.LinkedHashMap" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="com.wcms.util.HtmlTagGenerater" %>
-<%@ page import="com.wcms.service.CustomerCrudService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    ServletContext context = request.getSession().getServletContext();
-    ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(context);
-    EmployeeCrudService employeeCrudService = (EmployeeCrudService) ctx.getBean("employeeCrudService");
-    CustomerCrudService customerCrudService = (CustomerCrudService) ctx.getBean("customerCrudService");
-
-    Map<String, String> employeeOpt = employeeCrudService.getEmployeeOpt();
-    Map<String, String> customerOpt = customerCrudService. getCustomerOpt();
-
+    Map<String, String> authorityOpt = new LinkedHashMap<String, String>();
+    authorityOpt.put("0", "不可见");
+    authorityOpt.put("1", "可读");
+    authorityOpt.put("2", "可写");
 %>
 <!DOCTYPE html>
 <html>
@@ -24,7 +16,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>售后服务</title>
+    <title>系统用户管理</title>
 
     <link rel="shortcut icon" href="images/favicon.ico">
     <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
@@ -47,8 +39,7 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>售后服务</h5>
-
+                    <h5>系统用户管理</h5>
                 </div>
                 <div class="ibox-content">
                     <div class="">
@@ -58,12 +49,13 @@
                     <table class="table table-striped table-bordered table-hover " id="editable">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>服务单号</th>
-                            <th>服务日期</th>
-                            <th>客户</th>
-                            <th>服务人员</th>
-                            <th>备注</th>
+                            <th>账号</th>
+                            <th>密码</th>
+                            <th>基本资料权限</th>
+                            <th>材料管理权限</th>
+                            <th>订单管理权限</th>
+                            <th>业务管理权限</th>
+                            <th>财务管理权限</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -76,7 +68,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 <!-- 全局js -->
@@ -89,17 +80,13 @@
 <script src="js/datatables.min.js"></script>
 <script src="js/datatables.bootstrap.js"></script>
 
-<!--layui & layer-->
-<script src="js/layer/layer.js"></script>
-<script src="js/layui/layui.js"></script>
-
 <!-- 自定义js -->
 <script src="js/apiservice.js"></script>
 
 
 <!-- Page-Level Scripts -->
 <script>
-    layui.use('laydate');
+
     $(document).ready(function () {
 
         var TableDatatablesEditable = function () {
@@ -126,39 +113,50 @@
                     }
                 }
 
-                function editRow(oTable, nRow) {
+                function editRow(oTable, nRow, flag) {
                     var aData = oTable.fnGetData(nRow);
                     var jqTds = $('>td', nRow);
-                    // jqTds[0].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[0] + '">';
-                    // jqTds[1].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[1] + '">';
-                    jqTds[2].innerHTML = '<input type="text" class="form-control input-small" onclick="layui.laydate({elem: this})" value="' + aData[2] + '">';
-                    jqTds[3].innerHTML = '<%=HtmlTagGenerater.genSelectTag(customerOpt)%>';
+                    if (flag === 1) {
+                        jqTds[0].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[0] + '">';
+                    }
+                    jqTds[1].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[1] + '">';
+                    jqTds[2].innerHTML = '<%=HtmlTagGenerater.genSelectTag(authorityOpt)%>';
+                    setSelected(jqTds[2].children[0], aData[2]);
+                    jqTds[3].innerHTML = '<%=HtmlTagGenerater.genSelectTag(authorityOpt)%>';
                     setSelected(jqTds[3].children[0], aData[3]);
-                    jqTds[4].innerHTML = '<%=HtmlTagGenerater.genSelectTag(employeeOpt)%>';
+                    jqTds[4].innerHTML = '<%=HtmlTagGenerater.genSelectTag(authorityOpt)%>';
                     setSelected(jqTds[4].children[0], aData[4]);
-                    jqTds[5].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[5] + '">';
-                    jqTds[6].innerHTML = '<a class="edit" href="">Save</a>';
-                    jqTds[7].innerHTML = '<a class="cancel" href="">Cancel</a>';
+                    jqTds[5].innerHTML = '<%=HtmlTagGenerater.genSelectTag(authorityOpt)%>';
+                    setSelected(jqTds[5].children[0], aData[5]);
+                    jqTds[6].innerHTML = '<%=HtmlTagGenerater.genSelectTag(authorityOpt)%>';
+                    setSelected(jqTds[6].children[0], aData[6]);
+                    jqTds[7].innerHTML = '<a class="edit" href="">Save</a>';
+                    jqTds[8].innerHTML = '<a class="cancel" href="">Cancel</a>';
+
                 }
 
                 function saveRow(oTable, nRow) {
-
                     ajaxSaveOrUpdate(oTable, nRow);
                 }
 
-                function ifor(data, opt) {
-                    if (typeof (data) === "undefined" || data === null)
-                        return opt;
-                    else
-                        return data;
-                }
+                var map = [
+                    '不可见',
+                    '可读',
+                    '可写'
+                ];
 
                 function ajaxInitData() {
-                    after_sales_getall({
+                    admin_getall({
                         success: function (result) {
                             if (result.code != 0) {
                                 alert("错误:" + result.msg);
                                 return;
+                            }
+                            function ifor(data, opt) {
+                                if (typeof (data) === "undefined" || data === null)
+                                    return opt;
+                                else
+                                    return data;
                             }
 
                             var data = result.data;
@@ -166,14 +164,13 @@
                             for (var i in data) {
                                 var row = data[i];
                                 var a = [];
-                                a.push(row.id);
-                                a.push(row.no);
-                                a.push(ifor(row.time,''));
-                                var customer = row.customer;
-                                a.push(customer.no + ':' + customer.name);
-                                var employee = row.employee;
-                                a.push(employee.no + ':' + employee.name);
-                                a.push(ifor(row.comments, ''));
+                                a.push(row.username);
+                                a.push('******');
+                                a.push(map[row.auBasic]);
+                                a.push(map[row.auStore]);
+                                a.push(map[row.auOrder]);
+                                a.push(map[row.auBusiness]);
+                                a.push(map[row.auFinancial]);
                                 a.push('<a class="edit" href="">Edit</a>');
                                 a.push('<a class="delete" href="">Delete</a>');
                                 oTable.fnAddData(a);
@@ -186,27 +183,30 @@
                     });
                 }
 
-
                 function ajaxSaveOrUpdate(oTable, nRow) {
                     var jqInputs = $('input', nRow);
                     var jqSelects = $('select', nRow);
                     var aData = oTable.fnGetData(nRow);
-                    var id = aData[0];
-                    var no = aData[1];
-                    var time = jqInputs[0].value;
-                    var customer = {"no": jqSelects[0].options[jqSelects[0].selectedIndex].text.split(':')[0]};
-                    var employee = {"no": jqSelects[1].options[jqSelects[1].selectedIndex].text.split(':')[0]};
-                    var comments = jqInputs[1].value;
+
+                    var auBasic = map.indexOf(jqSelects[0].options[jqSelects[0].selectedIndex].text);
+                    var auStore = map.indexOf(jqSelects[1].options[jqSelects[1].selectedIndex].text);
+                    var auOrder = map.indexOf(jqSelects[2].options[jqSelects[2].selectedIndex].text);
+                    var auBusiness = map.indexOf(jqSelects[3].options[jqSelects[3].selectedIndex].text);
+                    var auFinancial = map.indexOf(jqSelects[4].options[jqSelects[4].selectedIndex].text);
                     if (aData[0] !== '') {
-                        after_sales_update(id, time, customer, employee, comments, {
+                        var username = aData[0];
+                        var password = jqInputs[0].value;
+                        admin_update(username, password, auBasic, auStore, auOrder, auBusiness, auFinancial, {
                             success: function (result) {
                                 if (result.code === 0) {
-                                    oTable.fnUpdate(time, nRow, 2, false);
-                                    oTable.fnUpdate(jqSelects[0].options[jqSelects[0].selectedIndex].text, nRow, 3, false);
-                                    oTable.fnUpdate(jqSelects[1].options[jqSelects[1].selectedIndex].text, nRow, 4, false);
-                                    oTable.fnUpdate(ifor(comments, ''), nRow, 5, false);
-                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 6, false);
-                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 7, false);
+                                    oTable.fnUpdate('******', nRow, 1, false);
+                                    oTable.fnUpdate(jqSelects[0].options[jqSelects[0].selectedIndex].text, nRow, 2, false);
+                                    oTable.fnUpdate(jqSelects[1].options[jqSelects[1].selectedIndex].text, nRow, 3, false);
+                                    oTable.fnUpdate(jqSelects[2].options[jqSelects[2].selectedIndex].text, nRow, 4, false);
+                                    oTable.fnUpdate(jqSelects[3].options[jqSelects[3].selectedIndex].text, nRow, 5, false);
+                                    oTable.fnUpdate(jqSelects[4].options[jqSelects[4].selectedIndex].text, nRow, 6, false);
+                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 7, false);
+                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 8, false);
                                     oTable.fnDraw();
                                 } else {
                                     alert(result.msg);
@@ -219,18 +219,20 @@
                             }
                         });
                     } else {
-                        after_sales_add(time, customer, employee, comments, {
+                        var username = jqInputs[0].value;
+                        var password = jqInputs[1].value;
+                        admin_add(username, password, auBasic, auStore, auOrder, auBusiness, auFinancial, {
                             success: function (result) {
                                 if (result.code === 0) {
-                                    var data = result.data;
-                                    oTable.fnUpdate(data.id, nRow, 0, false);
-                                    oTable.fnUpdate(data.no, nRow, 1, false);
-                                    oTable.fnUpdate(time, nRow, 2, false);
-                                    oTable.fnUpdate(jqSelects[0].options[jqSelects[0].selectedIndex].text, nRow, 3, false);
-                                    oTable.fnUpdate(jqSelects[1].options[jqSelects[1].selectedIndex].text, nRow, 4, false);
-                                    oTable.fnUpdate(ifor(comments, ''), nRow, 5, false);
-                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 6, false);
-                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 7, false);
+                                    oTable.fnUpdate(username, nRow, 0, false);
+                                    oTable.fnUpdate('******', nRow, 1, false);
+                                    oTable.fnUpdate(jqSelects[0].options[jqSelects[0].selectedIndex].text, nRow, 2, false);
+                                    oTable.fnUpdate(jqSelects[1].options[jqSelects[1].selectedIndex].text, nRow, 3, false);
+                                    oTable.fnUpdate(jqSelects[2].options[jqSelects[2].selectedIndex].text, nRow, 4, false);
+                                    oTable.fnUpdate(jqSelects[3].options[jqSelects[3].selectedIndex].text, nRow, 5, false);
+                                    oTable.fnUpdate(jqSelects[4].options[jqSelects[4].selectedIndex].text, nRow, 6, false);
+                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 7, false);
+                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 8, false);
                                     oTable.fnDraw();
                                 } else {
                                     alert(result.msg);
@@ -250,7 +252,7 @@
 
                     var aData = oTable.fnGetData(nRow);
 
-                    after_sales_remove(aData[0], {
+                    admin_remove(aData[0], {
                         success: function (result) {
                             if (result.code == 0) {
                                 oTable.fnDeleteRow(nRow);
@@ -260,6 +262,7 @@
                         }
                     });
                 }
+
 
                 var table = $('#editable');
 
@@ -293,6 +296,7 @@
                         [0, "asc"]
                     ], // set first column as a default sort by asc
 
+
                 });
 
                 var tableWrapper = $("#editable_wrapper");
@@ -319,9 +323,9 @@
                         }
                     }
 
-                    var aiNew = oTable.fnAddData(['', '', '', '', '', '', '', '']);
+                    var aiNew = oTable.fnAddData(['', '', '', '', '', '', '', '', '']);
                     var nRow = oTable.fnGetNodes(aiNew[0]);
-                    editRow(oTable, nRow);
+                    editRow(oTable, nRow, 1);
                     nEditing = nRow;
                     nNew = true;
                 });
@@ -332,11 +336,9 @@
                     if (confirm("Are you sure to delete this row ?") == false) {
                         return;
                     }
-
                     var nRow = $(this).parents('tr')[0];
-//                    oTable.fnDeleteRow(nRow);
                     ajaxDelete(nRow);
-//                    alert("Deleted! Do not forget to do some ajax to sync with backend :)");
+
                 });
 
                 table.on('click', '.cancel', function (e) {
@@ -375,18 +377,8 @@
                     }
                 });
 
-                table.on('click', '.details', function (e) {
-                    e.preventDefault();
-                    var nRow = $(this).parents('tr')[0];
-                    var id = nRow.children[0].innerHTML;
-                    layer.open({
-                        type: 2,
-                        title: '采购明细',
-                        area: ['95%', '95%'],
-                        content: 'store_keeping_procurement_detail.jsp?procurement_id=' + id
-                    });
-                });
                 ajaxInitData();
+
             };
 
             return {
@@ -402,7 +394,6 @@
 
         jQuery(document).ready(function () {
             TableDatatablesEditable.init();
-
         });
 
     });

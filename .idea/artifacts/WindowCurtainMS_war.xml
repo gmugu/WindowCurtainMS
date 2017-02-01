@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="WindowCurtainMS:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/WindowCurtainMS_war</output-path>
+    <root id="archive" name="WindowCurtainMS_war.war">
+      <element id="artifact" artifact-name="WindowCurtainMS:war exploded" />
+    </root>
+  </artifact>
+</component>

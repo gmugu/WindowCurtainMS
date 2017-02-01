@@ -45,6 +45,9 @@ public class EmployeeCrudService {
                 throw new ServiceException("编号已存在");
             }
         }
+        if (entity.getName() == null || entity.getName().equals("")) {
+            throw new ServiceException("员工姓名不能为空");
+        }
 
         employeeDao.save(entity);
     }
@@ -58,6 +61,9 @@ public class EmployeeCrudService {
     }
 
     public void update(EmployeeEntity entity) throws ServiceException {
+        if (entity.getName() == null || entity.getName().equals("")) {
+            throw new ServiceException("员工姓名不能为空");
+        }
         employeeDao.saveOrUpdate(entity);
     }
 

@@ -14,7 +14,7 @@
                 <!--<prop key="hibernate.current_session_context_class">thread</prop>-->
                 <prop key="hibernate.connection.username">root</prop>
                 <prop key="hibernate.connection.password">admin</prop>
-                <prop key="hibernate.show_sql">false</prop>
+                <!--<prop key="hibernate.show_sql">true</prop>-->
 
             </props>
         </property>
@@ -37,6 +37,7 @@
                 <value>com.wcms.entity.SupplierEntity</value>
                 <value>com.wcms.entity.UseMaterialDetailEntity</value>
                 <value>com.wcms.entity.WarehouseEntity</value>
+                <value>com.wcms.entity.UsersEntity</value>
             </list>
         </property>
     </bean>
@@ -88,6 +89,9 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     <bean id="warehouseDao" class="com.wcms.dao.WarehouseDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="usersDao" class="com.wcms.dao.UsersDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
@@ -163,9 +167,20 @@
     </bean>
     <bean id="salaryCrudService" class="com.wcms.service.SalaryCrudService">
         <property name="salaryDao" ref="salaryDao"/>
+        <property name="employeeDao" ref="employeeDao"/>
     </bean>
     <bean id="useMaterialDetailCrudService" class="com.wcms.service.UseMaterialDetailCrudService">
         <property name="useMaterialDetailDao" ref="useMaterialDetailDao"/>
+    </bean>
+    <bean id="materialDetailService" class="com.wcms.service.MaterialDetailService">
+        <property name="procurementDetailDao" ref="procurementDetailDao"/>
+        <property name="returnDetailDao" ref="returnDetailDao"/>
+    </bean>
+    <bean id="adminService" class="com.wcms.service.AdminService">
+        <property name="usersDao" ref="usersDao"/>
+    </bean>
+    <bean id="loginService" class="com.wcms.service.LoginService">
+        <property name="usersDao" ref="usersDao"/>
     </bean>
 
 
@@ -200,6 +215,11 @@
         </property>
     </bean>
 
+
+    <!--拦截器-->
+    <bean name="loginInterceptor" class="com.wcms.web.interceptor.LoginInterceptor">
+        <property name="loginService" ref="loginService"/>
+    </bean>
 
     <!-- Action-->
 
@@ -261,6 +281,16 @@
     <bean id="useMateriaDetailCrudAction" class="com.wcms.web.action.UseMateriaDetailCrudAction" scope="prototype">
         <property name="useMaterialDetailCrudService" ref="useMaterialDetailCrudService"/>
     </bean>
+    <bean id="materialDetailAction" class="com.wcms.web.action.MaterialDetailAction">
+        <property name="materialDetailService" ref="materialDetailService"/>
+    </bean>
+    <bean id="adminAction" class="com.wcms.web.action.AdminAction">
+        <property name="adminService" ref="adminService"/>
+    </bean>
+    <bean id="loginAction" class="com.wcms.web.action.LoginAction">
+        <property name="loginService" ref="loginService"/>
+    </bean>
 
+    <bean id="logoutAction" class="com.wcms.web.action.LogoutAction"></bean>
 
 </beans>

@@ -1,7 +1,7 @@
 package com.wcms.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2017/1/19.
@@ -14,7 +14,7 @@ public class EmployeeEntity {
     private String name;
     private String gender;
     private String dept;
-    private Serializable birthday;
+    private Date birthday;
     private String address;
     private String phone;
     private String idcardNo;
@@ -74,11 +74,11 @@ public class EmployeeEntity {
 
     @Basic
     @Column(name = "birthday")
-    public Serializable getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Serializable birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

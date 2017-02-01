@@ -204,6 +204,12 @@ function return_detail_update(id, material, counts, callback) {
 }
 //退货明细
 
+//库存明细
+function materia_detail_getall(callback) {
+    exec(arguments);
+}
+//库存明细
+
 //订做登记
 function order_getall(callback) {
     exec(arguments);
@@ -293,3 +299,47 @@ function after_sales_update(id, time, customer, employee, comments, callback) {
     exec(arguments);
 }
 //售后服务
+
+//员工信息
+function employee_getall(callback) {
+    exec(arguments);
+}
+function employee_add(name, gender, dept, birthday, address, phone, idcardNo, comments, callback) {
+    exec(arguments);
+}
+function employee_remove(id, callback) {
+    exec(arguments);
+}
+function employee_update(id, no, name, gender, dept, birthday, address, phone, idcardNo, comments, callback) {
+    exec(arguments);
+}
+//员工信息
+//员工工资
+function salary_getall(callback) {
+    exec(arguments);
+}
+function salary_add(employee, year, month, basic, performance, bonus, cut, comments, callback) {
+    exec(arguments);
+}
+function salary_remove(id, callback) {
+    exec(arguments);
+}
+function salary_update(id, employee, year, month, basic, performance, bonus, cut, comments, callback) {
+    exec(arguments);
+}
+//员工工资
+
+//系统用户管理
+function admin_getall(callback) {
+    exec(arguments);
+}
+function admin_add(username, password, auBasic, auStore, auOrder, auBusiness, auFinancial, callback) {
+    exec(arguments);
+}
+function admin_remove(username, callback) {
+    exec(arguments);
+}
+function admin_update(username, password, auBasic, auStore, auOrder, auBusiness, auFinancial, callback) {
+    exec(arguments);
+}
+//系统用户管理

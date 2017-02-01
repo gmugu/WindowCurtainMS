@@ -1,21 +1,27 @@
-<!--售后服务-->
+<!--员工工资-->
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
 <%@ page import="org.springframework.context.ApplicationContext" %>
-<%@ page import="com.wcms.service.EmployeeCrudService" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="com.wcms.util.HtmlTagGenerater" %>
-<%@ page import="com.wcms.service.CustomerCrudService" %>
+<%@ page import="com.wcms.service.EmployeeCrudService" %>
+<%@ page import="java.util.TreeMap" %>
+<%@ page import="java.util.LinkedHashMap" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     ServletContext context = request.getSession().getServletContext();
     ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(context);
     EmployeeCrudService employeeCrudService = (EmployeeCrudService) ctx.getBean("employeeCrudService");
-    CustomerCrudService customerCrudService = (CustomerCrudService) ctx.getBean("customerCrudService");
-
     Map<String, String> employeeOpt = employeeCrudService.getEmployeeOpt();
-    Map<String, String> customerOpt = customerCrudService. getCustomerOpt();
 
+    Map<String, String> yeraOpt = new TreeMap<String, String>();
+    Map<String, String> monthOpt = new LinkedHashMap<String, String>();
+    for (int i = 2006; i <= 2026; ++i) {
+        yeraOpt.put(i + "", i + "");
+    }
+    for (int i = 1; i <= 12; ++i) {
+        monthOpt.put(i + "月", i + "月");
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -24,7 +30,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>售后服务</title>
+    <title>员工工资</title>
 
     <link rel="shortcut icon" href="images/favicon.ico">
     <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
@@ -47,7 +53,7 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>售后服务</h5>
+                    <h5>员工工资</h5>
 
                 </div>
                 <div class="ibox-content">
@@ -59,10 +65,14 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>服务单号</th>
-                            <th>服务日期</th>
-                            <th>客户</th>
-                            <th>服务人员</th>
+                            <th>员工</th>
+                            <th>年度</th>
+                            <th>月份</th>
+                            <th>基本工资</th>
+                            <th>绩效</th>
+                            <th>奖金</th>
+                            <th>扣款</th>
+                            <th>实发工资</th>
                             <th>备注</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -130,15 +140,20 @@
                     var aData = oTable.fnGetData(nRow);
                     var jqTds = $('>td', nRow);
                     // jqTds[0].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[0] + '">';
-                    // jqTds[1].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[1] + '">';
-                    jqTds[2].innerHTML = '<input type="text" class="form-control input-small" onclick="layui.laydate({elem: this})" value="' + aData[2] + '">';
-                    jqTds[3].innerHTML = '<%=HtmlTagGenerater.genSelectTag(customerOpt)%>';
+                    jqTds[1].innerHTML = '<%=HtmlTagGenerater.genSelectTag(employeeOpt)%>';
+                    setSelected(jqTds[1].children[0], aData[1]);
+                    jqTds[2].innerHTML = '<%=HtmlTagGenerater.genSelectTag(yeraOpt)%>';
+                    setSelected(jqTds[2].children[0], aData[2]);
+                    jqTds[3].innerHTML = '<%=HtmlTagGenerater.genSelectTag(monthOpt)%>';
                     setSelected(jqTds[3].children[0], aData[3]);
-                    jqTds[4].innerHTML = '<%=HtmlTagGenerater.genSelectTag(employeeOpt)%>';
-                    setSelected(jqTds[4].children[0], aData[4]);
+                    jqTds[4].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[4] + '">';
                     jqTds[5].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[5] + '">';
-                    jqTds[6].innerHTML = '<a class="edit" href="">Save</a>';
-                    jqTds[7].innerHTML = '<a class="cancel" href="">Cancel</a>';
+                    jqTds[6].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[6] + '">';
+                    jqTds[7].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[7] + '">';
+//                    jqTds[8].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[8] + '">';
+                    jqTds[9].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[9] + '">';
+                    jqTds[10].innerHTML = '<a class="edit" href="">Save</a>';
+                    jqTds[11].innerHTML = '<a class="cancel" href="">Cancel</a>';
                 }
 
                 function saveRow(oTable, nRow) {
@@ -153,8 +168,16 @@
                         return data;
                 }
 
+                function check(num) {
+                    if (typeof (num) === 'undefined' || num === null || num === '') {
+                        return 0;
+                    }
+                    var n = parseFloat(num);
+                    return isNaN(n) ? 0 : n;
+                }
+
                 function ajaxInitData() {
-                    after_sales_getall({
+                    salary_getall({
                         success: function (result) {
                             if (result.code != 0) {
                                 alert("错误:" + result.msg);
@@ -167,12 +190,20 @@
                                 var row = data[i];
                                 var a = [];
                                 a.push(row.id);
-                                a.push(row.no);
-                                a.push(ifor(row.time,''));
-                                var customer = row.customer;
-                                a.push(customer.no + ':' + customer.name);
                                 var employee = row.employee;
                                 a.push(employee.no + ':' + employee.name);
+                                a.push(ifor(row.year, ''));
+                                a.push(ifor(row.month, ''));
+                                var basic = check(row.basic);
+                                a.push(basic);
+                                var performance = check(row.performance);
+                                a.push(performance);
+                                var bonus = check(row.bonus);
+                                a.push(bonus);
+                                var cut = check(row.cut);
+                                a.push(cut);
+                                var total = basic + performance + bonus - cut;
+                                a.push(total);
                                 a.push(ifor(row.comments, ''));
                                 a.push('<a class="edit" href="">Edit</a>');
                                 a.push('<a class="delete" href="">Delete</a>');
@@ -188,25 +219,35 @@
 
 
                 function ajaxSaveOrUpdate(oTable, nRow) {
+
                     var jqInputs = $('input', nRow);
                     var jqSelects = $('select', nRow);
                     var aData = oTable.fnGetData(nRow);
                     var id = aData[0];
-                    var no = aData[1];
-                    var time = jqInputs[0].value;
-                    var customer = {"no": jqSelects[0].options[jqSelects[0].selectedIndex].text.split(':')[0]};
-                    var employee = {"no": jqSelects[1].options[jqSelects[1].selectedIndex].text.split(':')[0]};
-                    var comments = jqInputs[1].value;
+                    var employee = {"no": jqSelects[0].options[jqSelects[0].selectedIndex].text.split(':')[0]};
+                    var year = jqSelects[1].options[jqSelects[1].selectedIndex].text.split(':')[0];
+                    var month = jqSelects[2].options[jqSelects[2].selectedIndex].text.split(':')[0];
+                    var basic = check(jqInputs[0].value);
+                    var performance = check(jqInputs[1].value);
+                    var bonus = check(jqInputs[2].value);
+                    var cut = check(jqInputs[3].value);
+                    var total = basic + performance + bonus - cut;
+                    var comments = jqInputs[4].value;
                     if (aData[0] !== '') {
-                        after_sales_update(id, time, customer, employee, comments, {
+                        salary_update(id, employee, year, month, basic, performance, bonus, cut, comments, {
                             success: function (result) {
                                 if (result.code === 0) {
-                                    oTable.fnUpdate(time, nRow, 2, false);
-                                    oTable.fnUpdate(jqSelects[0].options[jqSelects[0].selectedIndex].text, nRow, 3, false);
-                                    oTable.fnUpdate(jqSelects[1].options[jqSelects[1].selectedIndex].text, nRow, 4, false);
-                                    oTable.fnUpdate(ifor(comments, ''), nRow, 5, false);
-                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 6, false);
-                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 7, false);
+                                    oTable.fnUpdate(jqSelects[0].options[jqSelects[0].selectedIndex].text, nRow, 1, false);
+                                    oTable.fnUpdate(year, nRow, 2, false);
+                                    oTable.fnUpdate(month, nRow, 3, false);
+                                    oTable.fnUpdate(basic, nRow, 4, false);
+                                    oTable.fnUpdate(performance, nRow, 5, false);
+                                    oTable.fnUpdate(bonus, nRow, 6, false);
+                                    oTable.fnUpdate(cut, nRow, 7, false);
+                                    oTable.fnUpdate(total, nRow, 8, false);
+                                    oTable.fnUpdate(comments, nRow, 9, false);
+                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 10, false);
+                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 11, false);
                                     oTable.fnDraw();
                                 } else {
                                     alert(result.msg);
@@ -219,18 +260,22 @@
                             }
                         });
                     } else {
-                        after_sales_add(time, customer, employee, comments, {
+                        salary_add(employee, year, month, basic, performance, bonus, cut, comments, {
                             success: function (result) {
                                 if (result.code === 0) {
                                     var data = result.data;
                                     oTable.fnUpdate(data.id, nRow, 0, false);
-                                    oTable.fnUpdate(data.no, nRow, 1, false);
-                                    oTable.fnUpdate(time, nRow, 2, false);
-                                    oTable.fnUpdate(jqSelects[0].options[jqSelects[0].selectedIndex].text, nRow, 3, false);
-                                    oTable.fnUpdate(jqSelects[1].options[jqSelects[1].selectedIndex].text, nRow, 4, false);
-                                    oTable.fnUpdate(ifor(comments, ''), nRow, 5, false);
-                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 6, false);
-                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 7, false);
+                                    oTable.fnUpdate(jqSelects[0].options[jqSelects[0].selectedIndex].text, nRow, 1, false);
+                                    oTable.fnUpdate(year, nRow, 2, false);
+                                    oTable.fnUpdate(month, nRow, 3, false);
+                                    oTable.fnUpdate(basic, nRow, 4, false);
+                                    oTable.fnUpdate(performance, nRow, 5, false);
+                                    oTable.fnUpdate(bonus, nRow, 6, false);
+                                    oTable.fnUpdate(cut, nRow, 7, false);
+                                    oTable.fnUpdate(total, nRow, 8, false);
+                                    oTable.fnUpdate(comments, nRow, 9, false);
+                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 10, false);
+                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 11, false);
                                     oTable.fnDraw();
                                 } else {
                                     alert(result.msg);
@@ -250,7 +295,7 @@
 
                     var aData = oTable.fnGetData(nRow);
 
-                    after_sales_remove(aData[0], {
+                    salary_remove(aData[0], {
                         success: function (result) {
                             if (result.code == 0) {
                                 oTable.fnDeleteRow(nRow);
@@ -319,7 +364,7 @@
                         }
                     }
 
-                    var aiNew = oTable.fnAddData(['', '', '', '', '', '', '', '']);
+                    var aiNew = oTable.fnAddData(['', '', '', '', '', '', '', '', '', '', '', '']);
                     var nRow = oTable.fnGetNodes(aiNew[0]);
                     editRow(oTable, nRow);
                     nEditing = nRow;
@@ -381,9 +426,9 @@
                     var id = nRow.children[0].innerHTML;
                     layer.open({
                         type: 2,
-                        title: '采购明细',
+                        title: '订做明细',
                         area: ['95%', '95%'],
-                        content: 'store_keeping_procurement_detail.jsp?procurement_id=' + id
+                        content: 'order_manager_reserve_detail.jsp?order_id=' + id
                     });
                 });
                 ajaxInitData();

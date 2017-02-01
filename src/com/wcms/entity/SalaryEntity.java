@@ -10,13 +10,12 @@ import java.util.Date;
 @Table(name = "salary", schema = "windowcurtainms", catalog = "")
 public class SalaryEntity {
     private int id;
-    private Date yearMonth;
-    private Integer attendanceDays;
+    private String year;
+    private String month;
     private Double basic;
-    private Double percentage;
+    private Double performance;
     private Double bonus;
     private Double cut;
-    private Date time;
     private String comments;
     private EmployeeEntity employee;
 
@@ -32,23 +31,23 @@ public class SalaryEntity {
     }
 
     @Basic
-    @Column(name = "year_month")
-    public Date getYearMonth() {
-        return yearMonth;
+    @Column(name = "year")
+    public String getYear() {
+        return year;
     }
 
-    public void setYearMonth(Date yearMonth) {
-        this.yearMonth = yearMonth;
+    public void setYear(String year) {
+        this.year = year;
     }
 
     @Basic
-    @Column(name = "attendance_days")
-    public Integer getAttendanceDays() {
-        return attendanceDays;
+    @Column(name = "month")
+    public String getMonth() {
+        return month;
     }
 
-    public void setAttendanceDays(Integer attendanceDays) {
-        this.attendanceDays = attendanceDays;
+    public void setMonth(String month) {
+        this.month = month;
     }
 
     @Basic
@@ -62,13 +61,13 @@ public class SalaryEntity {
     }
 
     @Basic
-    @Column(name = "percentage")
-    public Double getPercentage() {
-        return percentage;
+    @Column(name = "performance")
+    public Double getPerformance() {
+        return performance;
     }
 
-    public void setPercentage(Double percentage) {
-        this.percentage = percentage;
+    public void setPerformance(Double performance) {
+        this.performance = performance;
     }
 
     @Basic
@@ -92,16 +91,6 @@ public class SalaryEntity {
     }
 
     @Basic
-    @Column(name = "time")
-    public Date getTime() {
-        return time;
-    }
-
-    public void setTime(Date time) {
-        this.time = time;
-    }
-
-    @Basic
     @Column(name = "comments")
     public String getComments() {
         return comments;
@@ -112,7 +101,7 @@ public class SalaryEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "employee_id",referencedColumnName = "id")
+    @JoinColumn(name = "employee_id", referencedColumnName = "id")
     public EmployeeEntity getEmployee() {
         return employee;
     }
@@ -129,14 +118,12 @@ public class SalaryEntity {
         SalaryEntity that = (SalaryEntity) o;
 
         if (id != that.id) return false;
-        if (yearMonth != null ? !yearMonth.equals(that.yearMonth) : that.yearMonth != null) return false;
-        if (attendanceDays != null ? !attendanceDays.equals(that.attendanceDays) : that.attendanceDays != null)
-            return false;
+        if (year != null ? !year.equals(that.year) : that.year != null) return false;
+        if (month != null ? !month.equals(that.month) : that.month != null) return false;
         if (basic != null ? !basic.equals(that.basic) : that.basic != null) return false;
-        if (percentage != null ? !percentage.equals(that.percentage) : that.percentage != null) return false;
+        if (performance != null ? !performance.equals(that.performance) : that.performance != null) return false;
         if (bonus != null ? !bonus.equals(that.bonus) : that.bonus != null) return false;
         if (cut != null ? !cut.equals(that.cut) : that.cut != null) return false;
-        if (time != null ? !time.equals(that.time) : that.time != null) return false;
         if (comments != null ? !comments.equals(that.comments) : that.comments != null) return false;
         return !(employee != null ? !employee.equals(that.employee) : that.employee != null);
 
@@ -145,13 +132,12 @@ public class SalaryEntity {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (yearMonth != null ? yearMonth.hashCode() : 0);
-        result = 31 * result + (attendanceDays != null ? attendanceDays.hashCode() : 0);
+        result = 31 * result + (year != null ? year.hashCode() : 0);
+        result = 31 * result + (month != null ? month.hashCode() : 0);
         result = 31 * result + (basic != null ? basic.hashCode() : 0);
-        result = 31 * result + (percentage != null ? percentage.hashCode() : 0);
+        result = 31 * result + (performance != null ? performance.hashCode() : 0);
         result = 31 * result + (bonus != null ? bonus.hashCode() : 0);
         result = 31 * result + (cut != null ? cut.hashCode() : 0);
-        result = 31 * result + (time != null ? time.hashCode() : 0);
         result = 31 * result + (comments != null ? comments.hashCode() : 0);
         result = 31 * result + (employee != null ? employee.hashCode() : 0);
         return result;
@@ -161,13 +147,12 @@ public class SalaryEntity {
     public String toString() {
         return "SalaryEntity{" +
                 "id=" + id +
-                ", yearMonth=" + yearMonth +
-                ", attendanceDays=" + attendanceDays +
+                ", year='" + year + '\'' +
+                ", month='" + month + '\'' +
                 ", basic=" + basic +
-                ", percentage=" + percentage +
+                ", performance=" + performance +
                 ", bonus=" + bonus +
                 ", cut=" + cut +
-                ", time=" + time +
                 ", comments='" + comments + '\'' +
                 ", employee=" + employee +
                 '}';

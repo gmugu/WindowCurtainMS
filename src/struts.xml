@@ -10,110 +10,591 @@
     <constant name="struts.action.extension" value="do,action"/>
     <constant name="struts.objectFactory" value="spring"/>
     <package name="wcms" extends="struts-default" namespace="/">
+        <interceptors>
+            <interceptor name="_login" class="loginInterceptor"/>
+            <interceptor name="permission" class="com.wcms.web.interceptor.PermissionInterceptor"/>
+            <interceptor-stack name="login">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="_login"/>
+            </interceptor-stack>
+        </interceptors>
         <!--客户资料增删改查-->
-        <action name="customer_getall" class="customerCrudAction" method="getall"></action>
-        <action name="customer_add" class="customerCrudAction" method="add"></action>
-        <action name="customer_remove" class="customerCrudAction" method="remove"></action>
-        <action name="customer_update" class="customerCrudAction" method="update"></action>
+        <action name="customer_getall" class="customerCrudAction" method="getall">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">basic</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="customer_add" class="customerCrudAction" method="add">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">basic</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="customer_remove" class="customerCrudAction" method="remove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">basic</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="customer_update" class="customerCrudAction" method="update">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">basic</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
         <!--客户资料增删改查-->
 
         <!--窗帘资料增删改查-->
-        <action name="curtain_getall" class="curtainCrudAction" method="getall"></action>
-        <action name="curtain_add" class="curtainCrudAction" method="add"></action>
-        <action name="curtain_remove" class="curtainCrudAction" method="remove"></action>
-        <action name="curtain_update" class="curtainCrudAction" method="update"></action>
+        <action name="curtain_getall" class="curtainCrudAction" method="getall">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">basic</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="curtain_add" class="curtainCrudAction" method="add">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">basic</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="curtain_remove" class="curtainCrudAction" method="remove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">basic</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="curtain_update" class="curtainCrudAction" method="update">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">basic</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
         <!--窗帘资料增删改查-->
 
         <!--供应商资料增删改查-->
-        <action name="supplier_getall" class="supplierCrudAction" method="getall"></action>
-        <action name="supplier_add" class="supplierCrudAction" method="add"></action>
-        <action name="supplier_remove" class="supplierCrudAction" method="remove"></action>
-        <action name="supplier_update" class="supplierCrudAction" method="update"></action>
+        <action name="supplier_getall" class="supplierCrudAction" method="getall">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">basic</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="supplier_add" class="supplierCrudAction" method="add">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">basic</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="supplier_remove" class="supplierCrudAction" method="remove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">basic</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="supplier_update" class="supplierCrudAction" method="update">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">basic</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
         <!--供应商资料增删改查-->
 
         <!--仓库资料增删改查-->
-        <action name="warehouse_getall" class="warehouseCrudAction" method="getall"></action>
-        <action name="warehouse_add" class="warehouseCrudAction" method="add"></action>
-        <action name="warehouse_remove" class="warehouseCrudAction" method="remove"></action>
-        <action name="warehouse_update" class="warehouseCrudAction" method="update"></action>
+        <action name="warehouse_getall" class="warehouseCrudAction" method="getall">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">basic</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="warehouse_add" class="warehouseCrudAction" method="add">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">basic</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="warehouse_remove" class="warehouseCrudAction" method="remove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">basic</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="warehouse_update" class="warehouseCrudAction" method="update">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">basic</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
         <!--仓库资料增删改查-->
 
         <!--材料资料增删改查-->
-        <action name="material_getall" class="materialCrudAction" method="getall"></action>
-        <action name="material_add" class="materialCrudAction" method="add"></action>
-        <action name="material_remove" class="materialCrudAction" method="remove"></action>
-        <action name="material_update" class="materialCrudAction" method="update"></action>
+        <action name="material_getall" class="materialCrudAction" method="getall">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="material_add" class="materialCrudAction" method="add">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="material_remove" class="materialCrudAction" method="remove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="material_update" class="materialCrudAction" method="update">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
         <!--材料资料增删改查-->
 
         <!--采购登记增删改查-->
-        <action name="procurement_getall" class="procurementCrudAction" method="getall"></action>
-        <action name="procurement_add" class="procurementCrudAction" method="add"></action>
-        <action name="procurement_remove" class="procurementCrudAction" method="remove"></action>
-        <action name="procurement_update" class="procurementCrudAction" method="update"></action>
+        <action name="procurement_getall" class="procurementCrudAction" method="getall">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="procurement_add" class="procurementCrudAction" method="add">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="procurement_remove" class="procurementCrudAction" method="remove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="procurement_update" class="procurementCrudAction" method="update">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
         <!--材料登记增删改查-->
 
         <!--采购明细增删改查-->
         <action name="procurement_detail_getall" class="procurementDetailCrudAction"
-                method="findByProcurementId"></action>
-        <action name="procurement_detail_add" class="procurementDetailCrudAction" method="add"></action>
-        <action name="procurement_detail_remove" class="procurementDetailCrudAction" method="remove"></action>
-        <action name="procurement_detail_update" class="procurementDetailCrudAction" method="update"></action>
+                method="findByProcurementId">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="procurement_detail_add" class="procurementDetailCrudAction" method="add">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="procurement_detail_remove" class="procurementDetailCrudAction" method="remove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="procurement_detail_update" class="procurementDetailCrudAction" method="update">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
         <!--采购明细增删改查-->
 
         <!--采购退货增删改查-->
-        <action name="return_getall" class="returnCrudAction" method="getall"></action>
-        <action name="return_add" class="returnCrudAction" method="add"></action>
-        <action name="return_remove" class="returnCrudAction" method="remove"></action>
-        <action name="return_update" class="returnCrudAction" method="update"></action>
+        <action name="return_getall" class="returnCrudAction" method="getall">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="return_add" class="returnCrudAction" method="add">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="return_remove" class="returnCrudAction" method="remove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="return_update" class="returnCrudAction" method="update">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
         <!--材料退货增删改查-->
 
         <!--退货明细增删改查-->
-        <action name="return_detail_getall" class="returnDetailCrudAction" method="findByReturnId"></action>
-        <action name="return_detail_add" class="returnDetailCrudAction" method="add"></action>
-        <action name="return_detail_remove" class="returnDetailCrudAction" method="remove"></action>
-        <action name="return_detail_update" class="returnDetailCrudAction" method="update"></action>
+        <action name="return_detail_getall" class="returnDetailCrudAction" method="findByReturnId">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="return_detail_add" class="returnDetailCrudAction" method="add">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="return_detail_remove" class="returnDetailCrudAction" method="remove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="return_detail_update" class="returnDetailCrudAction" method="update">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
         <!--退货明细增删改查-->
 
+        <!--库存明细-->
+        <action name="materia_detail_getall" class="materialDetailAction">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">store</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <!--库存明细-->
+
         <!--订做登记增删改查-->
-        <action name="order_getall" class="orderCrudAction" method="getall"></action>
-        <action name="order_add" class="orderCrudAction" method="add"></action>
-        <action name="order_remove" class="orderCrudAction" method="remove"></action>
-        <action name="order_update" class="orderCrudAction" method="update"></action>        <!--订做登记增删改查-->
+        <action name="order_getall" class="orderCrudAction" method="getall">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">order</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="order_add" class="orderCrudAction" method="add">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">order</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="order_remove" class="orderCrudAction" method="remove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">order</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="order_update" class="orderCrudAction" method="update">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">order</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>        <!--订做登记增删改查-->
         <!--订做登记增删改查-->
 
         <!--退货明细增删改查-->
-        <action name="order_detail_getall" class="orderDetailCrudAction" method="findByOrderId"></action>
-        <action name="order_detail_add" class="orderDetailCrudAction" method="add"></action>
-        <action name="order_detail_remove" class="orderDetailCrudAction" method="remove"></action>
-        <action name="order_detail_update" class="orderDetailCrudAction" method="update"></action>
+        <action name="order_detail_getall" class="orderDetailCrudAction" method="findByOrderId">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">order</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="order_detail_add" class="orderDetailCrudAction" method="add">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">order</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="order_detail_remove" class="orderDetailCrudAction" method="remove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">order</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="order_detail_update" class="orderDetailCrudAction" method="update">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">order</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
         <!--退货明细增删改查-->
 
         <!--签收登记-->
-        <action name="order_sign_getall" class="orderCrudAction" method="signGetall"></action>
-        <action name="order_sign_add" class="orderCrudAction" method="signAdd"></action>
-        <action name="order_sign_remove" class="orderCrudAction" method="signRemove"></action>
-        <action name="order_sign_update" class="orderCrudAction" method="signUpdate"></action>
+        <action name="order_sign_getall" class="orderCrudAction" method="signGetall">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">order</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="order_sign_add" class="orderCrudAction" method="signAdd">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">order</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="order_sign_remove" class="orderCrudAction" method="signRemove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">order</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="order_sign_update" class="orderCrudAction" method="signUpdate">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">order</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
         <!--签收登记-->
 
         <!--业务预约-->
-        <action name="business_getall" class="businessCrudAction" method="getall"></action>
-        <action name="business_add" class="businessCrudAction" method="add"></action>
-        <action name="business_remove" class="businessCrudAction" method="remove"></action>
-        <action name="business_update" class="businessCrudAction" method="update"></action>
+        <action name="business_getall" class="businessCrudAction" method="getall">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">business</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="business_add" class="businessCrudAction" method="add">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">business</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="business_remove" class="businessCrudAction" method="remove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">business</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="business_update" class="businessCrudAction" method="update">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">business</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
         <!--业务预约-->
 
         <!--派工登记-->
-        <action name="business_sign_getall" class="businessCrudAction" method="signGetall"></action>
-        <action name="business_sign_add" class="businessCrudAction" method="signAdd"></action>
-        <action name="business_sign_remove" class="businessCrudAction" method="signRemove"></action>
-        <action name="business_sign_update" class="businessCrudAction" method="signUpdate"></action>
+        <action name="business_sign_getall" class="businessCrudAction" method="signGetall">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">business</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="business_sign_add" class="businessCrudAction" method="signAdd">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">business</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="business_sign_remove" class="businessCrudAction" method="signRemove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">business</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="business_sign_update" class="businessCrudAction" method="signUpdate">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">business</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
         <!--派工登记-->
 
         <!--售后服务-->
-        <action name="after_sales_getall" class="afterSalesServiceCrudAction" method="getall"></action>
-        <action name="after_sales_add" class="afterSalesServiceCrudAction" method="add"></action>
-        <action name="after_sales_remove" class="afterSalesServiceCrudAction" method="remove"></action>
-        <action name="after_sales_update" class="afterSalesServiceCrudAction" method="update"></action>
+        <action name="after_sales_getall" class="afterSalesServiceCrudAction" method="getall">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">business</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="after_sales_add" class="afterSalesServiceCrudAction" method="add">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">business</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="after_sales_remove" class="afterSalesServiceCrudAction" method="remove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">business</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="after_sales_update" class="afterSalesServiceCrudAction" method="update">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">business</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
         <!--售后服务-->
+
+        <!--员工信息-->
+        <action name="employee_getall" class="employeeCrudAction" method="getall">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">financial</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="employee_add" class="employeeCrudAction" method="add">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">financial</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="employee_remove" class="employeeCrudAction" method="remove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">financial</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="employee_update" class="employeeCrudAction" method="update">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">financial</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <!--员工信息-->
+
+        <!--员工工资-->
+        <action name="salary_getall" class="salaryCrudAction" method="getall">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">financial</param>
+                <param name="authority">1</param>
+            </interceptor-ref>
+        </action>
+        <action name="salary_add" class="salaryCrudAction" method="add">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">financial</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="salary_remove" class="salaryCrudAction" method="remove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">financial</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <action name="salary_update" class="salaryCrudAction" method="update">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">financial</param>
+                <param name="authority">2</param>
+            </interceptor-ref>
+        </action>
+        <!--员工工资 -->
+
+        <!--系统用户管理-->
+        <action name="admin_getall" class="adminAction" method="getall">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">admin</param>
+                <param name="authority">3</param>
+            </interceptor-ref>
+        </action>
+        <action name="admin_add" class="adminAction" method="add">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">admin</param>
+                <param name="authority">3</param>
+            </interceptor-ref>
+        </action>
+        <action name="admin_remove" class="adminAction" method="remove">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">admin</param>
+                <param name="authority">3</param>
+            </interceptor-ref>
+        </action>
+        <action name="admin_update" class="adminAction" method="update">
+            <interceptor-ref name="login"/>
+            <interceptor-ref name="permission">
+                <param name="type">admin</param>
+                <param name="authority">3</param>
+            </interceptor-ref>
+        </action>
+        <!--系统用户管理 -->
+
+        <action name="login" class="loginAction">
+            <result name="success">index.jsp</result>
+            <result name="login">login.jsp</result>
+        </action>
+
+        <action name="logout" class="logoutAction">
+            <result name="login">login.jsp</result>
+        </action>
+
     </package>
 </struts>

@@ -23,12 +23,13 @@ public class EmployeeCrudAction extends BaseAction {
     }
 
     public String add() {
-        EmployeeEntity entity = getRequest(EmployeeEntity.class);
         Result<EmployeeEntity> result = new Result();
         try {
+            EmployeeEntity entity = getRequest(EmployeeEntity.class);
             employeeCrudService.add(entity);
             result.setData(entity);
-        } catch (ServiceException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             result.setCode(1);
             result.setMsg(e.getMessage());
         }
@@ -37,11 +38,12 @@ public class EmployeeCrudAction extends BaseAction {
     }
 
     public String remove() {
-        EmployeeEntity entity = getRequest(EmployeeEntity.class);
         Result result = new Result();
         try {
+            EmployeeEntity entity = getRequest(EmployeeEntity.class);
             employeeCrudService.delete(entity.getId());
-        } catch (ServiceException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             result.setCode(1);
             result.setMsg(e.getMessage());
         }
@@ -50,11 +52,12 @@ public class EmployeeCrudAction extends BaseAction {
     }
 
     public String update() {
-        EmployeeEntity entity = getRequest(EmployeeEntity.class);
         Result result = new Result();
         try {
+            EmployeeEntity entity = getRequest(EmployeeEntity.class);
             employeeCrudService.update(entity);
-        } catch (ServiceException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             result.setCode(1);
             result.setMsg(e.getMessage());
         }

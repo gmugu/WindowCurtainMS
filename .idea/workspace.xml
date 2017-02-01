@@ -1,34 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="WindowCurtainMS:war" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="90cef515-ac08-481a-90ac-8fd9b2e505c6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/util/gson/DateAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/util/gson/DoubleAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/util/gson/IntegerAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/util/gson/LongAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/business_management_after_sale.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/business_management_business_register.jsp" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/business_management_after_sale.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/business_management_business_register.html" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/locked.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/login-background.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/user.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/WindowCurtainMS_war.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/dao/UsersDao.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/entity/UsersEntity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/service/AdminService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/service/LoginService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/service/MaterialDetailService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/util/MD5Util.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/web/action/AdminAction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/web/action/LoginAction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/web/action/LogoutAction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/web/action/MaterialDetailAction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/web/interceptor/BaseInterceptor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/web/interceptor/LoginInterceptor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/wcms/web/interceptor/PermissionInterceptor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/admin.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/font-awesome.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/login.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/employee_info.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/employee_salary.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/index.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/login.jsp" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/dev.table.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/index.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/WindowCurtainMS_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/WindowCurtainMS_war_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WindowCurtainMS.iml" afterPath="$PROJECT_DIR$/WindowCurtainMS.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/wcms/entity/BusinessEntity.java" afterPath="$PROJECT_DIR$/src/com/wcms/entity/BusinessEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/wcms/service/AfterSalesServiceCrudService.java" afterPath="$PROJECT_DIR$/src/com/wcms/service/AfterSalesServiceCrudService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/wcms/service/BusinessCrudService.java" afterPath="$PROJECT_DIR$/src/com/wcms/service/BusinessCrudService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/wcms/service/OrderCrudService.java" afterPath="$PROJECT_DIR$/src/com/wcms/service/OrderCrudService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/wcms/web/action/AfterSalesServiceCrudAction.java" afterPath="$PROJECT_DIR$/src/com/wcms/web/action/AfterSalesServiceCrudAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/wcms/entity/EmployeeEntity.java" afterPath="$PROJECT_DIR$/src/com/wcms/entity/EmployeeEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/wcms/entity/SalaryEntity.java" afterPath="$PROJECT_DIR$/src/com/wcms/entity/SalaryEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/wcms/service/EmployeeCrudService.java" afterPath="$PROJECT_DIR$/src/com/wcms/service/EmployeeCrudService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/wcms/service/SalaryCrudService.java" afterPath="$PROJECT_DIR$/src/com/wcms/service/SalaryCrudService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/wcms/web/action/BaseAction.java" afterPath="$PROJECT_DIR$/src/com/wcms/web/action/BaseAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/wcms/web/action/BusinessCrudAction.java" afterPath="$PROJECT_DIR$/src/com/wcms/web/action/BusinessCrudAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/wcms/web/action/OrderCrudAction.java" afterPath="$PROJECT_DIR$/src/com/wcms/web/action/OrderCrudAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/wcms/web/action/EmployeeCrudAction.java" afterPath="$PROJECT_DIR$/src/com/wcms/web/action/EmployeeCrudAction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/spring-config.xml" afterPath="$PROJECT_DIR$/src/spring-config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/struts.xml" afterPath="$PROJECT_DIR$/src/struts.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.html" afterPath="$PROJECT_DIR$/web/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/basic_info_client.html" afterPath="$PROJECT_DIR$/web/basic_info_client.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/business_management_after_sale.jsp" afterPath="$PROJECT_DIR$/web/business_management_after_sale.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/apiservice.js" afterPath="$PROJECT_DIR$/web/js/apiservice.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/order_manager_reserve.jsp" afterPath="$PROJECT_DIR$/web/order_manager_reserve.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/order_manager_sign.jsp" afterPath="$PROJECT_DIR$/web/order_manager_sign.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/store_keeping_procurement.jsp" afterPath="$PROJECT_DIR$/web/store_keeping_procurement.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/store_keeping_return.jsp" afterPath="$PROJECT_DIR$/web/store_keeping_return.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/business_management_tasking_register.html" afterPath="$PROJECT_DIR$/web/business_management_tasking_register.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/store_keeping_gather.jsp" afterPath="$PROJECT_DIR$/web/store_keeping_gather.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/store_keeping_stock.html" afterPath="$PROJECT_DIR$/web/store_keeping_stock.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/welcome.html" afterPath="$PROJECT_DIR$/web/welcome.html" />
     </list>
     <ignored path="WindowCurtainMS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -82,112 +102,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="struts.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="struts.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/struts.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.377049">
-              <caret line="112" column="88" selection-start-line="112" selection-start-column="88" selection-end-line="112" selection-end-column="88" />
-              <folding />
-            </state>
-          </provider>
           <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider">
             <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AfterSalesServiceCrudAction.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/wcms/web/action/AfterSalesServiceCrudAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+            <state vertical-scroll-proportion="9.489051">
+              <caret line="65" column="17" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AfterSalesServiceCrudService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/wcms/service/AfterSalesServiceCrudService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="62" column="12" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
-              <folding>
-                <element signature="e#2699#2700#0" expanded="true" />
-                <element signature="e#2733#2734#0" expanded="true" />
-                <element signature="e#2792#2793#0" expanded="true" />
-                <element signature="e#2838#2839#0" expanded="true" />
-                <element signature="e#2881#2882#0" expanded="true" />
-                <element signature="e#2915#2916#0" expanded="true" />
-                <element signature="e#2974#2975#0" expanded="true" />
-                <element signature="e#3020#3021#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="apiservice.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/js/apiservice.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="282" column="9" selection-start-line="282" selection-start-column="9" selection-end-line="282" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.078431375">
-              <caret line="142" column="32" selection-start-line="142" selection-start-column="32" selection-end-line="142" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="business_management_after_sale.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/business_management_after_sale.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3793104">
-              <caret line="320" column="0" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OrderCrudService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/wcms/service/OrderCrudService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="73" column="9" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BusinessCrudService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/wcms/service/BusinessCrudService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="66" column="22" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2399#2400#0" expanded="true" />
-                <element signature="e#2433#2434#0" expanded="true" />
-                <element signature="e#2492#2493#0" expanded="true" />
-                <element signature="e#2538#2539#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BusinessEntity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/wcms/entity/BusinessEntity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="170" column="38" selection-start-line="170" selection-start-column="38" selection-end-line="170" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -200,9 +123,11 @@
         <option value="struts_2_3" />
         <option value="spring-beans.schema" />
         <option value="Interface" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="Jsp File" />
+        <option value="HTML File" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -217,38 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/store_keeping_order.jsp" />
-        <option value="$PROJECT_DIR$/src/com/wcms/dao/EmployeeDao.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/service/ProcurementCrudService.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/web/action/ProcurementCrudAction.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/entity/ProcurementEntity.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/dao/ProcurementDetailDao.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/service/ProcurementDetailCrudService.java" />
-        <option value="$PROJECT_DIR$/web/store_keeping_procurement_detail.jsp" />
-        <option value="$PROJECT_DIR$/src/com/wcms/service/ReturnCrudService.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/web/action/ReturnCrudAction.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/entity/ReturnlEntity.java" />
-        <option value="$PROJECT_DIR$/web/store_keeping_return_detail.jsp" />
-        <option value="$PROJECT_DIR$/src/com/wcms/dao/BaseDao.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/dao/ReturnDetailDao.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/web/action/ProcurementDetailCrudAction.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/web/action/ReturnDetailCrudAction.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/service/ReturnDetailCrudService.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/service/CustomerCrudService.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/service/MaterialCrudService.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/dao/OrderDetailDao.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/service/CurtainCrudService.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/web/action/OrderDetailCrudAction.java" />
-        <option value="$PROJECT_DIR$/web/order_manager_reserve_detail.jsp" />
-        <option value="$PROJECT_DIR$/src/com/wcms/service/OrderDetailCrudService.java" />
-        <option value="$PROJECT_DIR$/web/order_manager_sign.html" />
-        <option value="$PROJECT_DIR$/src/com/wcms/entity/OrderlEntity.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/util/gson/IntegerAdapter.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/util/gson/DoubleAdapter.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/util/gson/LongAdapter.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/web/action/BaseAction.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/util/gson/DateAdapter.java" />
-        <option value="$PROJECT_DIR$/src/com/wcms/web/action/OrderCrudAction.java" />
         <option value="$PROJECT_DIR$/src/com/wcms/service/OrderCrudService.java" />
         <option value="$PROJECT_DIR$/web/store_keeping_return.jsp" />
         <option value="$PROJECT_DIR$/web/order_manager_reserve.jsp" />
@@ -261,13 +154,45 @@
         <option value="$PROJECT_DIR$/web/business_management_tasking_register.jsp" />
         <option value="$PROJECT_DIR$/web/order_manager_sign.jsp" />
         <option value="$PROJECT_DIR$/web/business_management_after_sale.html" />
-        <option value="$PROJECT_DIR$/web/js/apiservice.js" />
-        <option value="$PROJECT_DIR$/src/struts.xml" />
-        <option value="$PROJECT_DIR$/web/business_management_after_sale.jsp" />
         <option value="$PROJECT_DIR$/src/com/wcms/web/action/AfterSalesServiceCrudAction.java" />
-        <option value="$PROJECT_DIR$/src/spring-config.xml" />
         <option value="$PROJECT_DIR$/src/com/wcms/service/AfterSalesServiceCrudService.java" />
+        <option value="$PROJECT_DIR$/web/basic_info_client.html" />
+        <option value="$PROJECT_DIR$/web/employee_info.jsp" />
+        <option value="$PROJECT_DIR$/src/com/wcms/entity/EmployeeEntity.java" />
+        <option value="$PROJECT_DIR$/src/com/wcms/web/action/EmployeeCrudAction.java" />
+        <option value="$PROJECT_DIR$/src/com/wcms/service/EmployeeCrudService.java" />
+        <option value="$PROJECT_DIR$/web/css/login.css" />
+        <option value="$PROJECT_DIR$/src/com/wcms/service/SalaryCrudService.java" />
+        <option value="$PROJECT_DIR$/src/com/wcms/web/action/BaseAction.java" />
+        <option value="$PROJECT_DIR$/src/com/wcms/entity/SalaryEntity.java" />
+        <option value="$PROJECT_DIR$/web/business_management_after_sale.jsp" />
+        <option value="$PROJECT_DIR$/web/store_keeping_gather.jsp" />
+        <option value="$PROJECT_DIR$/src/com/wcms/web/action/MaterialDetailAction.java" />
+        <option value="$PROJECT_DIR$/web/store_keeping_stock.html" />
+        <option value="$PROJECT_DIR$/src/com/wcms/service/MaterialDetailService.java" />
+        <option value="$PROJECT_DIR$/web/admin.html" />
+        <option value="$PROJECT_DIR$/src/com/wcms/entity/UsersEntity.java" />
+        <option value="$PROJECT_DIR$/src/com/wcms/dao/UsersDao.java" />
+        <option value="$PROJECT_DIR$/src/com/wcms/web/action/AdminAction.java" />
+        <option value="$PROJECT_DIR$/web/js/apiservice.js" />
+        <option value="$PROJECT_DIR$/web/employee_salary.jsp" />
+        <option value="$PROJECT_DIR$/src/com/wcms/util/MD5Util.java" />
+        <option value="$PROJECT_DIR$/web/admin.jsp" />
+        <option value="$PROJECT_DIR$/src/com/wcms/web/action/LoginAction.java" />
         <option value="$PROJECT_DIR$/web/index.html" />
+        <option value="$PROJECT_DIR$/web/login.html" />
+        <option value="$PROJECT_DIR$/web/login.jsp" />
+        <option value="$PROJECT_DIR$/src/com/wcms/service/LoginService.java" />
+        <option value="$PROJECT_DIR$/src/com/wcms/web/interceptor/BaseInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/com/wcms/web/interceptor/LoginInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/spring-config.xml" />
+        <option value="$PROJECT_DIR$/src/com/wcms/web/action/LogoutAction.java" />
+        <option value="$PROJECT_DIR$/src/com/wcms/web/interceptor/PermissionInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/struts.xml" />
+        <option value="$PROJECT_DIR$/src/com/wcms/service/AdminService.java" />
+        <option value="$PROJECT_DIR$/web/css/responsive.css" />
+        <option value="$PROJECT_DIR$/web/welcome.html" />
+        <option value="$PROJECT_DIR$/web/index.jsp" />
       </list>
     </option>
   </component>
@@ -294,10 +219,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="402" />
+    <option name="y" value="55" />
+    <option name="width" value="1123" />
+    <option name="height" value="629" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -370,9 +295,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -415,55 +339,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WindowCurtainMS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WindowCurtainMS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wcms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WindowCurtainMS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WindowCurtainMS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wcms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="action" />
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WindowCurtainMS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WindowCurtainMS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -482,36 +376,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="wcms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WindowCurtainMS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WindowCurtainMS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wcms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gson" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -547,22 +411,59 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WindowCurtainMS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WindowCurtainMS" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="wcms" />
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="artifacts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WindowCurtainMS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WindowCurtainMS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="out" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="artifacts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WindowCurtainMS_war" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.35977012" />
     <property name="settings.editor.selected.configurable" value="copyright.filetypes.HTML" />
     <property name="settings.editor.splitter.proportion" value="0.23882017" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -575,19 +476,25 @@
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="JPA.DatabaseSchemaImportDialog" value="42599bff-8377-4340-ac8b-3464ef0b4dfa" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.wcms.web.action" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.wcms.service" />
     </key>
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="com.wcms.entity" />
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Development\workspace\IdeaProjects\WindowCurtainMS\src\com\wcms\web\interceptor" />
+      <recent name="D:\Development\workspace\IdeaProjects\WindowCurtainMS\src\com\wcms\util" />
+      <recent name="D:\Development\workspace\IdeaProjects\WindowCurtainMS\web\images" />
+      <recent name="D:\Development\workspace\IdeaProjects\WindowCurtainMS\web\css" />
       <recent name="D:\Development\workspace\IdeaProjects\WindowCurtainMS\web" />
-      <recent name="D:\Development\workspace\IdeaProjects\WindowCurtainMS\src\com\wcms\service" />
-      <recent name="D:\Development\workspace\IdeaProjects\WindowCurtainMS\web\WEB-INF\lib" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 7.0">
@@ -1186,12 +1093,15 @@
       <workItem from="1485406217111" duration="1978000" />
       <workItem from="1485485720050" duration="4942000" />
       <workItem from="1485598257347" duration="12785000" />
-      <workItem from="1485655926715" duration="20902000" />
+      <workItem from="1485655926715" duration="21121000" />
+      <workItem from="1485764626331" duration="5463000" />
+      <workItem from="1485865726500" duration="1279000" />
+      <workItem from="1485919088013" duration="35563000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147455000" />
+    <option name="totallyTimeSpent" value="189979000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1203,32 +1113,32 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="402" y="55" width="1123" height="629" extended-state="1" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931036" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31724137" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931036" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31551725" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3275862" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3275862" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293617" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3275862" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24051593" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37931034" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931036" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931036" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21927163" sideWeight="0.50689656" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22837633" sideWeight="0.49310344" order="0" side_tool="false" content_ui="combo" x="324" y="104" width="300" height="493" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29084042" sideWeight="0.49310344" order="0" side_tool="false" content_ui="combo" x="324" y="104" width="300" height="493" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27234042" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42150536" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27162367" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42068964" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24936171" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24886191" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21927163" sideWeight="0.5095368" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45689654" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5075269" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1257,7 +1167,7 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1266,462 +1176,480 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/order_manager_remind.html">
+    <entry file="file://$PROJECT_DIR$/web/business_management_after_sale.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9574468">
+          <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/entity/MaterialEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14746544">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="18" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/entity/ProcurementDetailEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14746544">
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/web/action/MaterialCrudAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32258064">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="20" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/web/action/MaterialDetailAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40069687">
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#684#685#0" expanded="true" />
+            <element signature="e#728#729#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/basic_info_client.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="17.446808">
+          <caret line="164" column="52" selection-start-line="0" selection-start-column="0" selection-end-line="363" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/store_keeping_stock.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.2145214">
+          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/store_keeping_gather.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6896552">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/store_keeping_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="6.8965516">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/entity/CurtainEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/EmployeeCrudService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5833333">
-          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="35" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/CustomerCrudService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7008547">
-          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/dao/BaseDao.java">
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/entity/WarehouseEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.037523452">
-          <caret line="55" column="6" selection-start-line="55" selection-start-column="6" selection-end-line="55" selection-end-column="6" />
-          <folding>
-            <element signature="e#1502#1503#0" expanded="false" />
-            <element signature="e#1545#1546#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.33179724">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/ProcurementDetailCrudService.java">
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/entity/UsersEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33179724">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/dao/WarehouseDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3548387">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/dao/UsersDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/store_keeping_procurement_detail.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.90909094">
-          <caret line="232" column="46" selection-start-line="0" selection-start-column="0" selection-end-line="388" selection-end-column="7" />
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/CurtainCrudService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5800525">
-          <caret line="68" column="4" selection-start-line="68" selection-start-column="4" selection-end-line="68" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/MaterialCrudService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21367522">
-          <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/OrderDetailCrudService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56873316">
-          <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
-          <folding>
-            <element signature="e#1476#1477#0" expanded="false" />
-            <element signature="e#1531#1532#0" expanded="false" />
-            <element signature="e#1579#1580#0" expanded="false" />
-            <element signature="e#1626#1627#0" expanded="false" />
-            <element signature="e#1675#1676#0" expanded="false" />
-            <element signature="e#1712#1713#0" expanded="false" />
-            <element signature="e#1780#1781#0" expanded="false" />
-            <element signature="e#1832#1833#0" expanded="false" />
-            <element signature="e#1869#1870#0" expanded="false" />
-            <element signature="e#1900#1901#0" expanded="false" />
-            <element signature="e#1950#1951#0" expanded="false" />
-            <element signature="e#1990#1991#0" expanded="false" />
-            <element signature="e#2031#2032#0" expanded="false" />
-            <element signature="e#2064#2065#0" expanded="false" />
-            <element signature="e#2120#2121#0" expanded="false" />
-            <element signature="e#2164#2165#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/dao/OrderDetailDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4851752">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/dao/ReturnDetailDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40700808">
-          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="15" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/dao/OrderDetailDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21563342">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/web/action/ReturnDetailCrudAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1563342">
-          <caret line="20" column="27" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/ReturnDetailCrudService.java">
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/dao/UseMaterialDetailDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/CurtainCrudService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68221575">
-          <caret line="37" column="36" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/order_manager_reserve_detail.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.1910828">
-          <caret line="206" column="0" selection-start-line="206" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/OrderDetailCrudService.java">
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/MaterialDetailService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5263158">
-          <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
+        <state vertical-scroll-proportion="2.3041475">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding>
-            <element signature="e#1476#1477#0" expanded="false" />
-            <element signature="e#1531#1532#0" expanded="false" />
-            <element signature="e#1579#1580#0" expanded="false" />
-            <element signature="e#1626#1627#0" expanded="false" />
-            <element signature="e#1675#1676#0" expanded="false" />
-            <element signature="e#1712#1713#0" expanded="false" />
-            <element signature="e#1780#1781#0" expanded="false" />
-            <element signature="e#1832#1833#0" expanded="false" />
-            <element signature="e#1869#1870#0" expanded="false" />
-            <element signature="e#1900#1901#0" expanded="false" />
-            <element signature="e#1950#1951#0" expanded="false" />
-            <element signature="e#1990#1991#0" expanded="false" />
-            <element signature="e#2031#2032#0" expanded="false" />
-            <element signature="e#2064#2065#0" expanded="false" />
-            <element signature="e#2120#2121#0" expanded="false" />
-            <element signature="e#2164#2165#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3151#3152#0" expanded="true" />
+            <element signature="e#3194#3195#0" expanded="true" />
+            <element signature="e#3395#3396#0" expanded="true" />
+            <element signature="e#3433#3434#0" expanded="true" />
+            <element signature="e#3504#3505#0" expanded="true" />
+            <element signature="e#3558#3559#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/web/action/OrderDetailCrudAction.java">
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/SalaryCrudService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37593985">
-          <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/entity/OrderlEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1697675">
-          <caret line="183" column="18" selection-start-line="183" selection-start-column="18" selection-end-line="183" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/util/gson/IntegerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29961088">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/util/gson/LongAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="27" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/web/WEB-INF/lib/gson-2.6.1.jar!/com/google/gson/DefaultDateTypeAdapter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.1666667">
-          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/web/WEB-INF/lib/gson-2.6.1.jar!/com/google/gson/GsonBuilder.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.46666667">
-          <caret line="223" column="58" selection-start-line="223" selection-start-column="47" selection-end-line="223" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ideaLibSources/gson-2.6.1-sources.jar!/com/google/gson/TreeTypeAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.3974764">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ideaLibSources/gson-2.6.1-sources.jar!/com/google/gson/DefaultDateTypeAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2681388">
-          <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ideaLibSources/gson-2.6.1-sources.jar!/com/google/gson/GsonBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22397476">
-          <caret line="573" column="37" selection-start-line="573" selection-start-column="37" selection-end-line="573" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.6451613">
+          <caret line="17" column="38" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.ideaLibSources/gson-2.6.1-sources.jar!/com/google/gson/internal/bind/util/ISO8601Utils.java">
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/web/action/CustomerCrudAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="273" column="0" selection-start-line="273" selection-start-column="0" selection-end-line="273" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.516129">
+          <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/web/action/BaseAction.java">
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/util/MD5Util.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67622954">
-          <caret line="41" column="20" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/util/gson/DoubleAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/store_keeping_return.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.1034484">
-          <caret line="206" column="54" selection-start-line="206" selection-start-column="54" selection-end-line="206" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/layui/font/iconfont.svg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24691358">
-          <caret line="4" column="53" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/util/gson/DateAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="67" column="13" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/business_management_business_register.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.862068">
-          <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/web/action/OrderCrudAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="120" column="8" selection-start-line="120" selection-start-column="8" selection-end-line="129" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/BusinessCrudService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="66" column="22" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2399#2400#0" expanded="true" />
-            <element signature="e#2433#2434#0" expanded="true" />
-            <element signature="e#2492#2493#0" expanded="true" />
-            <element signature="e#2538#2539#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/entity/BusinessEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="170" column="38" selection-start-line="170" selection-start-column="38" selection-end-line="170" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/OrderCrudService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="9" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/order_manager_reserve.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07692308">
-          <caret line="2" column="59" selection-start-line="2" selection-start-column="59" selection-end-line="2" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/store_keeping_procurement.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3846154">
-          <caret line="10" column="2" selection-start-line="0" selection-start-column="0" selection-end-line="439" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/business_management_settle.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/business_management_order.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/business_management_tasking_register.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34074074">
-          <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/order_manager_sign.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23389022">
-          <caret line="387" column="47" selection-start-line="387" selection-start-column="47" selection-end-line="387" selection-end-column="47" />
+        <state vertical-scroll-proportion="-0.18072289">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/js/apiservice.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="282" column="9" selection-start-line="282" selection-start-column="9" selection-end-line="282" selection-end-column="20" />
+        <state vertical-scroll-proportion="1.0382514">
+          <caret line="344" column="8" selection-start-line="344" selection-start-column="8" selection-end-line="344" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/web/action/BusinessCrudAction.java">
+    <entry file="file://$PROJECT_DIR$/web/employee_salary.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0066965">
-          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+        <state vertical-scroll-proportion="2.8486648">
+          <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/struts.xml">
+    <entry file="jar://$PROJECT_DIR$/lib/xwork-core.jar!/com/opensymphony/xwork2/interceptor/Interceptor.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.377049">
-          <caret line="112" column="88" selection-start-line="112" selection-start-column="88" selection-end-line="112" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/business_management_after_sale.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3793104">
-          <caret line="320" column="0" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7284768">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/wcms/web/action/AfterSalesServiceCrudAction.java">
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/LoginService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+          <caret line="13" column="86" selection-start-line="13" selection-start-column="70" selection-end-line="13" selection-end-column="86" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#742#743#0" expanded="true" />
+            <element signature="e#773#774#0" expanded="true" />
+            <element signature="e#823#824#0" expanded="true" />
+            <element signature="e#863#864#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/web/action/LoginAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="54" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#940#941#0" expanded="true" />
+            <element signature="e#975#976#0" expanded="true" />
+            <element signature="e#1037#1038#0" expanded="true" />
+            <element signature="e#1085#1086#0" expanded="true" />
+            <element signature="e#1120#1121#0" expanded="true" />
+            <element signature="e#1151#1152#0" expanded="true" />
+            <element signature="e#1199#1200#0" expanded="true" />
+            <element signature="e#1239#1240#0" expanded="true" />
+            <element signature="e#1274#1275#0" expanded="true" />
+            <element signature="e#1305#1306#0" expanded="true" />
+            <element signature="e#1353#1354#0" expanded="true" />
+            <element signature="e#1393#1394#0" expanded="true" />
+            <element signature="e#1462#1463#0" expanded="true" />
+            <element signature="e#1491#1492#0" expanded="true" />
+            <element signature="e#1521#1522#0" expanded="true" />
+            <element signature="e#1547#1548#0" expanded="true" />
+            <element signature="e#1585#1586#0" expanded="true" />
+            <element signature="e#1615#1616#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37346938">
+          <caret line="4" column="72938" selection-start-line="4" selection-start-column="72938" selection-end-line="4" selection-end-column="72938" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/admin.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6923077">
+          <caret line="123" column="64" selection-start-line="123" selection-start-column="64" selection-end-line="123" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/web/action/LogoutAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6122449">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#498#499#0" expanded="true" />
+            <element signature="e#527#528#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/web/action/BaseAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/struts2-core.jar!/struts-default.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8226415">
+          <caret line="310" column="12" selection-start-line="310" selection-start-column="12" selection-end-line="310" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/spring-config.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5595238">
-          <caret line="125" column="56" selection-start-line="125" selection-start-column="56" selection-end-line="125" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.45945945">
+          <caret line="293" column="69" selection-start-line="293" selection-start-column="69" selection-end-line="293" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5675676">
+          <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/web/interceptor/PermissionInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1643#1644#0" expanded="true" />
+            <element signature="e#1670#1671#0" expanded="true" />
+            <element signature="e#1710#1711#0" expanded="true" />
+            <element signature="e#1742#1743#0" expanded="true" />
+            <element signature="e#1775#1776#0" expanded="true" />
+            <element signature="e#1807#1808#0" expanded="true" />
+            <element signature="e#1854#1855#0" expanded="true" />
+            <element signature="e#1896#1897#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/web/action/AdminAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2718894">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/welcome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.79012346">
+          <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.84631145">
+          <caret line="40" column="82" selection-start-line="40" selection-start-column="82" selection-end-line="40" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/AdminService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.040073">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/BusinessCrudService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33114755">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/wcms/service/AfterSalesServiceCrudService.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.78688526">
+          <caret line="20" column="24" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/CurtainCrudService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33114755">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/CustomerCrudService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33114755">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/web/interceptor/BaseInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="12" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="12" />
+          <caret line="28" column="41" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
           <folding>
-            <element signature="e#2699#2700#0" expanded="true" />
-            <element signature="e#2733#2734#0" expanded="true" />
-            <element signature="e#2792#2793#0" expanded="true" />
-            <element signature="e#2838#2839#0" expanded="true" />
-            <element signature="e#2881#2882#0" expanded="true" />
-            <element signature="e#2915#2916#0" expanded="true" />
-            <element signature="e#2974#2975#0" expanded="true" />
-            <element signature="e#3020#3021#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.html">
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/EmployeeCrudService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.078431375">
-          <caret line="142" column="32" selection-start-line="142" selection-start-column="32" selection-end-line="142" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.33114755">
+          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.14492753">
+          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/web/interceptor/LoginInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45901638">
+          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/MaterialCrudService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13442624">
+          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/OrderCrudService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.062295083">
+          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/ReturnCrudService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33114755">
+          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/ProcurementCrudService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33114755">
+          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/SupplierCrudService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33114755">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/wcms/service/WarehouseCrudService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33114755">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/struts.xml">
+      <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="9.489051">
+          <caret line="65" column="17" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -1736,7 +1664,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.35977012" />
                 <option value="0.5" />
               </list>
             </option>
