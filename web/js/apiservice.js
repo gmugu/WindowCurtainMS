@@ -88,13 +88,13 @@ function customer_update(id, no, name, contactPerson, phone, comments, callback)
 function curtain_getall(callback) {
     exec(arguments);
 }
-function curtain_add(specifications, brand, size, color, callback) {
+function curtain_add(specifications, brand, size, color, price, callback) {
     exec(arguments);
 }
 function curtain_remove(id, callback) {
     exec(arguments);
 }
-function curtain_update(id, no, specifications, brand, size, color, callback) {
+function curtain_update(id, no, specifications, brand, size, color, price, callback) {
     exec(arguments);
 }
 //窗帘资料
@@ -229,13 +229,13 @@ function order_update(id, no, orderTime, customer, deliveryTime, downpayment, co
 function order_detail_getall(order, callback) {
     exec(arguments);
 }
-function order_detail_add(curtain, order, location, height, width, counts, comments, callback) {
+function order_detail_add(curtain, order, location, height, width, count, comments, callback) {
     exec(arguments);
 }
 function order_detail_remove(id, callback) {
     exec(arguments);
 }
-function order_detail_update(id, curtain, location, height, width, counts, comments, callback) {
+function order_detail_update(id, curtain, location, height, width, count, comments, callback) {
     exec(arguments);
 }
 //订做明细

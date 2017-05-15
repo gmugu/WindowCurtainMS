@@ -14,6 +14,7 @@ public class CurtainEntity {
     private String brand;
     private String size;
     private String color;
+    private double price;
 
     @Id
     @Column(name = "id")
@@ -76,6 +77,16 @@ public class CurtainEntity {
         this.color = color;
     }
 
+    @Basic
+    @Column(name = "price")
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -84,24 +95,28 @@ public class CurtainEntity {
         CurtainEntity that = (CurtainEntity) o;
 
         if (id != that.id) return false;
+        if (Double.compare(that.price, price) != 0) return false;
         if (no != null ? !no.equals(that.no) : that.no != null) return false;
         if (specifications != null ? !specifications.equals(that.specifications) : that.specifications != null)
             return false;
         if (brand != null ? !brand.equals(that.brand) : that.brand != null) return false;
         if (size != null ? !size.equals(that.size) : that.size != null) return false;
-        if (color != null ? !color.equals(that.color) : that.color != null) return false;
+        return !(color != null ? !color.equals(that.color) : that.color != null);
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result;
+        long temp;
+        result = id;
         result = 31 * result + (no != null ? no.hashCode() : 0);
         result = 31 * result + (specifications != null ? specifications.hashCode() : 0);
         result = 31 * result + (brand != null ? brand.hashCode() : 0);
         result = 31 * result + (size != null ? size.hashCode() : 0);
         result = 31 * result + (color != null ? color.hashCode() : 0);
+        temp = Double.doubleToLongBits(price);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
@@ -114,6 +129,7 @@ public class CurtainEntity {
                 ", brand='" + brand + '\'' +
                 ", size='" + size + '\'' +
                 ", color='" + color + '\'' +
+                ", price=" + price +
                 '}';
     }
 }

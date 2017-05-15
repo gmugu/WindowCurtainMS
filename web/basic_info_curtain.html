@@ -46,6 +46,7 @@
                             <th>窗帘品牌</th>
                             <th>窗帘尺寸</th>
                             <th>窗帘颜色</th>
+                            <th>窗帘单价</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -101,8 +102,9 @@
                     jqTds[3].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[3] + '">';
                     jqTds[4].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[4] + '">';
                     jqTds[5].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[5] + '">';
-                    jqTds[6].innerHTML = '<a class="edit" href="">Save</a>';
-                    jqTds[7].innerHTML = '<a class="cancel" href="">Cancel</a>';
+                    jqTds[6].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[6] + '">';
+                    jqTds[7].innerHTML = '<a class="edit" href="">Save</a>';
+                    jqTds[8].innerHTML = '<a class="cancel" href="">Cancel</a>';
                 }
 
                 function saveRow(oTable, nRow) {
@@ -134,6 +136,7 @@
                                 a.push(ifor(row.brand, ''));
                                 a.push(ifor(row.size, ''));
                                 a.push(ifor(row.color, ''));
+                                a.push(ifor(row.price, ''));
                                 a.push('<a class="edit" href="">Edit</a>');
                                 a.push('<a class="delete" href="">Delete</a>');
                                 oTable.fnAddData(a);
@@ -150,15 +153,16 @@
                     var jqInputs = $('input', nRow);
                     var aData = oTable.fnGetData(nRow);
                     if (aData[0] !== '') {
-                        curtain_update(aData[0], aData[1], jqInputs[0].value, jqInputs[1].value, jqInputs[2].value, jqInputs[3].value, {
+                        curtain_update(aData[0], aData[1], jqInputs[0].value, jqInputs[1].value, jqInputs[2].value, jqInputs[3].value, jqInputs[4].value, {
                             success: function (result) {
                                 if (result.code === 0) {
                                     oTable.fnUpdate(jqInputs[0].value, nRow, 2, false);
                                     oTable.fnUpdate(jqInputs[1].value, nRow, 3, false);
                                     oTable.fnUpdate(jqInputs[2].value, nRow, 4, false);
                                     oTable.fnUpdate(jqInputs[3].value, nRow, 5, false);
-                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 6, false);
-                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 7, false);
+                                    oTable.fnUpdate(jqInputs[4].value, nRow, 6, false);
+                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 7, false);
+                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 8, false);
                                     oTable.fnDraw();
                                 } else {
                                     alert(result.msg);
@@ -171,7 +175,7 @@
                             }
                         });
                     } else {
-                        curtain_add(jqInputs[0].value, jqInputs[1].value, jqInputs[2].value, jqInputs[3].value, {
+                        curtain_add(jqInputs[0].value, jqInputs[1].value, jqInputs[2].value, jqInputs[3].value, jqInputs[4].value, {
                             success: function (result) {
                                 if (result.code === 0) {
                                     var data = result.data;
@@ -181,8 +185,9 @@
                                     oTable.fnUpdate(jqInputs[1].value, nRow, 3, false);
                                     oTable.fnUpdate(jqInputs[2].value, nRow, 4, false);
                                     oTable.fnUpdate(jqInputs[3].value, nRow, 5, false);
-                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 6, false);
-                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 7, false);
+                                    oTable.fnUpdate(jqInputs[4].value, nRow, 6, false);
+                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 7, false);
+                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 8, false);
                                     oTable.fnDraw();
                                 } else {
                                     alert(result.msg);
@@ -222,7 +227,16 @@
                         [10, 25, 50, -1],
                         [10, 25, 50, "All"] // change per page values here
                     ],
+                    dom:'Bfrtip',
+                    buttons: [ {
+                        extend: 'excelHtml5',
+                        text:'导出EXCEL',
+                        customize: function( xlsx ) {
+                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
 
+//                            $('row c[r^="C"]', sheet).attr( 's', '2' );
+                        }
+                    } ],
                     // Or you can use remote translation file
                     // "language": {
                     //   url: '//cdn.datatables.net/plug-ins/3cfcc339e89/i18n/Portuguese.json'
@@ -279,7 +293,7 @@
                         }
                     }
 
-                    var aiNew = oTable.fnAddData(['', '', '', '', '', '', '', '']);
+                    var aiNew = oTable.fnAddData(['', '', '', '', '', '', '', '', '']);
                     var nRow = oTable.fnGetNodes(aiNew[0]);
                     editRow(oTable, nRow);
                     nEditing = nRow;

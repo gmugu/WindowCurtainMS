@@ -314,7 +314,16 @@
                         [10, 25, 50, -1],
                         [10, 25, 50, "All"] // change per page values here
                     ],
+                    dom:'Bfrtip',
+                    buttons: [ {
+                        extend: 'excelHtml5',
+                        text:'导出EXCEL',
+                        customize: function( xlsx ) {
+                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
 
+//                            $('row c[r^="C"]', sheet).attr( 's', '2' );
+                        }
+                    } ],
                     "pageLength": 10,
 
                     "language": {

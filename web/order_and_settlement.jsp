@@ -1,4 +1,16 @@
-<!--库存明细-->
+<%--订单结算--%>
+<%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
+<%@ page import="org.springframework.context.ApplicationContext" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="com.wcms.util.HtmlTagGenerater" %>
+<%@ page import="com.wcms.service.CurtainCrudService" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    ServletContext context = request.getSession().getServletContext();
+    ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(context);
+    CurtainCrudService curtainCrudService = (CurtainCrudService) ctx.getBean("curtainCrudService");
+    Map<String, String> curtainOpt = curtainCrudService.getCurtainOpt();
+%>
 <!DOCTYPE html>
 <html>
 
@@ -6,7 +18,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>库存明细</title>
+    <title>订单结算</title>
 
     <link rel="shortcut icon" href="images/favicon.ico">
     <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
@@ -29,7 +41,7 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>库存明细</h5>
+                    <h5>订单结算</h5>
 
                 </div>
                 <div class="ibox-content">
@@ -38,15 +50,14 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>材料编号</th>
-                            <th>材料名称</th>
-                            <th>材料类别</th>
-                            <th>规格型号</th>
-                            <th>单位</th>
+                            <th>窗帘</th>
+                            <th>位置</th>
+                            <th>高度</th>
+                            <th>宽度</th>
+                            <th>数量</th>
                             <th>单价</th>
-                            <th>产地</th>
-                            <th>成份</th>
-                            <th>库存量</th>
+                            <th>备注</th>
+                            <th>总计</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -80,35 +91,73 @@
 
             var handleTable = function () {
 
+
+                function getQueryString(name) {
+                    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+                    var r = window.location.search.substr(1).match(reg);
+                    if (r != null) {
+                        return unescape(r[2]);
+                    }
+                    return null;
+                }
+
+                var orderId = getQueryString('order_id');
+
+                function ifor(data, opt) {
+                    if (typeof (data) === "undefined" || data === null)
+                        return opt;
+                    else
+                        return data;
+                }
+
                 function ajaxInitData() {
-                    materia_detail_getall({
+                    order_detail_getall({'id': orderId}, {
                         success: function (result) {
                             if (result.code != 0) {
                                 alert("错误:" + result.msg);
                                 return;
                             }
-                            function ifor(data, opt) {
-                                if (typeof (data) === "undefined" || data === null)
-                                    return opt;
-                                else
-                                    return data;
-                            }
+
 
                             var data = result.data;
                             oTable.fnClearTable();
+                            var total = 0;
                             for (var i in data) {
                                 var row = data[i];
                                 var a = [];
                                 a.push(row.id);
-                                a.push(row.no);
-                                a.push(ifor(row.name, ''));
-                                a.push(ifor(row.category, ''));
-                                a.push(ifor(row.model, ''));
-                                a.push(ifor(row.unit, ''));
-                                a.push(ifor(row.price, '0'));
-                                a.push(ifor(row.producingArea, ''));
-                                a.push(ifor(row.ingredient, ''));
-                                a.push(ifor(row.counts, ''));
+                                var curtain = row.curtain;
+                                var price = curtain.price;
+                                a.push(curtain.no + ':' + ifor(curtain.specifications, ''));
+                                a.push(ifor(row.location, ''));
+                                a.push(ifor(row.height, ''));
+                                a.push(ifor(row.width, ''));
+                                a.push(ifor(row.count, ''));
+                                a.push(ifor(price, ''));
+                                a.push(ifor(row.comments, ''));
+                                var items = row.height * row.width * row.count * price;
+                                if (isNaN(items)) {
+                                    items = 0;
+                                }
+                                a.push(items);
+                                total += items;
+                                oTable.fnAddData(a);
+                            }
+                            if (data.length > 0) {
+                                var a = [];
+                                a.push('总计');
+                                a.push('');
+                                a.push('');
+                                a.push('');
+                                a.push('');
+                                a.push('');
+                                a.push('');
+                                a.push('');
+                                if (isNaN(total)) {
+                                    total = 0;
+                                }
+                                a.push(total);
+
                                 oTable.fnAddData(a);
                             }
 
@@ -138,6 +187,11 @@
 //                            $('row c[r^="C"]', sheet).attr( 's', '2' );
                         }
                     } ],
+                    // Or you can use remote translation file
+                    // "language": {
+                    //   url: '//cdn.datatables.net/plug-ins/3cfcc339e89/i18n/Portuguese.json'
+                    // },
+
                     // set the initial value
                     "pageLength": 10,
 
@@ -166,6 +220,9 @@
                 });
 
                 var tableWrapper = $("#editable_wrapper");
+
+                var nEditing = null;
+                var nNew = false;
 
 
                 ajaxInitData();

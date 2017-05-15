@@ -3,7 +3,6 @@
 <%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
 <%@ page import="org.springframework.context.ApplicationContext" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="com.wcms.util.HtmlTagGenerater" %>
 <%@ page import="com.wcms.service.CustomerCrudService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
@@ -66,6 +65,7 @@
                             <th>已付金额</th>
                             <th>备注</th>
                             <th>订做明细</th>
+                            <th>订单结算</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -138,8 +138,8 @@
                     jqTds[7].innerHTML = '<input type="text" class="form-control input-small" onclick="layui.laydate({elem: this})" value="' + aData[7] + '">';
                     jqTds[8].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[8] + '">';
                     jqTds[9].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[9] + '">';
-                    jqTds[11].innerHTML = '<a class="edit" href="">Save</a>';
-                    jqTds[12].innerHTML = '<a class="cancel" href="">Cancel</a>';
+                    jqTds[12].innerHTML = '<a class="edit" href="">Save</a>';
+                    jqTds[13].innerHTML = '<a class="cancel" href="">Cancel</a>';
                 }
 
                 function saveRow(oTable, nRow) {
@@ -179,6 +179,7 @@
                                 a.push(ifor(row.amountPaid, ''));
                                 a.push(ifor(row.commentsSign, ''));
                                 a.push('<a class="details" href="">订做明细</a>');
+                                a.push('<a class="settle" href="">订单结算</a>');
                                 a.push('<a class="edit" href="">Edit</a>');
                                 a.push('<a class="delete" href="">Delete</a>');
                                 oTable.fnAddData(a);
@@ -217,8 +218,9 @@
                                             oTable.fnUpdate(data.commentsSign, nRow, 9, false);
 
                                             oTable.fnUpdate('<a class="details" href="">订做明细</a>', nRow, 10, false);
-                                            oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 11, false);
-                                            oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 12, false);
+                                            oTable.fnUpdate('<a class="settle" href="">订单结算</a>', nRow, 11, false);
+                                            oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 12, false);
+                                            oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 13, false);
                                             oTable.fnDraw();
                                         } else {
                                             alert(result.msg);
@@ -253,8 +255,9 @@
                                     oTable.fnUpdate(data.commentsSign, nRow, 9, false);
 
                                     oTable.fnUpdate('<a class="details" href="">订做明细</a>', nRow, 10, false);
-                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 11, false);
-                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 12, false);
+                                    oTable.fnUpdate('<a class="settle" href="">订单结算</a>', nRow, 11, false);
+                                    oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 12, false);
+                                    oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 13, false);
                                     oTable.fnDraw();
                                 } else {
                                     alert(result.msg);
@@ -293,7 +296,16 @@
                         [10, 25, 50, -1],
                         [10, 25, 50, "All"] // change per page values here
                     ],
+                    dom:'Bfrtip',
+                    buttons: [ {
+                        extend: 'excelHtml5',
+                        text:'导出EXCEL',
+                        customize: function( xlsx ) {
+                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
 
+//                            $('row c[r^="C"]', sheet).attr( 's', '2' );
+                        }
+                    } ],
                     "pageLength": 10,
 
                     "language": {
@@ -343,12 +355,13 @@
                         }
                     }
 
-                    var aiNew = oTable.fnAddData(['', '', '', '', '', '', '', '', '', '', '', '', '']);
+                    var aiNew = oTable.fnAddData(['', '', '', '', '', '', '', '', '', '', '', '', '','']);
                     var nRow = oTable.fnGetNodes(aiNew[0]);
                     editRow(oTable, nRow, 1);
                     nEditing = nRow;
                     nNew = true;
                 });
+
 
                 table.on('click', '.delete', function (e) {
                     e.preventDefault();
@@ -410,6 +423,19 @@
                         content: 'order_manager_reserve_detail.jsp?order_id=' + id
                     });
                 });
+
+                table.on('click', '.settle', function (e) {
+                    e.preventDefault();
+                    var nRow = $(this).parents('tr')[0];
+                    var id = nRow.children[0].innerHTML;
+                    layer.open({
+                        type: 2,
+                        title: '订单结算',
+                        area: ['95%', '95%'],
+                        content: 'order_and_settlement.jsp?order_id=' + id
+                    });
+                });
+
                 ajaxInitData();
             };
 

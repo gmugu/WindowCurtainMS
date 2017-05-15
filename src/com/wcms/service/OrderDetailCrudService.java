@@ -36,6 +36,7 @@ public class OrderDetailCrudService {
         byId.setCurtain(curtainDao.findByNo(entity.getCurtain().getNo()));
         byId.setLocation(entity.getLocation());
         byId.setHeight(entity.getHeight());
+        byId.setWidth(entity.getWidth());
         byId.setCount(entity.getCount());
         byId.setComments(entity.getComments());
         orderDetailDao.saveOrUpdate(byId);

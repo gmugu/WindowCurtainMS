@@ -90,9 +90,9 @@
                     <ul class="nav nav-second-level">
                         <li><a class="J_menuItem" href="store_keeping_info.html">材料资料</a>
                         </li>
-                        <li><a class="J_menuItem" href="store_keeping_procurement.jsp">采购登记</a>
+                        <li><a class="J_menuItem" href="store_keeping_procurement.jsp">材料入库</a>
                         </li>
-                        <li><a class="J_menuItem" href="store_keeping_return.jsp">采购退货</a>
+                        <li><a class="J_menuItem" href="store_keeping_return.jsp">材料出库</a>
                         </li>
                         <li><a class="J_menuItem" href="store_keeping_stock.html">库存明细</a>
                         </li>
@@ -241,6 +241,9 @@
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
+                        <div id="time_id"></div>
+                    </li>
+                    <li>
                         <a href="#"><%=usersEntity.getUsername()%>
                         </a>
                     </li>
@@ -270,6 +273,10 @@
 
     $(document).ready(function () {
 
+        var time_id = document.getElementById("time_id");
+        setInterval(function () {
+            time_id.innerText = new Date().toLocaleString();
+        },100);
         // MetsiMenu
         $('#side-menu').metisMenu();
 

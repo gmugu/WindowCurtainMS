@@ -3,7 +3,6 @@
 <%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
 <%@ page import="org.springframework.context.ApplicationContext" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="com.wcms.util.HtmlTagGenerater" %>
 <%@ page import="com.wcms.service.CustomerCrudService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
@@ -278,7 +277,16 @@
                         [10, 25, 50, -1],
                         [10, 25, 50, "All"] // change per page values here
                     ],
+                    dom:'Bfrtip',
+                    buttons: [ {
+                        extend: 'excelHtml5',
+                        text:'导出EXCEL',
+                        customize: function( xlsx ) {
+                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
 
+//                            $('row c[r^="C"]', sheet).attr( 's', '2' );
+                        }
+                    } ],
                     "pageLength": 10,
 
                     "language": {
@@ -330,7 +338,7 @@
 
                     var aiNew = oTable.fnAddData(['', '', '', '', '', '', '', '', '', '', '']);
                     var nRow = oTable.fnGetNodes(aiNew[0]);
-                    editRow(oTable, nRow);
+                    editRow(oTable, nRow, 1);
                     nEditing = nRow;
                     nNew = true;
                 });

@@ -1,4 +1,4 @@
-<!--采购退货-->
+<!--材料出库-->
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
 <%@ page import="org.springframework.context.ApplicationContext" %>
@@ -27,7 +27,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>采购退货</title>
+    <title>材料出库</title>
 
     <link rel="shortcut icon" href="images/favicon.ico">
     <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
@@ -50,7 +50,7 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>采购退货</h5>
+                    <h5>材料出库</h5>
 
                 </div>
                 <div class="ibox-content">
@@ -285,7 +285,16 @@
                         [10, 25, 50, -1],
                         [10, 25, 50, "All"] // change per page values here
                     ],
+                    dom:'Bfrtip',
+                    buttons: [ {
+                        extend: 'excelHtml5',
+                        text:'导出EXCEL',
+                        customize: function( xlsx ) {
+                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
 
+//                            $('row c[r^="C"]', sheet).attr( 's', '2' );
+                        }
+                    } ],
                     "pageLength": 10,
 
                     "language": {

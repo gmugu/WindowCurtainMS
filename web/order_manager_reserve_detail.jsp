@@ -43,6 +43,11 @@
                 <div class="ibox-title">
                     <h5>订做明细</h5>
 
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-file-excel-o"></i>
+                        </a>
+                    </div>
                 </div>
                 <div class="ibox-content">
                     <div class="">
@@ -284,7 +289,17 @@
                         [10, 25, 50, -1],
                         [10, 25, 50, "All"] // change per page values here
                     ],
+                    dom:'Bfrtip',
+                    buttons: [ {
+                        extend: 'excelHtml5',
+                        text:'导出EXCEL',
+                        customize: function( xlsx ) {
+                            console.log(xlsx)
+                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
 
+//                            $('row c[r^="C"]', sheet).attr( 's', '2' );
+                        }
+                    } ],
                     // Or you can use remote translation file
                     // "language": {
                     //   url: '//cdn.datatables.net/plug-ins/3cfcc339e89/i18n/Portuguese.json'
